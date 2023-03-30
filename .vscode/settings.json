@@ -1,0 +1,8 @@
+{
+  "i18n-ally.localesPaths": [
+    "public/locales",
+    "src/shared/config/i18n",
+    "../../../../../../Users/gudin/Documents/codeing/code-books/public/locales"
+  ],
+  "i18n-ally.sourceLanguage": "ru"
+}
