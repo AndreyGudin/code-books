@@ -3,6 +3,8 @@
  * https://jestjs.io/docs/configuration
  */
 
+import path from 'path';
+
 export default {
   clearMocks: true,
   coveragePathIgnorePatterns: ['\\\\node_modules\\\\'],
@@ -26,7 +28,8 @@ export default {
   modulePaths: ['<rootDir>src'],
   setupFilesAfterEnv: ['<rootDir>/config/jest/setupTests.ts'],
   moduleNameMapper: {
-    '\\.s?css$': 'identity-obj-proxy'
+    '\\.s?css$': 'identity-obj-proxy',
+    '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx')
   },
   // Indicates whether the coverage information should be collected while executing the test
   // collectCoverage: false,
