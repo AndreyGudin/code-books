@@ -21,8 +21,8 @@
     }
   },
   "include": [
+    "./src",
     "./config/jest/setupTest.ts",
-    "./src/**/*",
     "./config/jest/jest.config.ts",
     "./config/jest/jestEmptyComponent.ts"
   ]

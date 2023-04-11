@@ -8,6 +8,7 @@ module.exports = {
     'plugin:react/recommended',
     'standard-with-typescript',
     'plugin:i18next/recommended',
+    'plugin:storybook/recommended',
     'prettier'
   ],
   overrides: [],
@@ -18,11 +19,27 @@ module.exports = {
   },
   plugins: ['react', 'react-hooks', 'i18next'],
   rules: {
-    'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
-    'react-hooks/exhaustive-deps': 'warn', // Checks effect dependencies
+    'react-hooks/rules-of-hooks': 'error',
+    // Checks rules of Hooks
+    'react-hooks/exhaustive-deps': 'warn',
+    // Checks effect dependencies
     semi: 0,
     'react/react-in-jsx-scope': 'off',
     '@typescript-eslint/naming-convention': 'warn',
-    'i18next/no-literal-string': ['error', { markupOnly: true }]
-  }
+    'i18next/no-literal-string': [
+      'error',
+      {
+        markupOnly: true,
+        ignoreAttribute: ['data-testid']
+      }
+    ]
+  },
+  overrides: [
+    {
+      files: ['**/src/**/*.test.{ts,tsx}'],
+      rules: {
+        'i18next/no-literal-string': off
+      }
+    }
+  ]
 };
