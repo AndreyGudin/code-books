@@ -1,4 +1,4 @@
-import type { FC, ReactNode } from 'react';
+import { FC, ReactNode, useCallback, useEffect, useState } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './Modal.module.scss';
 
@@ -18,16 +18,30 @@ export const Modal: FC<ModalProps> = ({
   const mods: Record<string, boolean> = {
     [cls.opened]: isOpen
   };
-
-  const closeHandler = () => {
+  const closeHandler = useCallback(() => {
     if (onClose) onClose();
-  };
+  }, [onClose]);
 
   const onContentClick = (e: React.MouseEvent) => {
     e.stopPropagation();
   };
 
-  if (!isOpen) return null;
+  const onKeyDown = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeHandler();
+    },
+    [closeHandler]
+  );
+
+  useEffect(() => {
+    if (isOpen) {
+      window.addEventListener('keydown', onKeyDown);
+    }
+    return () => {
+      window.removeEventListener('keydown', onKeyDown);
+    };
+  }, [isOpen, onKeyDown]);
+
   return (
     <div className={classNames(cls.Modal, mods, [className])}>
       <div className={cls.overlay} onClick={closeHandler}>

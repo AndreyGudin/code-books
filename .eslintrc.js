@@ -9,6 +9,7 @@ module.exports = {
     'standard-with-typescript',
     'plugin:i18next/recommended',
     'plugin:storybook/recommended',
+    'plugin:react-hooks/recommended',
     'prettier'
   ],
   overrides: [],
@@ -21,7 +22,7 @@ module.exports = {
   rules: {
     'react-hooks/rules-of-hooks': 'error',
     // Checks rules of Hooks
-    'react-hooks/exhaustive-deps': 'warn',
+    'react-hooks/exhaustive-deps': 'error',
     // Checks effect dependencies
     semi: 0,
     'react/react-in-jsx-scope': 'off',
