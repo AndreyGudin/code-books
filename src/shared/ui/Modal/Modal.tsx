@@ -1,28 +1,32 @@
-import { FC, ReactNode, useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect } from 'react';
+import type { FC, ReactNode } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './Modal.module.scss';
+import { Portal } from 'shared/ui/Portal/Portal';
 
 interface ModalProps {
   className?: string;
   children?: ReactNode;
+  animate?: boolean;
   isOpen?: boolean;
   onClose?: () => void;
 }
 
 export const Modal: FC<ModalProps> = ({
   className = '',
+  animate = false,
   isOpen = false,
   onClose,
   children
 }: ModalProps) => {
   const mods: Record<string, boolean> = {
-    [cls.opened]: isOpen
+    [cls.opened]: animate
   };
   const closeHandler = useCallback(() => {
-    if (onClose) onClose();
+    if (onClose !== null) onClose?.();
   }, [onClose]);
 
-  const onContentClick = (e: React.MouseEvent) => {
+  const onContentClick = (e: React.MouseEvent): void => {
     e.stopPropagation();
   };
 
@@ -42,13 +46,17 @@ export const Modal: FC<ModalProps> = ({
     };
   }, [isOpen, onKeyDown]);
 
+  if (!isOpen) return null;
+
   return (
-    <div className={classNames(cls.Modal, mods, [className])}>
-      <div className={cls.overlay} onClick={closeHandler}>
-        <div className={cls.content} onClick={onContentClick}>
-          {children}
+    <Portal>
+      <div className={classNames(cls.Modal, mods, [className])}>
+        <div className={cls.overlay} onClick={closeHandler}>
+          <div className={cls.content} onClick={onContentClick}>
+            {children}
+          </div>
         </div>
       </div>
-    </div>
+    </Portal>
   );
 };

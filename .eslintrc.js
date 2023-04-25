@@ -25,7 +25,8 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'error',
     // Checks effect dependencies
     semi: 0,
-    'react/react-in-jsx-scope': 'off',
+    'react/react-in-jsx-scope': 0,
+    'react/display-name': 0,
     '@typescript-eslint/naming-convention': 'warn',
     'i18next/no-literal-string': [
       'error',
@@ -39,7 +40,7 @@ module.exports = {
     {
       files: ['**/src/**/*.test.{ts,tsx}'],
       rules: {
-        'i18next/no-literal-string': off
+        'i18next/no-literal-string': 0
       }
     }
   ]
