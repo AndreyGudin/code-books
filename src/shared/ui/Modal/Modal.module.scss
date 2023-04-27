@@ -11,6 +11,7 @@
 
   transition: all 0.3s ease-out;
   transition-property: opacity, z-index;
+  color: var(--primary-color);
 }
 
 .overlay {
