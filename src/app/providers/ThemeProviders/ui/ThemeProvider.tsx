@@ -31,7 +31,7 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({
     }),
     [theme]
   );
-
+  document.body.className = theme;
   return (
     <ThemeContext.Provider value={defaultProps}>
       {children}

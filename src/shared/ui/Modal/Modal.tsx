@@ -3,7 +3,6 @@ import type { FC, ReactNode } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './Modal.module.scss';
 import { Portal } from 'shared/ui/Portal/Portal';
-import { useTheme } from 'app/providers/ThemeProviders';
 
 interface ModalProps {
   className?: string;
@@ -20,7 +19,6 @@ export const Modal: FC<ModalProps> = ({
   onClose,
   children
 }: ModalProps) => {
-  const { theme } = useTheme();
   const mods: Record<string, boolean> = {
     [cls.opened]: animate
   };
@@ -52,7 +50,7 @@ export const Modal: FC<ModalProps> = ({
 
   return (
     <Portal>
-      <div className={classNames(cls.Modal, mods, [className, theme])}>
+      <div className={classNames(cls.Modal, mods, [className])}>
         <div className={cls.overlay} onClick={closeHandler}>
           <div className={cls.content} onClick={onContentClick}>
             {children}
