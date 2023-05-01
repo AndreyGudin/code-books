@@ -2,11 +2,12 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { FC } from 'react';
 import { useTranslation } from 'react-i18next';
+
+import { Button, ButtonTheme } from 'shared/ui/Button/Button';
+import { LoginModal } from 'features/AuthByUsername';
 import { classNames } from 'shared/lib/classNames/classNames';
 
 import cls from './Navbar.module.scss';
-import { Button, ButtonTheme } from 'shared/ui/Button/Button';
-import { LoginModal } from 'app/features/AuthByUsername';
 
 interface NavbarProps {
   className?: string;
