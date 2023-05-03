@@ -12,6 +12,7 @@ import { loginActions } from 'features/AuthByUsername/model/slice/loginSlice';
 import { getLoginState } from 'features/AuthByUsername/model/selectors/getLoginState/getLoginState';
 import { loginByUserName } from 'features/AuthByUsername/model/services/loginByUserName/loginByUserName';
 import { useAppDispatch } from 'shared/hooks/useAppDispathc';
+import { Text, TextTheme } from 'shared/ui/Text/Text';
 
 interface LoginFormProps {
   className?: string;
@@ -50,6 +51,10 @@ export const LoginForm: FC<LoginFormProps> = memo(
 
     return (
       <div className={classNames(cls.LoginForm, {}, [className])}>
+        <Text title={t('Форма авторизации')} />
+        {loginForm?.error !== undefined ? (
+          <Text theme={TextTheme.ERROR} text={loginForm?.error} />
+        ) : null}
         <Input
           autofocus
           type="text"
@@ -69,6 +74,7 @@ export const LoginForm: FC<LoginFormProps> = memo(
           theme={ButtonTheme.OUTLINE}
           className={cls.loginBtn}
           onClick={onLoginClick}
+          disabled={loginForm?.isLoading}
         >
           {t('Войти')}
         </Button>

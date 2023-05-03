@@ -7,5 +7,7 @@
   "Страница не найдена": "Page not found",
   "Войти": "Login",
   "Пользователь": "User",
-  "Пароль": "Password"
+  "Пароль": "Password",
+  "Форма авторизации": "Authorization",
+  "Вы ввели неверный логин или пароль": "Uncorrect username or password"
 }
