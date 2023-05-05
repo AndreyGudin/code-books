@@ -1,23 +1,30 @@
 import { configureStore } from '@reduxjs/toolkit';
 import type { ReducersMapObject } from '@reduxjs/toolkit';
 
-import type { StateSchema } from 'app/providers/StoreProvider/config/StateSchema';
+import type { StateSchema } from './StateSchema';
+import { createReducerManager } from './reducerManager';
 import { counterReducer } from 'entities/Counter';
 import { userReducer } from 'entities/User';
-import { loginReducer } from 'features/AuthByUsername';
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export function createReduxStore(initialState?: StateSchema) {
-  const rooReducers: ReducersMapObject<StateSchema> = {
+  const rootReducers: ReducersMapObject<StateSchema> = {
     counter: counterReducer,
-    user: userReducer,
-    loginForm: loginReducer
+    user: userReducer
   };
-  return configureStore<StateSchema>({
-    reducer: rooReducers,
+
+  const reducerManager = createReducerManager(rootReducers);
+
+  const store = configureStore<StateSchema>({
+    reducer: reducerManager.reduce,
     preloadedState: initialState,
     devTools: __IS_DEV__
   });
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment, @typescript-eslint/prefer-ts-expect-error
+  // @ts-ignore
+  store.reducerManager = reducerManager;
+
+  return store;
 }
 
 export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch'];

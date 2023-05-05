@@ -7,18 +7,28 @@ import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
 import { classNames } from 'shared/lib/classNames/classNames';
 
-import cls from './LoginForm.module.scss';
-import { loginActions } from 'features/AuthByUsername/model/slice/loginSlice';
+import {
+  loginActions,
+  loginReducer
+} from 'features/AuthByUsername/model/slice/loginSlice';
 import { getLoginState } from 'features/AuthByUsername/model/selectors/getLoginState/getLoginState';
 import { loginByUserName } from 'features/AuthByUsername/model/services/loginByUserName/loginByUserName';
-import { useAppDispatch } from 'shared/hooks/useAppDispathc';
+import { useAppDispatch } from 'shared/hooks/useAppDispatch';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
+import { DynamicModuleLoader } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import type { ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 
-interface LoginFormProps {
+import cls from './LoginForm.module.scss';
+
+export interface LoginFormProps {
   className?: string;
 }
 
-export const LoginForm: FC<LoginFormProps> = memo(
+const initialReducers: ReducersList = {
+  loginForm: loginReducer
+};
+
+const LoginForm: FC<LoginFormProps> = memo(
   ({ className = '' }: LoginFormProps) => {
     const { t } = useTranslation();
     const dispatch = useAppDispatch();
@@ -50,38 +60,42 @@ export const LoginForm: FC<LoginFormProps> = memo(
     }, [dispatch, loginForm?.password, loginForm?.username]);
 
     return (
-      <div className={classNames(cls.LoginForm, {}, [className])}>
-        <Text title={t('Форма авторизации')} />
-        {loginForm?.error !== undefined ? (
-          <Text
-            theme={TextTheme.ERROR}
-            text={t('Вы ввели неверный логин или пароль')}
+      <DynamicModuleLoader reducers={initialReducers}>
+        <div className={classNames(cls.LoginForm, {}, [className])}>
+          <Text title={t('Форма авторизации')} />
+          {loginForm?.error !== undefined ? (
+            <Text
+              theme={TextTheme.ERROR}
+              text={t('Вы ввели неверный логин или пароль')}
+            />
+          ) : null}
+          <Input
+            autofocus
+            type="text"
+            className={cls.input}
+            placeholder={t('Пользователь') ?? ''}
+            onChange={onChangeUsername}
+            value={loginForm?.username ?? ''}
           />
-        ) : null}
-        <Input
-          autofocus
-          type="text"
-          className={cls.input}
-          placeholder={t('Пользователь') ?? ''}
-          onChange={onChangeUsername}
-          value={loginForm?.username}
-        />
-        <Input
-          type="text"
-          className={cls.input}
-          placeholder={t('Пароль') ?? ''}
-          onChange={onChangePassword}
-          value={loginForm?.password}
-        />
-        <Button
-          theme={ButtonTheme.OUTLINE}
-          className={cls.loginBtn}
-          onClick={onLoginClick}
-          disabled={loginForm?.isLoading}
-        >
-          {t('Войти')}
-        </Button>
-      </div>
+          <Input
+            type="text"
+            className={cls.input}
+            placeholder={t('Пароль') ?? ''}
+            onChange={onChangePassword}
+            value={loginForm?.password ?? ''}
+          />
+          <Button
+            theme={ButtonTheme.OUTLINE}
+            className={cls.loginBtn}
+            onClick={onLoginClick}
+            disabled={loginForm?.isLoading}
+          >
+            {t('Войти')}
+          </Button>
+        </div>
+      </DynamicModuleLoader>
     );
   }
 );
+
+export default LoginForm;
