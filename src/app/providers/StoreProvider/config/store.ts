@@ -7,8 +7,12 @@ import { counterReducer } from 'entities/Counter';
 import { userReducer } from 'entities/User';
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export function createReduxStore(initialState?: StateSchema) {
+export function createReduxStore(
+  initialState?: StateSchema,
+  asyncReducers?: ReducersMapObject<StateSchema>
+) {
   const rootReducers: ReducersMapObject<StateSchema> = {
+    ...asyncReducers,
     counter: counterReducer,
     user: userReducer
   };
