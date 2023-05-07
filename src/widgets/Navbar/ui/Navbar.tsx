@@ -1,5 +1,5 @@
 /* eslint-disable i18next/no-literal-string */
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState, memo } from 'react';
 import type { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
@@ -15,7 +15,7 @@ interface NavbarProps {
   className?: string;
 }
 
-export const Navbar: FC = ({ className = '' }: NavbarProps) => {
+export const Navbar: FC = memo(({ className = '' }: NavbarProps) => {
   const { t } = useTranslation();
   const [isAuthModal, setAuthModal] = useState(false);
   const [animate, setAnimate] = useState(false);
@@ -80,4 +80,4 @@ export const Navbar: FC = ({ className = '' }: NavbarProps) => {
       />
     </div>
   );
-};
+});

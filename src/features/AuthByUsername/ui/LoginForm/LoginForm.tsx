@@ -22,6 +22,7 @@ import cls from './LoginForm.module.scss';
 
 export interface LoginFormProps {
   className?: string;
+  onSuccess: () => void;
 }
 
 const initialReducers: ReducersList = {
@@ -29,7 +30,7 @@ const initialReducers: ReducersList = {
 };
 
 const LoginForm: FC<LoginFormProps> = memo(
-  ({ className = '' }: LoginFormProps) => {
+  ({ className = '', onSuccess }: LoginFormProps) => {
     const { t } = useTranslation();
     const dispatch = useAppDispatch();
     const loginForm = useSelector(getLoginState);
@@ -48,16 +49,17 @@ const LoginForm: FC<LoginFormProps> = memo(
       [dispatch]
     );
 
-    const onLoginClick = useCallback(() => {
-      dispatch(
+    const onLoginClick = useCallback(async () => {
+      const result = await dispatch(
         loginByUserName({
           username: loginForm?.username ?? '',
           password: loginForm?.password ?? ''
         })
-      ).catch((e) => {
-        console.log(e);
-      });
-    }, [dispatch, loginForm?.password, loginForm?.username]);
+      );
+      if (result.meta.requestStatus === 'fulfilled') {
+        onSuccess();
+      }
+    }, [dispatch, loginForm?.password, loginForm?.username, onSuccess]);
 
     return (
       <DynamicModuleLoader reducers={initialReducers}>
