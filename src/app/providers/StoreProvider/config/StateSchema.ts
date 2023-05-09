@@ -5,6 +5,8 @@ import type {
   AnyAction,
   EnhancedStore
 } from '@reduxjs/toolkit';
+import type { AxiosInstance } from 'axios';
+import type { NavigateOptions, To } from 'react-router-dom';
 
 import type { CounterSchema } from 'entities/Counter';
 import type { ProfileSchema } from 'entities/Profile';
@@ -30,3 +32,13 @@ export interface ReduxStoreWithManager extends EnhancedStore<StateSchema> {
 }
 
 export type StateSchemaKey = keyof StateSchema;
+
+export interface ThunkExtraArg {
+  api: AxiosInstance;
+  navigate?: (to: To, options?: NavigateOptions) => void;
+}
+
+export interface ThunkConfig<T> {
+  rejectValue: T;
+  extra: ThunkExtraArg;
+}
