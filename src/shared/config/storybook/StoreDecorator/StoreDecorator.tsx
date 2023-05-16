@@ -1,4 +1,4 @@
-import type { DeepPartial, ReducersMapObject } from '@reduxjs/toolkit';
+import type { ReducersMapObject } from '@reduxjs/toolkit';
 import type { Decorator } from '@storybook/react';
 
 import { StoreProvider } from 'app/providers/StoreProvider';

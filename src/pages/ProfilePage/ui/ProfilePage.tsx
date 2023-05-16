@@ -1,4 +1,3 @@
-import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
 import type { FC } from 'react';
 
@@ -25,7 +24,6 @@ interface ProfilePageProps {
 const ProfilePage: FC<ProfilePageProps> = ({
   className = ''
 }: ProfilePageProps) => {
-  const { t } = useTranslation();
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(fetchProfileData()).catch((e) => {

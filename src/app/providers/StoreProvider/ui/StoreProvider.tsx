@@ -4,7 +4,7 @@ import type { FC, ReactNode } from 'react';
 
 import { createReduxStore } from '../config/store';
 import type { StateSchema } from 'app/providers/StoreProvider/config/StateSchema';
-import type { DeepPartial, ReducersMapObject } from '@reduxjs/toolkit';
+import type { ReducersMapObject } from '@reduxjs/toolkit';
 
 interface StoreProviderProps {
   children?: ReactNode;

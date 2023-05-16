@@ -6,7 +6,6 @@ import { MemoryRouter } from 'react-router-dom';
 import i18n from 'shared/config/i18n/i18ForTests';
 import { StoreProvider } from 'app/providers/StoreProvider';
 import type { StateSchema } from 'app/providers/StoreProvider';
-import type { DeepPartial } from '@reduxjs/toolkit';
 
 interface componentRenderProps {
   route?: string;
@@ -19,10 +18,10 @@ export const componentRender = (
 ): ReturnType<typeof render> => {
   const { route = '/', initialState } = options;
   return render(
-    <StoreProvider initialState={initialState as StateSchema}>
-      <MemoryRouter initialEntries={[route]}>
+    <MemoryRouter initialEntries={[route]}>
+      <StoreProvider initialState={initialState as StateSchema}>
         <I18nextProvider i18n={i18n}>{component}</I18nextProvider>
-      </MemoryRouter>
-    </StoreProvider>
+      </StoreProvider>
+    </MemoryRouter>
   );
 };

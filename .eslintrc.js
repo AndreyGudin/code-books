@@ -13,6 +13,7 @@ module.exports = {
     'prettier'
   ],
   overrides: [],
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
