@@ -6,8 +6,10 @@
   "Главная": "Home",
   "Страница не найдена": "Page not found",
   "Войти": "Login",
+  "Выйти": "Logout",
   "Пользователь": "User",
   "Пароль": "Password",
   "Форма авторизации": "Authorization",
-  "Вы ввели неверный логин или пароль": "Uncorrect username or password"
+  "Вы ввели неверный логин или пароль": "Uncorrect username or password",
+  "Профиль": "Profile"
 }

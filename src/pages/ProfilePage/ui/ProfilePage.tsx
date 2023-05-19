@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import type { FC } from 'react';
 
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -6,10 +6,19 @@ import { DynamicModuleLoader } from 'shared/lib/components/DynamicModuleLoader/D
 import type { ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import {
   fetchProfileData,
+  getProfileError,
+  getProfileForm,
+  getProfileIsLoading,
+  getProfileReadonly,
+  profileActions,
   ProfileCard,
   profileReducer
 } from 'entities/Profile';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch';
+import { useSelector } from 'react-redux';
+import { ProfilePageHeader } from 'pages/ProfilePage/ui/ProfilePageHeader/ProfilePageHeader';
+import type { Currency } from 'entities/Currency';
+import type { Country } from 'entities/Country';
 
 import cls from './ProfilePage.module.scss';
 
@@ -25,16 +34,91 @@ const ProfilePage: FC<ProfilePageProps> = ({
   className = ''
 }: ProfilePageProps) => {
   const dispatch = useAppDispatch();
+  const formData = useSelector(getProfileForm);
+  const isLoading = useSelector(getProfileIsLoading);
+  const error = useSelector(getProfileError);
+  const readonly = useSelector(getProfileReadonly);
+
   useEffect(() => {
     dispatch(fetchProfileData()).catch((e) => {
       console.log(e);
     });
   }, [dispatch]);
 
+  const onChangeFirstName = useCallback(
+    (value?: string) => {
+      dispatch(profileActions.updateProfile({ first: value ?? '' }));
+    },
+    [dispatch]
+  );
+
+  const onChangeLastName = useCallback(
+    (value?: string) => {
+      dispatch(profileActions.updateProfile({ lastname: value ?? '' }));
+    },
+    [dispatch]
+  );
+
+  const onChangeCity = useCallback(
+    (value?: string) => {
+      dispatch(profileActions.updateProfile({ city: value ?? '' }));
+    },
+    [dispatch]
+  );
+
+  const onChangeAge = useCallback(
+    (value?: string) => {
+      dispatch(profileActions.updateProfile({ age: Number(value ?? 0) }));
+    },
+    [dispatch]
+  );
+
+  const onChangeAvatar = useCallback(
+    (value?: string) => {
+      dispatch(profileActions.updateProfile({ avatar: value }));
+    },
+    [dispatch]
+  );
+
+  const onChangeUsername = useCallback(
+    (value?: string) => {
+      dispatch(profileActions.updateProfile({ username: value }));
+    },
+    [dispatch]
+  );
+
+  const onChangeCurrency = useCallback(
+    (currency?: Currency) => {
+      dispatch(profileActions.updateProfile({ currency }));
+    },
+    [dispatch]
+  );
+
+  const onChangeCountry = useCallback(
+    (country?: Country) => {
+      dispatch(profileActions.updateProfile({ country }));
+    },
+    [dispatch]
+  );
+
   return (
     <DynamicModuleLoader reducers={reducers}>
       <div className={classNames(cls.ProfilePage, {}, [className])}>
-        <ProfileCard />
+        <ProfilePageHeader />
+        <ProfileCard
+          data={formData}
+          isLoading={isLoading}
+          error={error}
+          readonly={readonly}
+          onChangeFirstName={onChangeFirstName}
+          onChangeLastName={onChangeLastName}
+          onChangeAge={onChangeAge}
+          onChangeCity={onChangeCity}
+          onChangeAvatar={onChangeAvatar}
+          onChangeUsername={onChangeUsername}
+          onChangeCurrency={onChangeCurrency}
+          onChangeCountry={onChangeCountry}
+        />
       </div>
     </DynamicModuleLoader>
   );

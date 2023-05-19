@@ -3,18 +3,38 @@
   border: 2px solid var(--inverted-bg-color);
 }
 
-.header {
-  display: flex;
-}
-
-.editBtn {
-  margin-left: auto;
-}
-
-.data {
-  margin-top: 30px;
-}
-
 .input {
   margin-top: 20px;
+
+  &[type='number']::-webkit-outer-spin-button,
+  &[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+
+  &[type='number'] {
+    -moz-appearance: textfield;
+
+    &:hover,
+    &:focus {
+      -moz-appearance: number-input;
+    }
+  }
+}
+
+.loading,
+.error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+}
+
+.avatarWrapper {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.editing {
+  border: 2px solid var(--inverted-primary-color);
 }
