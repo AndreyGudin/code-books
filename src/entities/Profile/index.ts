@@ -7,4 +7,7 @@ export { getProfileError } from './model/selectors/getProfileError/getProfileErr
 export { getProfileIsLoading } from './model/selectors/getProfileIsLoading/getProfileIsLoading';
 export { getProfileReadonly } from './model/selectors/getProfileReadonly/getProfileReadonly';
 export { getProfileForm } from './model/selectors/getProfileForm/getProfileForm';
+export { getProfileValidateErrors } from './model/selectors/getProfileValidateErrors/getProfileValidateErrors';
+export { validateProfileData } from './model/services/validateProfile/validateProfileData';
 export type { Profile, ProfileSchema } from './model/types/profile';
+export { ValidateProfileError } from './model/types/profile';
