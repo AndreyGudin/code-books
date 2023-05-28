@@ -4,5 +4,68 @@
     "src/shared/config/i18n",
     "../../../../../../Users/gudin/Documents/codeing/code-books/public/locales"
   ],
-  "i18n-ally.sourceLanguage": "ru"
+  "i18n-ally.sourceLanguage": "ru",
+  "folderTemplates.structures": [
+    {
+      "name": "My Custom Template",
+      "omitParentDirectory": false,
+      "structure": [
+        {
+          "fileName": "<FTName>.tsx",
+          "template": "Typescript Functional Component"
+        },
+        {
+          "fileName": "<FTName>.module.scss",
+          "template": "Module scss"
+        },
+        {
+          "fileName": "<FTName>.stories.tsx",
+          "template": "Stories"
+        },
+        {
+          "fileName": "<FTName>.test.ts",
+          "template": "Test file"
+        }
+      ]
+    }
+  ],
+  "folderTemplates.fileTemplates": {
+    "Typescript Functional Component": [
+      "import { useTranslation } from 'react-i18next';",
+      "import type { FC } from 'react';",
+      "import { classNames } from 'shared/lib/classNames/classNames';",
+      "import cls from './<FTName>.module.scss';",
+      "",
+      "interface <FTName>Props {",
+      "  className?: string;",
+      "}",
+      "",
+      "export const <FTName>:FC<<FTName>Props> = ({ className='' }: <FTName>Props) => {",
+      "const { t } = useTranslation();",
+      "  return (",
+      "<div className={classNames(cls.<FTName>,{},[className])}>",
+      "</div>",
+      "  );",
+      "}"
+    ],
+    "Module scss": ".<FTName> {}",
+    "Test file": [
+      "describe('<FTName>', () => {",
+      "test('should return counter value', () => {",
+      "expect().toEqual();});});"
+    ],
+    "Stories": [
+      "import type { Meta, StoryObj } from '@storybook/react';",
+      "import {<FTName>} from './<FTName>';",
+
+      "const meta = {",
+      "title: 'pages/<FTName>',",
+      "component: <FTName>,",
+      "argTypes: {}",
+      "} satisfies Meta<typeof <FTName>>;",
+      "export default meta;",
+      "type Story = StoryObj<typeof meta>;",
+      "export const Normal: Story = {};"
+    ]
+  }
 }
