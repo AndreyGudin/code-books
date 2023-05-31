@@ -1,5 +1,5 @@
 import { Suspense, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import type { FC } from 'react';
 
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -8,10 +8,11 @@ import { Navbar } from 'widgets/Navbar';
 import { Sidebar } from 'widgets/Sidebar';
 
 import './styles/index.scss';
-import { userActions } from 'entities/User';
+import { getUserMounted, userActions } from 'entities/User';
 
 const App: FC = () => {
   const dispatch = useDispatch();
+  const mounted = useSelector(getUserMounted);
 
   useEffect(() => {
     dispatch(userActions.initAuthData());
@@ -24,7 +25,7 @@ const App: FC = () => {
 
         <div className="content-page">
           <Sidebar />
-          <AppRouter />
+          {mounted !== undefined && mounted ? <AppRouter /> : null}
         </div>
       </Suspense>
     </div>
