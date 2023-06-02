@@ -4,6 +4,8 @@ import type { FC } from 'react';
 
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './ArticleDetailsPage.module.scss';
+import { ArticleDetails } from 'entities/Article';
+import { useParams } from 'react-router-dom';
 
 interface ArticleDetailsPageProps {
   className?: string;
@@ -12,10 +14,20 @@ interface ArticleDetailsPageProps {
 const ArticleDetailsPage: FC<ArticleDetailsPageProps> = ({
   className = ''
 }: ArticleDetailsPageProps) => {
-  const { t } = useTranslation('article');
+  const { t } = useTranslation('article-details');
+  const { id } = useParams<{ id: string }>();
+
+  if (id === undefined) {
+    return (
+      <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
+        {t('Статья не найдена')}
+      </div>
+    );
+  }
+
   return (
     <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
-      ARTICLE DETAILS PAGE
+      <ArticleDetails id={id} />
     </div>
   );
 };
