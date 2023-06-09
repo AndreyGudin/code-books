@@ -13,10 +13,15 @@ import {
   getArticleDetailsError,
   getArticleDetailsIsLoading
 } from '../../model/selectors/articleDetails';
-import { Text, TextAlign } from 'shared/ui/Text/Text';
+import { Text, TextAlign, TextSize } from 'shared/ui/Text/Text';
+import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
+import { Avatar } from 'shared/ui/Avatar/Avatar';
 
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './ArticleDetails.module.scss';
+import EyeIcon from 'shared/assets/icons/eye.svg';
+import CalendarIcon from 'shared/assets/icons/calendar.svg';
+import { Icon } from 'shared/ui/Icon/Icon';
 
 interface ArticleDetailsProps {
   className?: string;
@@ -31,6 +36,7 @@ export const ArticleDetails: FC<ArticleDetailsProps> = memo(
     const { t } = useTranslation('article-details');
     const dispatch = useAppDispatch();
     const isLoading = useSelector(getArticleDetailsIsLoading);
+
     const article = useSelector(getArticleDetailsData);
     const error = useSelector(getArticleDetailsError);
 
@@ -43,7 +49,20 @@ export const ArticleDetails: FC<ArticleDetailsProps> = memo(
     let content;
 
     if (isLoading !== undefined && isLoading) {
-      content = <div>Loading..</div>;
+      content = (
+        <>
+          <Skeleton
+            className={cls.avatar}
+            width={200}
+            height={200}
+            border={'50%'}
+          />
+          <Skeleton className={cls.title} width={300} height={32} />
+          <Skeleton className={cls.skeleton} width={600} height={24} />
+          <Skeleton className={cls.skeleton} width="100%" height={200} />
+          <Skeleton className={cls.skeleton} width="100%" height={200} />
+        </>
+      );
     } else if (error !== undefined && error.length > 0) {
       content = (
         <Text
@@ -52,7 +71,27 @@ export const ArticleDetails: FC<ArticleDetailsProps> = memo(
         />
       );
     } else {
-      content = <div>Article Details</div>;
+      content = (
+        <>
+          <div className={cls.avatarWrapper}>
+            <Avatar size={200} src={article?.img} className={cls.avatar} />
+          </div>
+          <Text
+            className={cls.title}
+            title={article?.title}
+            text={article?.subtitle}
+            size={TextSize.L}
+          />
+          <div className={cls.articleInfo}>
+            <Icon Svg={EyeIcon} className={cls.icon} />
+            <Text text={String(article?.views)} />
+          </div>
+          <div className={cls.articleInfo}>
+            <Icon Svg={CalendarIcon} className={cls.icon} />
+            <Text text={article?.createdAt} />
+          </div>
+        </>
+      );
     }
 
     return (

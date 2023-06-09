@@ -7,7 +7,7 @@ interface SkeletonProps {
   className?: string;
   height?: string | number;
   width?: string | number;
-  border: string | number;
+  border?: string | number;
 }
 
 export const Skeleton: FC<SkeletonProps> = ({
@@ -16,10 +16,16 @@ export const Skeleton: FC<SkeletonProps> = ({
   width,
   border
 }: SkeletonProps) => {
+  const styles: CSSProperties = {
+    width,
+    height,
+    borderRadius: border
+  };
 
-  const style:CSSProperties = {
-   width, height,borderRadius: boder
-  }= 
-
-  return <div className={classNames(cls.Skeleton, {}, [className])}></div>;
+  return (
+    <div
+      className={classNames(cls.Skeleton, {}, [className])}
+      style={styles}
+    ></div>
+  );
 };
