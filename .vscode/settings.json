@@ -32,6 +32,7 @@
   "folderTemplates.fileTemplates": {
     "Typescript Functional Component": [
       "import { useTranslation } from 'react-i18next';",
+      "import { memo } from 'react';",
       "import type { FC } from 'react';",
       "import { classNames } from 'shared/lib/classNames/classNames';",
       "import cls from './<FTName>.module.scss';",
@@ -40,13 +41,13 @@
       "  className?: string;",
       "}",
       "",
-      "export const <FTName>:FC<<FTName>Props> = ({ className='' }: <FTName>Props) => {",
+      "export const <FTName>:FC<<FTName>Props> = memo(({ className='' }: <FTName>Props) => {",
       "const { t } = useTranslation();",
       "  return (",
       "<div className={classNames(cls.<FTName>,{},[className])}>",
       "</div>",
       "  );",
-      "}"
+      "})"
     ],
     "Module scss": ".<FTName> {}",
     "Test file": [

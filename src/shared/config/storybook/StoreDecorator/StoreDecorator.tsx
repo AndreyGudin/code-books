@@ -6,10 +6,12 @@ import type { StateSchema } from 'app/providers/StoreProvider';
 import 'app/styles/index.scss';
 import { loginReducer } from 'features/AuthByUsername/model/slice/loginSlice';
 import { profileReducer } from 'entities/Profile';
+import { articleDetailsReducer } from 'entities/Article';
 
 const defaultAsyncReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
   loginForm: loginReducer,
-  profile: profileReducer
+  profile: profileReducer,
+  articleDetails: articleDetailsReducer
 };
 
 export const StoreDecorator: (
