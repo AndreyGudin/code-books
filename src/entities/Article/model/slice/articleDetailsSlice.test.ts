@@ -1,29 +1,13 @@
-import type { Meta, StoryObj } from '@storybook/react';
-
-import ArticleDetailsPage from './ArticleDetailsPage';
+import { articleDetailsReducer } from './articleDetailsSlice';
+import type { ArticleDetailsSchema } from 'entities/Article/model/types/articleDetailsSchema';
 import {
   ArticleBlockType,
   ArticleType
 } from 'entities/Article/model/types/article';
-
 import type { Article } from 'entities/Article/model/types/article';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
+import { fetchArticleById } from 'entities/Article/model/services/fetchArticleById/fetchArticleById';
 
-const meta = {
-  title: 'pages/ArticleDetailsPage',
-  component: ArticleDetailsPage,
-  argTypes: {},
-  parameters: {
-    reactRouter: {
-      routePath: '/articles/:id',
-      routeParams: { id: '1' }
-    }
-  }
-} satisfies Meta<typeof ArticleDetailsPage>;
-export default meta;
-type Story = StoryObj<typeof meta>;
-
-const article: Article = {
+const data: Article = {
   id: '1',
   title: 'Javascript news',
   subtitle: 'Что нового в JS за 2022 год?',
@@ -93,6 +77,35 @@ const article: Article = {
   ]
 };
 
-export const Normal: Story = {
-  decorators: [StoreDecorator({ articleDetails: { data: article } })]
-};
+describe('articleDetailsSlice.test', () => {
+  test('test articleDetails service pending', () => {
+    const state: DeepPartial<ArticleDetailsSchema> = {
+      isLoading: false,
+      error: 'error'
+    };
+    expect(
+      articleDetailsReducer(
+        state as ArticleDetailsSchema,
+        fetchArticleById.pending
+      )
+    ).toEqual({ isLoading: true, error: undefined });
+  });
+
+  test('test articleDetails service fulfilled', () => {
+    const state: DeepPartial<ArticleDetailsSchema> = {
+      isLoading: true,
+      error: 'error',
+      data
+    };
+    expect(
+      articleDetailsReducer(
+        state as ArticleDetailsSchema,
+        fetchArticleById.fulfilled(data, '1', 'error')
+      )
+    ).toEqual({
+      isLoading: false,
+      error: undefined,
+      data
+    });
+  });
+});
