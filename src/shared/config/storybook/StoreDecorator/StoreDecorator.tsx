@@ -7,11 +7,14 @@ import 'app/styles/index.scss';
 import { loginReducer } from 'features/AuthByUsername/model/slice/loginSlice';
 import { profileReducer } from 'entities/Profile';
 import { articleDetailsReducer } from 'entities/Article';
+import { addCommentFormReducer } from 'features/addCommentForm/model/slice/addCommentFormSlice';
 
 const defaultAsyncReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
   loginForm: loginReducer,
   profile: profileReducer,
-  articleDetails: articleDetailsReducer
+  articleDetails: articleDetailsReducer,
+  articleDetailsComments: articleDetailsReducer,
+  addCommentForm: addCommentFormReducer
 };
 
 export const StoreDecorator: (

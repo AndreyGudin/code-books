@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 import type { FC } from 'react';
 
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -25,6 +25,8 @@ import type { Country } from 'entities/Country';
 import cls from './ProfilePage.module.scss';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { useTranslation } from 'react-i18next';
+import { useInitialEffect } from 'shared/hooks/useInitialEffect';
+import { useParams } from 'react-router-dom';
 
 const reducers: ReducersList = {
   profile: profileReducer
@@ -44,6 +46,7 @@ const ProfilePage: FC<ProfilePageProps> = ({
   const error = useSelector(getProfileError);
   const readonly = useSelector(getProfileReadonly);
   const validateErrors = useSelector(getProfileValidateErrors);
+  const { id } = useParams<{ id: string }>();
 
   const validateErrorTranslates = {
     [ValidateProfileError.SERVER_ERROR]: t('Серверная ошибка при сохранении'),
@@ -53,13 +56,13 @@ const ProfilePage: FC<ProfilePageProps> = ({
     [ValidateProfileError.NO_DATA]: t('Данные не указаны')
   };
 
-  useEffect(() => {
-    if (__PROJECT__ !== 'storybook') {
-      dispatch(fetchProfileData()).catch((e) => {
+  useInitialEffect(() => {
+    if (id !== undefined) {
+      dispatch(fetchProfileData(id)).catch((e) => {
         console.log(e);
       });
     }
-  }, [dispatch]);
+  });
 
   const onChangeFirstName = useCallback(
     (value?: string) => {

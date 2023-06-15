@@ -14,6 +14,7 @@ import type { UserSchema } from 'entities/User';
 import type { LoginSchema } from 'features/AuthByUsername';
 import type { ArticleDetailsSchema } from 'entities/Article';
 import type { articleDetailsCommentsSchema } from 'pages/ArticleDetailsPage';
+import type { AddCommentFormSchema } from 'features/addCommentForm';
 
 export interface StateSchema {
   counter: CounterSchema;
@@ -22,6 +23,7 @@ export interface StateSchema {
   profile?: ProfileSchema;
   articleDetails?: ArticleDetailsSchema;
   articleDetailsComments?: articleDetailsCommentsSchema;
+  addCommentForm?: AddCommentFormSchema;
 }
 
 export interface ReducerManager {
