@@ -5,10 +5,10 @@ import type { FC } from 'react';
 
 import { classNames } from 'shared/lib/classNames/classNames';
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
-import type { SidebarItemType } from 'widgets/Sidebar/model/items';
 
 import cls from './SidebarItem.module.scss';
 import { getAuthUserData } from 'entities/User';
+import type { SidebarItemType } from '../../../model/types/sidebar';
 
 interface SidebarItemProps {
   item: SidebarItemType;
