@@ -31,6 +31,7 @@ module.exports = {
     '@typescript-eslint/naming-convention': 'warn',
     '@typescript-eslint/no-dynamic-delete': 0,
     '@typescript-eslint/no-misused-promises': 0,
+    '@typescript-eslint/consistent-type-assertions': 0,
     'i18next/no-literal-string': [
       'error',
       {
