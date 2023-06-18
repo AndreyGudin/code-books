@@ -6,7 +6,7 @@ import { ArticleBlockType, ArticleType } from '../../model/types/article';
 import type { Article } from '../../model/types/article';
 
 const meta = {
-  title: 'entities/ArticleDetails',
+  title: 'entities/Article/ArticleDetails',
   component: ArticleDetails,
   argTypes: {}
 } satisfies Meta<typeof ArticleDetails>;

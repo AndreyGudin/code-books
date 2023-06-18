@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { memo, useCallback } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import type { FC } from 'react';
 
@@ -19,6 +19,8 @@ import { useAppDispatch } from 'shared/hooks/useAppDispatch';
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { AddCommentForm } from 'features/addCommentForm';
 import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
+import { Button, ButtonTheme } from 'shared/ui/Button/Button';
+import { RoutePath } from 'shared/config/routerConfig/routerConfig';
 
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './ArticleDetailsPage.module.scss';
@@ -39,6 +41,7 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = ({
   const comments = useSelector(getArticleComments.selectAll);
   const isLoading = useSelector(getArticleDetailsCommentsIsLoading);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   useInitialEffect(() => {
     dispatch(fetchCommentsByArticleId(id)).catch((e) => {
@@ -55,6 +58,10 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = ({
     [dispatch]
   );
 
+  const onBackList = useCallback(() => {
+    navigate(RoutePath.articles);
+  }, [navigate]);
+
   if (id === undefined) {
     return (
       <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
@@ -66,6 +73,9 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = ({
   return (
     <DynamicModuleLoader reducers={reducers}>
       <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
+        <Button theme={ButtonTheme.OUTLINE} onClick={onBackList}>
+          {t('Назад к списку')}
+        </Button>
         <ArticleDetails id={id} />
         <Text className={cls.commentTitle} title={t('Комментарии')} />
         <AddCommentForm onSendComment={onSendComment} />

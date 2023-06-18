@@ -1,4 +1,3 @@
-import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
 import type { FC } from 'react';
 
@@ -8,6 +7,7 @@ import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './ArticleList.module.scss';
+import { ArticleListItemSkeleton } from 'entities/Article/ui/ArticleListItem/ArticleListItemSkeleton';
 
 interface ArticleListProps {
   className?: string;
@@ -23,8 +23,6 @@ export const ArticleList: FC<ArticleListProps> = memo(
     isLoading = false,
     view = ArticleView.GRID
   }: ArticleListProps) => {
-    const { t } = useTranslation();
-
     const renderArticle = (article: Article): JSX.Element => {
       return (
         <ArticleListItem
@@ -35,6 +33,20 @@ export const ArticleList: FC<ArticleListProps> = memo(
         />
       );
     };
+
+    if (isLoading) {
+      return (
+        <div
+          className={classNames(cls.ArticleList, {}, [className, cls[view]])}
+        >
+          {new Array(view === ArticleView.GRID ? 9 : 3)
+            .fill(0)
+            .map((item, i) => {
+              return <ArticleListItemSkeleton key={i} view={view} />;
+            })}
+        </div>
+      );
+    }
 
     return (
       <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>

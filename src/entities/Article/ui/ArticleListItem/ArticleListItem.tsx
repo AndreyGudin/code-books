@@ -53,6 +53,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo(
       const textBlock = article.blocks.find(
         (block) => block.type === ArticleBlockType.TEXT
       ) as ArticleTextBlock;
+
       return (
         <div
           className={classNames(cls.ArticleListItem, {}, [

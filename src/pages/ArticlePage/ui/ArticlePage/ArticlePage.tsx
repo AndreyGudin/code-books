@@ -95,6 +95,7 @@ const ArticlePage: FC<ArticlePageProps> = ({
   return (
     <div className={classNames(cls.ArticlePage, {}, [className])}>
       <ArticleList
+        isLoading={true}
         view={ArticleView.LIST}
         articles={new Array(16).fill(0).map((item, i) => {
           return { ...article, id: String(i) };
