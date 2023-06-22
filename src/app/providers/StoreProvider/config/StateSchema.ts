@@ -6,7 +6,6 @@ import type {
   EnhancedStore
 } from '@reduxjs/toolkit';
 import type { AxiosInstance } from 'axios';
-import type { NavigateOptions, To } from 'react-router-dom';
 
 import type { CounterSchema } from 'entities/Counter';
 import type { ProfileSchema } from 'entities/Profile';
@@ -15,15 +14,19 @@ import type { LoginSchema } from 'features/AuthByUsername';
 import type { ArticleDetailsSchema } from 'entities/Article';
 import type { articleDetailsCommentsSchema } from 'pages/ArticleDetailsPage';
 import type { AddCommentFormSchema } from 'features/addCommentForm';
+import type { ArticlesPageSchema } from 'pages/ArticlePage';
 
 export interface StateSchema {
   counter: CounterSchema;
   user: UserSchema;
+
+  // Асинхронные редюсеры
   loginForm?: LoginSchema;
   profile?: ProfileSchema;
   articleDetails?: ArticleDetailsSchema;
   articleDetailsComments?: articleDetailsCommentsSchema;
   addCommentForm?: AddCommentFormSchema;
+  articlesPage?: ArticlesPageSchema;
 }
 
 export interface ReducerManager {
@@ -41,7 +44,6 @@ export type StateSchemaKey = keyof StateSchema;
 
 export interface ThunkExtraArg {
   api: AxiosInstance;
-  navigate?: (to: To, options?: NavigateOptions) => void;
 }
 
 export interface ThunkConfig<T> {

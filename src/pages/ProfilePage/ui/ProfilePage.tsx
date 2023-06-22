@@ -1,5 +1,7 @@
 import { useCallback } from 'react';
 import type { FC } from 'react';
+import { useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import { classNames } from 'shared/lib/classNames/classNames';
 import { DynamicModuleLoader } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
@@ -21,12 +23,11 @@ import { useSelector } from 'react-redux';
 import { ProfilePageHeader } from 'pages/ProfilePage/ui/ProfilePageHeader/ProfilePageHeader';
 import type { Currency } from 'entities/Currency';
 import type { Country } from 'entities/Country';
+import { Page } from 'shared/ui/Page/Page';
+import { Text, TextTheme } from 'shared/ui/Text/Text';
+import { useInitialEffect } from 'shared/hooks/useInitialEffect';
 
 import cls from './ProfilePage.module.scss';
-import { Text, TextTheme } from 'shared/ui/Text/Text';
-import { useTranslation } from 'react-i18next';
-import { useInitialEffect } from 'shared/hooks/useInitialEffect';
-import { useParams } from 'react-router-dom';
 
 const reducers: ReducersList = {
   profile: profileReducer
@@ -122,7 +123,7 @@ const ProfilePage: FC<ProfilePageProps> = ({
 
   return (
     <DynamicModuleLoader reducers={reducers}>
-      <div className={classNames(cls.ProfilePage, {}, [className])}>
+      <Page className={classNames(cls.ProfilePage, {}, [className])}>
         <ProfilePageHeader />
         {validateErrors !== undefined && validateErrors?.length > 0
           ? validateErrors?.map((err) => (
@@ -147,7 +148,7 @@ const ProfilePage: FC<ProfilePageProps> = ({
           onChangeCurrency={onChangeCurrency}
           onChangeCountry={onChangeCountry}
         />
-      </div>
+      </Page>
     </DynamicModuleLoader>
   );
 };

@@ -49,7 +49,7 @@ export const Navbar: FC = memo(({ className = '' }: NavbarProps) => {
 
   if (authData !== undefined) {
     return (
-      <div className={classNames(cls.Navbar, {}, [className])}>
+      <header className={classNames(cls.Navbar, {}, [className])}>
         <Button
           theme={ButtonTheme.CLEAR_INVERTED}
           className={cls.links}
@@ -57,12 +57,12 @@ export const Navbar: FC = memo(({ className = '' }: NavbarProps) => {
         >
           {t('Выйти')}
         </Button>
-      </div>
+      </header>
     );
   }
 
   return (
-    <div className={classNames(cls.Navbar, {}, [className])}>
+    <header className={classNames(cls.Navbar, {}, [className])}>
       <div className={cls.links}>
         <Button
           theme={ButtonTheme.CLEAR_INVERTED}
@@ -78,6 +78,6 @@ export const Navbar: FC = memo(({ className = '' }: NavbarProps) => {
         isOpen={isAuthModal}
         onClose={onCloseModal}
       />
-    </div>
+    </header>
   );
 });
