@@ -19,6 +19,10 @@ type DeepPartial<T> = T extends object
     }
   : T;
 
+type OptionalRecord<K extends keyof any, T> = {
+  [P in K]?: T;
+};
+
 declare module '*.png';
 declare module '*.jpg';
 declare const __IS_DEV__: boolean;
