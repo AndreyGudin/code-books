@@ -15,10 +15,12 @@ import type { ArticleDetailsSchema } from 'entities/Article';
 import type { articleDetailsCommentsSchema } from 'pages/ArticleDetailsPage';
 import type { AddCommentFormSchema } from 'features/addCommentForm';
 import type { ArticlesPageSchema } from 'pages/ArticlePage';
+import type { ScrollSaveSchema } from 'features/ScrollSave';
 
 export interface StateSchema {
   counter: CounterSchema;
   user: UserSchema;
+  scrollPosition: ScrollSaveSchema;
 
   // Асинхронные редюсеры
   loginForm?: LoginSchema;

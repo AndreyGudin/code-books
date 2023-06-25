@@ -33,6 +33,8 @@ module.exports = {
     '@typescript-eslint/no-misused-promises': 0,
     '@typescript-eslint/consistent-type-assertions': 0,
     '@typescript-eslint/restrict-plus-operands': 0,
+    'n/no-callback-literal': 0,
+    '@typescript-eslint/array-type': 0,
     'i18next/no-literal-string': [
       'error',
       {
