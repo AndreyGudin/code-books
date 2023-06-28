@@ -13,6 +13,7 @@ import { useAppDispatch } from 'shared/hooks/useAppDispatch';
 import { useInitialEffect } from 'shared/hooks/useInitialEffect';
 import {
   getArticlesError,
+  getArticlesHasMore,
   getArticlesIsLoading,
   getArticlesView
 } from '../../model/selectors/articlesPageSelectors';
@@ -24,6 +25,7 @@ import { ArticlePageFilters } from '../ArticlePageFilters/ArticlePageFilters';
 
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './ArticlePage.module.scss';
+import { useSearchParams } from 'react-router-dom';
 
 interface ArticlePageProps {
   className?: string;
@@ -41,6 +43,8 @@ const ArticlePage: FC<ArticlePageProps> = ({
   const isLoading = useSelector(getArticlesIsLoading);
   const error = useSelector(getArticlesError);
   const view = useSelector(getArticlesView);
+  const hasMore = useSelector(getArticlesHasMore);
+  const [searchParams] = useSearchParams();
 
   const onLoadNextPart = useCallback(() => {
     dispatch(fetchNextArticlesPage()).catch((e) => {
@@ -49,7 +53,7 @@ const ArticlePage: FC<ArticlePageProps> = ({
   }, [dispatch]);
 
   useInitialEffect(() => {
-    dispatch(initArticlesPage()).catch((e) => {
+    dispatch(initArticlesPage(searchParams)).catch((e) => {
       console.log(e);
     });
   });
@@ -62,7 +66,9 @@ const ArticlePage: FC<ArticlePageProps> = ({
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
       <Page
         onScrollEnd={onLoadNextPart}
+        onLoadMore={onLoadNextPart}
         className={classNames(cls.ArticlePage, {}, [className])}
+        enableButton={hasMore}
       >
         <ArticlePageFilters />
         <ArticleList

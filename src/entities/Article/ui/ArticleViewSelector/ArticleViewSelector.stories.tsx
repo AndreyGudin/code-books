@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ArticleViewSelector } from './ArticleViewSelector';
 const meta = {
-  title: 'pages/ArticleViewSelector',
+  title: 'entities/Article/ArticleViewSelector',
   component: ArticleViewSelector,
   argTypes: {}
 } satisfies Meta<typeof ArticleViewSelector>;

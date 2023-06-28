@@ -3,7 +3,11 @@ import { memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import type { FC } from 'react';
 
-import { ArticleViewSelector, ArticleSortSelector } from 'entities/Article';
+import {
+  ArticleViewSelector,
+  ArticleSortSelector,
+  ArticleTypeTabs
+} from 'entities/Article';
 import type { ArticleView, ArticleSortField } from 'entities/Article';
 import { articlesPageActions } from '../../model/slice/articlePageSlice';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch';
@@ -11,11 +15,15 @@ import {
   getArticlesOrder,
   getArticlesSearch,
   getArticlesSort,
+  getArticlesType,
   getArticlesView
 } from '../../model/selectors/articlesPageSelectors';
 import { Card } from 'shared/ui/Card/Card';
 import { Input } from 'shared/ui/Input/Input';
 import type { SortOrder } from 'shared/types/types';
+import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
+import { useDebounce } from 'shared/hooks/useDebounce';
+import type { ArticleType } from 'entities/Article/model/types/article';
 
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './ArticlePageFilters.module.scss';
@@ -31,7 +39,16 @@ export const ArticlePageFilters: FC<ArticlePageFiltersProps> = memo(
     const sort = useSelector(getArticlesSort);
     const order = useSelector(getArticlesOrder);
     const search = useSelector(getArticlesSearch);
+    const type = useSelector(getArticlesType);
     const dispatch = useAppDispatch();
+
+    const fetchData = useCallback(() => {
+      dispatch(fetchArticlesList({ replace: true })).catch((e) => {
+        console.log(e);
+      });
+    }, [dispatch]);
+
+    const debouncedFetchData = useDebounce(fetchData, 500);
 
     const onChangeView = useCallback(
       (view: ArticleView) => {
@@ -43,22 +60,37 @@ export const ArticlePageFilters: FC<ArticlePageFiltersProps> = memo(
     const onChangeOrder = useCallback(
       (order: SortOrder) => {
         dispatch(articlesPageActions.setOrder(order));
+        dispatch(articlesPageActions.setPage(1));
+        fetchData();
       },
-      [dispatch]
+      [dispatch, fetchData]
     );
 
     const onChangeSort = useCallback(
       (sort: ArticleSortField) => {
         dispatch(articlesPageActions.setSort(sort));
+        dispatch(articlesPageActions.setPage(1));
+        fetchData();
       },
-      [dispatch]
+      [dispatch, fetchData]
     );
 
     const onChangeSearch = useCallback(
       (value: string) => {
         dispatch(articlesPageActions.setSearch(value));
+        dispatch(articlesPageActions.setPage(1));
+        debouncedFetchData();
       },
-      [dispatch]
+      [dispatch, debouncedFetchData]
+    );
+
+    const onChangeType = useCallback(
+      (value: ArticleType) => {
+        dispatch(articlesPageActions.setType(value));
+        dispatch(articlesPageActions.setPage(1));
+        debouncedFetchData();
+      },
+      [dispatch, debouncedFetchData]
     );
 
     return (
@@ -79,6 +111,11 @@ export const ArticlePageFilters: FC<ArticlePageFiltersProps> = memo(
             placeholder={t('Поиск') ?? ''}
           />
         </Card>
+        <ArticleTypeTabs
+          onChangeType={onChangeType}
+          value={type}
+          className={cls.tabs}
+        />
       </div>
     );
   }

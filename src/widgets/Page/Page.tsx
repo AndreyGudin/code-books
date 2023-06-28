@@ -1,4 +1,4 @@
-import { memo, useRef } from 'react';
+import { memo, useCallback, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import type { FC, MutableRefObject, ReactNode, UIEvent } from 'react';
 
@@ -15,15 +15,28 @@ import {
 import { useSelector } from 'react-redux';
 import { useInitialEffect } from 'shared/hooks/useInitialEffect';
 import { useThrottle } from 'shared/hooks/useThrottle';
+import { Button, ButtonTheme } from 'shared/ui/Button/Button';
+import { useTranslation } from 'react-i18next';
 
 interface PageProps {
   className?: string;
   children: ReactNode;
   onScrollEnd?: () => void;
+  onLoadMore?: () => void;
+  enableButton?: boolean;
 }
 
 export const Page: FC<PageProps> = memo(
-  ({ className = '', children, onScrollEnd }: PageProps) => {
+  ({
+    className = '',
+    enableButton = false,
+    children,
+    onScrollEnd,
+    onLoadMore
+  }: PageProps) => {
+    const { t } = useTranslation();
+    const [clientHeight, setClientHeight] = useState(0);
+    const [scrollHeight, setScrollHeight] = useState(0);
     const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>;
     const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
     const dispatch = useAppDispatch();
@@ -31,6 +44,8 @@ export const Page: FC<PageProps> = memo(
     const scrollPosition = useSelector((state: StateSchema) =>
       getSaveScrollPositionByPath(state, pathname)
     );
+
+    const isScrolling = clientHeight >= scrollHeight;
 
     useInfiniteScroll({
       triggerRef,
@@ -40,7 +55,13 @@ export const Page: FC<PageProps> = memo(
 
     useInitialEffect(() => {
       wrapperRef.current.scrollTop = scrollPosition;
+      setClientHeight(wrapperRef.current.clientHeight);
+      setScrollHeight(wrapperRef.current.scrollHeight);
     });
+
+    const onClickMore = useCallback(() => {
+      onLoadMore?.();
+    }, [onLoadMore]);
 
     const onScroll = useThrottle((e: UIEvent<HTMLDivElement>): void => {
       dispatch(
@@ -60,6 +81,11 @@ export const Page: FC<PageProps> = memo(
         {children}
         {onScrollEnd !== undefined ? (
           <div className={cls.trigger} ref={triggerRef}></div>
+        ) : null}
+        {isScrolling && enableButton !== undefined && enableButton ? (
+          <Button onClick={onClickMore} theme={ButtonTheme.OUTLINE}>
+            {t('Загрузить ещё')}
+          </Button>
         ) : null}
       </section>
     );

@@ -1,11 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import ArticlePage from './ArticlePage';
+import { ArticleTypeTabs } from './ArticleTypeTabs';
 const meta = {
-  title: 'pages/ArticlePage/ArticlePage',
-  component: ArticlePage,
+  title: 'entity/Article/ArticleTypeTabs',
+  component: ArticleTypeTabs,
   argTypes: {}
-} satisfies Meta<typeof ArticlePage>;
+} satisfies Meta<typeof ArticleTypeTabs>;
 export default meta;
 type Story = StoryObj<typeof meta>;
-
 export const Normal: Story = {};

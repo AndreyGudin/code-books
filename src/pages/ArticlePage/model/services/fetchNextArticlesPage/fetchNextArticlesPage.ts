@@ -18,7 +18,7 @@ export const fetchNextArticlesPage = createAsyncThunk<
   const hasMore = getArticlesHasMore(getState());
   const page = getArticlesPageNum(getState());
   const isLoading = getArticlesIsLoading(getState());
-
+  console.log('second');
   if (
     hasMore !== undefined &&
     hasMore &&
@@ -26,11 +26,7 @@ export const fetchNextArticlesPage = createAsyncThunk<
     !isLoading
   ) {
     dispatch(articlesPageActions.setPage(page + 1));
-    dispatch(
-      fetchArticlesList({
-        page: page + 1
-      })
-    ).catch((e) => {
+    dispatch(fetchArticlesList({})).catch((e) => {
       console.log(e);
     });
   }
