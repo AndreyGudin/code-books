@@ -5,7 +5,7 @@ import { getArticlesPageInited } from '../../selectors/articlesPageSelectors';
 import { articlesPageActions } from '../../slice/articlePageSlice';
 import { fetchArticlesList } from '../../services/fetchArticlesList/fetchArticlesList';
 import type { SortOrder } from 'shared/types/types';
-import type { ArticleSortField } from 'entities/Article';
+import type { ArticleSortField, ArticleType } from 'entities/Article';
 
 export const initArticlesPage = createAsyncThunk<
   // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
@@ -27,6 +27,9 @@ export const initArticlesPage = createAsyncThunk<
             break;
           case 'search':
             dispatch(articlesPageActions.setSearch(value));
+            break;
+          case 'type':
+            dispatch(articlesPageActions.setType(value as ArticleType));
             break;
           default:
             break;
