@@ -12,7 +12,10 @@ import type { ProfileSchema } from 'entities/Profile';
 import type { UserSchema } from 'entities/User';
 import type { LoginSchema } from 'features/AuthByUsername';
 import type { ArticleDetailsSchema } from 'entities/Article';
-import type { articleDetailsCommentsSchema } from 'pages/ArticleDetailsPage';
+import type {
+  articleDetailsCommentsSchema,
+  articleDetailsPageRecommendationsSchema
+} from 'pages/ArticleDetailsPage';
 import type { AddCommentFormSchema } from 'features/addCommentForm';
 import type { ArticlesPageSchema } from 'pages/ArticlePage';
 import type { ScrollSaveSchema } from 'features/ScrollSave';
@@ -27,6 +30,7 @@ export interface StateSchema {
   profile?: ProfileSchema;
   articleDetails?: ArticleDetailsSchema;
   articleDetailsComments?: articleDetailsCommentsSchema;
+  articleDetailsRecommendations?: articleDetailsPageRecommendationsSchema;
   addCommentForm?: AddCommentFormSchema;
   articlesPage?: ArticlesPageSchema;
 }
