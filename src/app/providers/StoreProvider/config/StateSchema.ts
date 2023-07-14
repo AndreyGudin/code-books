@@ -12,10 +12,7 @@ import type { ProfileSchema } from 'entities/Profile';
 import type { UserSchema } from 'entities/User';
 import type { LoginSchema } from 'features/AuthByUsername';
 import type { ArticleDetailsSchema } from 'entities/Article';
-import type {
-  articleDetailsCommentsSchema,
-  articleDetailsPageRecommendationsSchema
-} from 'pages/ArticleDetailsPage';
+import type { ArticleDetailsPageSchema } from 'pages/ArticleDetailsPage';
 import type { AddCommentFormSchema } from 'features/addCommentForm';
 import type { ArticlesPageSchema } from 'pages/ArticlePage';
 import type { ScrollSaveSchema } from 'features/ScrollSave';
@@ -29,10 +26,9 @@ export interface StateSchema {
   loginForm?: LoginSchema;
   profile?: ProfileSchema;
   articleDetails?: ArticleDetailsSchema;
-  articleDetailsComments?: articleDetailsCommentsSchema;
-  articleDetailsRecommendations?: articleDetailsPageRecommendationsSchema;
   addCommentForm?: AddCommentFormSchema;
   articlesPage?: ArticlesPageSchema;
+  articleDetailsPage?: ArticleDetailsPageSchema;
 }
 
 export type MountedReducers = OptionalRecord<StateSchemaKey, boolean>;

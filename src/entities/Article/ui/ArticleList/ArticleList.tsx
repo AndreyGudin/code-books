@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import type { FC } from 'react';
+import type { FC, HTMLAttributeAnchorTarget } from 'react';
 
 import { ArticleView } from '../../model/types/article';
 import type { Article } from '../../model/types/article';
@@ -16,12 +16,14 @@ interface ArticleListProps {
   articles: Article[];
   isLoading?: boolean;
   view?: ArticleView;
+  target?: HTMLAttributeAnchorTarget;
 }
 
 export const ArticleList: FC<ArticleListProps> = memo(
   ({
     articles,
     className = '',
+    target = '',
     isLoading = false,
     view = ArticleView.GRID
   }: ArticleListProps) => {
@@ -33,6 +35,7 @@ export const ArticleList: FC<ArticleListProps> = memo(
           article={article}
           view={view}
           key={article.id}
+          target={target}
         />
       );
     };

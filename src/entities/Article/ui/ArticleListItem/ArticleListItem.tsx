@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { memo, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import type { FC } from 'react';
+import type { FC, HTMLAttributeAnchorTarget } from 'react';
 
 import { ArticleBlockType, ArticleView } from '../../model/types/article';
 import type { ArticleTextBlock, Article } from '../../model/types/article';
@@ -16,17 +16,20 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './ArticleListItem.module.scss';
 import EyeIcon from 'shared/assets/icons/eye.svg';
 import { RoutePath } from 'shared/config/routerConfig/routerConfig';
+import { AppLink } from 'shared/ui/AppLink/AppLink';
 
 interface ArticleListItemProps {
   className?: string;
   view?: ArticleView;
   article: Article;
+  target?: HTMLAttributeAnchorTarget;
 }
 
 export const ArticleListItem: FC<ArticleListItemProps> = memo(
   ({
     article,
     className = '',
+    target = '',
     view = ArticleView.GRID
   }: ArticleListItemProps) => {
     const { t } = useTranslation();
@@ -77,9 +80,12 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo(
               />
             ) : null}
             <div className={cls.footer}>
-              <Button onClick={onOpenArticle} theme={ButtonTheme.OUTLINE}>
-                {t('Читать далее')}
-              </Button>
+              <AppLink
+                to={RoutePath.articles_details + article.id}
+                target={target}
+              >
+                <Button theme={ButtonTheme.OUTLINE}>{t('Читать далее')}</Button>
+              </AppLink>
               {views}
             </div>
           </Card>
@@ -88,7 +94,9 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo(
     }
 
     return (
-      <div
+      <AppLink
+        target={target}
+        to={RoutePath.articles_details + article.id}
         className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}
       >
         <Card className={cls.card} onClick={onOpenArticle}>
@@ -102,7 +110,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo(
           </div>
           <Text title={article.title} className={cls.title} />
         </Card>
-      </div>
+      </AppLink>
     );
   }
 );

@@ -10,6 +10,9 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { getAuthUserData, userActions } from 'entities/User';
 
 import cls from './Navbar.module.scss';
+import { Text, TextTheme } from 'shared/ui/Text/Text';
+import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
+import { RoutePath } from 'shared/config/routerConfig/routerConfig';
 
 interface NavbarProps {
   className?: string;
@@ -50,6 +53,18 @@ export const Navbar: FC = memo(({ className = '' }: NavbarProps) => {
   if (authData !== undefined) {
     return (
       <header className={classNames(cls.Navbar, {}, [className])}>
+        <Text
+          theme={TextTheme.INVERTED}
+          className={cls.appName}
+          title={t('Название')}
+        />
+        <AppLink
+          theme={AppLinkTheme.SECONDARY}
+          to={RoutePath.article_create}
+          className={cls.createBtn}
+        >
+          {t('Создать статью')}
+        </AppLink>
         <Button
           theme={ButtonTheme.CLEAR_INVERTED}
           className={cls.links}
