@@ -2,7 +2,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import webpack from 'webpack';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
-
+import CopyPlugin from 'copy-webpack-plugin';
 import type { BuildOptions } from './types/config';
 
 export function buildPlugins({
@@ -29,6 +29,9 @@ export function buildPlugins({
     new webpack.HotModuleReplacementPlugin(),
     new BundleAnalyzerPlugin({
       analyzerMode: analyze ? 'server' : 'disabled'
+    }),
+    new CopyPlugin({
+      patterns: [{ from: paths.locales, to: paths.buildLocales }]
     })
   ];
 }

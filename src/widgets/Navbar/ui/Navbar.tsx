@@ -61,7 +61,7 @@ export const Navbar: FC = memo(({ className = '' }: NavbarProps) => {
         <AppLink
           theme={AppLinkTheme.SECONDARY}
           to={RoutePath.article_create}
-          className={cls.createBtn}
+          className={cls.createLink}
         >
           {t('Создать статью')}
         </AppLink>

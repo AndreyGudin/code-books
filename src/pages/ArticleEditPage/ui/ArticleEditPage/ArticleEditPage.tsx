@@ -1,4 +1,3 @@
-import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
 import type { FC } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -12,7 +11,6 @@ interface ArticleEditPageProps {
 
 const ArticleEditPage: FC<ArticleEditPageProps> = memo(
   ({ className = '' }: ArticleEditPageProps) => {
-    const { t } = useTranslation();
     const { id } = useParams<{ id: string }>();
     const isEdit = Boolean(id);
     return (
