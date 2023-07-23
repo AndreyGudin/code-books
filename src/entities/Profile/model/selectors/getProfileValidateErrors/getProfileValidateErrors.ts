@@ -1,5 +1,5 @@
 import type { StateSchema } from 'app/providers/StoreProvider';
-import type { ValidateProfileError } from 'entities/Profile/model/types/profile';
+import type { ValidateProfileError } from '../../types/profile';
 
 export const getProfileValidateErrors = (
   state: StateSchema

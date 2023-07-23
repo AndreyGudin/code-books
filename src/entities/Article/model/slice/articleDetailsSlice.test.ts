@@ -1,11 +1,8 @@
 import { articleDetailsReducer } from './articleDetailsSlice';
-import type { ArticleDetailsSchema } from 'entities/Article/model/types/articleDetailsSchema';
-import {
-  ArticleBlockType,
-  ArticleType
-} from 'entities/Article/model/types/article';
-import type { Article } from 'entities/Article/model/types/article';
-import { fetchArticleById } from 'entities/Article/model/services/fetchArticleById/fetchArticleById';
+import type { ArticleDetailsSchema } from '../types/articleDetailsSchema';
+import { ArticleBlockType, ArticleType } from '../types/article';
+import type { Article } from '../types/article';
+import { fetchArticleById } from '../services/fetchArticleById/fetchArticleById';
 
 const data: Article = {
   id: '1',

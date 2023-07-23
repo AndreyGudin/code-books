@@ -24,9 +24,9 @@ import cls from './ArticleDetails.module.scss';
 import EyeIcon from 'shared/assets/icons/eye.svg';
 import CalendarIcon from 'shared/assets/icons/calendar.svg';
 import { Icon } from 'shared/ui/Icon/Icon';
-import { ArticleCodeBlockComponents } from 'entities/Article/ui/ArticleCodeBlockComponents/ArticleCodeBlockComponents';
-import { ArticleImageBlockComponents } from 'entities/Article/ui/ArticleImageBlockComponents/ArticleImageBlockComponents';
-import { ArticleTextBlockComponents } from 'entities/Article/ui/ArticleTextBlockComponents/ArticleTextBlockComponents';
+import { ArticleCodeBlockComponents } from '../ArticleCodeBlockComponents/ArticleCodeBlockComponents';
+import { ArticleImageBlockComponents } from '../ArticleImageBlockComponents/ArticleImageBlockComponents';
+import { ArticleTextBlockComponents } from '../ArticleTextBlockComponents/ArticleTextBlockComponents';
 
 interface ArticleDetailsProps {
   className?: string;

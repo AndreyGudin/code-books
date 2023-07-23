@@ -20,7 +20,7 @@ import {
 } from 'entities/Profile';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
-import { ProfilePageHeader } from 'pages/ProfilePage/ui/ProfilePageHeader/ProfilePageHeader';
+import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 import type { Currency } from 'entities/Currency';
 import type { Country } from 'entities/Country';
 import { Page } from 'widgets/Page/Page';

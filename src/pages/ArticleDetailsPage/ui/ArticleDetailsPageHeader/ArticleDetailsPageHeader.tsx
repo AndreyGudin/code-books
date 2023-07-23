@@ -8,7 +8,7 @@ import cls from './ArticleDetailsPageHeader.module.scss';
 import { RoutePath } from 'shared/config/routerConfig/routerConfig';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { useSelector } from 'react-redux';
-import { getCanEditArticle } from 'pages/ArticleDetailsPage/model/selectors/article';
+import { getCanEditArticle } from '../../model/selectors/article';
 import { getArticleDetailsData } from 'entities/Article';
 
 interface ArticleDetailsPageHeaderProps {

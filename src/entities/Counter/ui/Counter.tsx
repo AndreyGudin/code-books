@@ -2,8 +2,8 @@ import type { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Button } from 'shared/ui/Button/Button';
-import { counterActions } from 'entities/Counter/model/slice/counterSlice';
-import { getCounterValue } from 'entities/Counter';
+import { counterActions } from '../model/slice/counterSlice';
+import { getCounterValue } from '../model/selectors/getCounterValue/getCounterValue';
 
 interface CounterProps {
   className?: string;

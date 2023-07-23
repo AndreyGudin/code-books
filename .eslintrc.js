@@ -19,7 +19,7 @@ module.exports = {
     sourceType: 'module',
     project: './tsconfig.json'
   },
-  plugins: ['react', 'react-hooks', 'i18next'],
+  plugins: ['react', 'react-hooks', 'i18next', 'andrey-gudin-forprod'],
   rules: {
     'react-hooks/rules-of-hooks': 'error',
     // Checks rules of Hooks
@@ -35,6 +35,7 @@ module.exports = {
     '@typescript-eslint/restrict-plus-operands': 0,
     'n/no-callback-literal': 0,
     '@typescript-eslint/array-type': 0,
+    'andrey-gudin-forprod/check-paths': 'error',
     'i18next/no-literal-string': [
       'error',
       {

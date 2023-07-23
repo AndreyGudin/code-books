@@ -2,7 +2,7 @@ import { useCallback, useEffect } from 'react';
 import type { FC, ReactNode } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './Modal.module.scss';
-import { Portal } from 'shared/ui/Portal/Portal';
+import { Portal } from '../Portal/Portal';
 
 interface ModalProps {
   className?: string;

@@ -4,7 +4,7 @@ import type { FC } from 'react';
 
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Select } from 'shared/ui/Select/Select';
-import { Country } from 'entities/Country/model/types/country';
+import { Country } from '../model/types/country';
 
 interface CountrySelectProps {
   className?: string;

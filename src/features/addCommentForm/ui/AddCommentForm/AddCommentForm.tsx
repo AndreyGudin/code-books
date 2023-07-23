@@ -16,7 +16,7 @@ import cls from './AddCommentForm.module.scss';
 import {
   addCommentFormActions,
   addCommentFormReducer
-} from 'features/addCommentForm/model/slice/addCommentFormSlice';
+} from '../../model/slice/addCommentFormSlice';
 import { DynamicModuleLoader } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import type { ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 

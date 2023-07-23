@@ -1,7 +1,7 @@
 import { memo, useCallback } from 'react';
 import type { FC } from 'react';
 
-import { Button, ButtonTheme } from 'shared/ui/Button/Button';
+import { Button, ButtonTheme } from '../Button/Button';
 
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './Code.module.scss';
