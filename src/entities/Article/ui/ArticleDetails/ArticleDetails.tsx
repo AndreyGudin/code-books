@@ -27,6 +27,7 @@ import { Icon } from 'shared/ui/Icon/Icon';
 import { ArticleCodeBlockComponents } from '../ArticleCodeBlockComponents/ArticleCodeBlockComponents';
 import { ArticleImageBlockComponents } from '../ArticleImageBlockComponents/ArticleImageBlockComponents';
 import { ArticleTextBlockComponents } from '../ArticleTextBlockComponents/ArticleTextBlockComponents';
+import { HStack, VStack } from 'shared/ui/Stack';
 
 interface ArticleDetailsProps {
   className?: string;
@@ -111,23 +112,23 @@ export const ArticleDetails: FC<ArticleDetailsProps> = memo(
     } else {
       content = (
         <>
-          <div className={cls.avatarWrapper}>
+          <HStack justify="center" max className={cls.avatarWrapper}>
             <Avatar size={200} src={article?.img} className={cls.avatar} />
-          </div>
+          </HStack>
           <Text
             className={cls.title}
             title={article?.title}
             text={article?.subtitle}
             size={TextSize.L}
           />
-          <div className={cls.articleInfo}>
+          <HStack gap="8" className={cls.articleInfo}>
             <Icon Svg={EyeIcon} className={cls.icon} />
             <Text text={String(article?.views)} />
-          </div>
-          <div className={cls.articleInfo}>
+          </HStack>
+          <HStack gap="8" className={cls.articleInfo}>
             <Icon Svg={CalendarIcon} className={cls.icon} />
             <Text text={article?.createdAt} />
-          </div>
+          </HStack>
           {article?.blocks.map(renderBlock)}
         </>
       );
@@ -135,9 +136,13 @@ export const ArticleDetails: FC<ArticleDetailsProps> = memo(
 
     return (
       <DynamicModuleLoader reducers={reducers}>
-        <div className={classNames(cls.ArticleDetails, {}, [className])}>
+        <VStack
+          gap="16"
+          max
+          className={classNames(cls.ArticleDetails, {}, [className])}
+        >
           {content}
-        </div>
+        </VStack>
       </DynamicModuleLoader>
     );
   }

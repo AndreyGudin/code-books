@@ -7,7 +7,6 @@ import type {
 
 import type { StateSchema } from './StateSchema';
 import { createReducerManager } from './reducerManager';
-import { counterReducer } from 'entities/Counter';
 import { userReducer } from 'entities/User';
 import { $api } from 'shared/api/api';
 import { scrollSaveReducer } from 'features/ScrollSave';
@@ -19,7 +18,6 @@ export function createReduxStore(
 ) {
   const rootReducers: ReducersMapObject<StateSchema> = {
     ...asyncReducers,
-    counter: counterReducer,
     user: userReducer,
     scrollPosition: scrollSaveReducer
   };

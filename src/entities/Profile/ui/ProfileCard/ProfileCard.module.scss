@@ -4,8 +4,6 @@
 }
 
 .input {
-  margin-top: 20px;
-
   &[type='number']::-webkit-outer-spin-button,
   &[type='number']::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -23,16 +21,7 @@
 
 .loading,
 .error {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   height: 300px;
-}
-
-.avatarWrapper {
-  display: flex;
-  width: 100%;
-  justify-content: center;
 }
 
 .editing {

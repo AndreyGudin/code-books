@@ -24,6 +24,7 @@ import { articleDetailsPageReducer } from '../../model/slice';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './ArticleDetailsPage.module.scss';
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
+import { VStack } from 'shared/ui/Stack';
 
 interface ArticleDetailsPageProps {
   className?: string;
@@ -75,26 +76,28 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = ({
   return (
     <DynamicModuleLoader reducers={reducers}>
       <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
-        <ArticleDetailsPageHeader />
-        <ArticleDetails id={id} />
-        <Text
-          size={TextSize.L}
-          className={cls.commentTitle}
-          title={t('Рекомендуем')}
-        />
-        <ArticleList
-          className={cls.recommendations}
-          articles={recommendations}
-          isLoading={recommendationsIsLoading}
-          target="_blank"
-        />
-        <Text
-          size={TextSize.L}
-          className={cls.commentTitle}
-          title={t('Комментарии')}
-        />
-        <AddCommentForm onSendComment={onSendComment} />
-        <CommentList isLoading={isLoading} comments={comments} />
+        <VStack gap="16" max>
+          <ArticleDetailsPageHeader />
+          <ArticleDetails id={id} />
+          <Text
+            size={TextSize.L}
+            className={cls.commentTitle}
+            title={t('Рекомендуем')}
+          />
+          <ArticleList
+            className={cls.recommendations}
+            articles={recommendations}
+            isLoading={recommendationsIsLoading}
+            target="_blank"
+          />
+          <Text
+            size={TextSize.L}
+            className={cls.commentTitle}
+            title={t('Комментарии')}
+          />
+          <AddCommentForm onSendComment={onSendComment} />
+          <CommentList isLoading={isLoading} comments={comments} />
+        </VStack>
       </Page>
     </DynamicModuleLoader>
   );

@@ -19,6 +19,7 @@ import {
 } from '../../model/slice/addCommentFormSlice';
 import { DynamicModuleLoader } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import type { ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { HStack } from 'shared/ui/Stack';
 
 export interface addCommentFormProps {
   className?: string;
@@ -50,7 +51,13 @@ const AddCommentForm: FC<addCommentFormProps> = memo(
 
     return (
       <DynamicModuleLoader reducers={reducers}>
-        <div className={classNames(cls.addCommentForm, {}, [className])}>
+        <HStack
+          justify="between"
+          align="end"
+          gap="8"
+          max
+          className={classNames(cls.addCommentForm, {}, [className])}
+        >
           <Input
             className={cls.inputComment}
             placeholder={t('Введите текст комментария') ?? ''}
@@ -58,7 +65,7 @@ const AddCommentForm: FC<addCommentFormProps> = memo(
             onChange={onCommentTextChange}
           />
           <Button onClick={onSentHandler}>{t('Отправить')}</Button>
-        </div>
+        </HStack>
       </DynamicModuleLoader>
     );
   }
