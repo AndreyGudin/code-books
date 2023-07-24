@@ -5,6 +5,7 @@ import type { FC } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Select } from 'shared/ui/Select/Select';
 import { Currency } from '../model/types/currency';
+import { Listbox } from 'shared/ui/ListBox/ListBox';
 
 interface CurrencySelectProps {
   className?: string;
@@ -36,13 +37,15 @@ export const CurrencySelect: FC<CurrencySelectProps> = memo(
     );
 
     return (
-      <Select
+      <Listbox
         className={classNames('', {}, [className])}
-        label={t('Укажите валюту') ?? ''}
-        options={options}
         value={value}
+        defaultValue={t('Укажите валюту') ?? ''}
+        items={options}
+        label={t('Укажите валюту') ?? ''}
         onChange={onChangeHandler}
-        readonly={readonly}
+        disabled={readonly}
+        direction="top"
       />
     );
   }

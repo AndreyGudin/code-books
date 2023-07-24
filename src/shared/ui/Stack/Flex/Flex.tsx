@@ -1,4 +1,4 @@
-import type { FC, ReactNode } from 'react';
+import type { DetailedHTMLProps, FC, HTMLAttributes, ReactNode } from 'react';
 import { Mods, classNames } from 'shared/lib/classNames/classNames';
 import cls from './Flex.module.scss';
 
@@ -15,7 +15,13 @@ export type FlexAlign = 'start' | 'end' | 'center';
 export type FlexDirection = 'row' | 'column';
 
 export type FlexGap = '4' | '8' | '16' | '32';
-export interface FlexProps {
+
+type DivProps = DetailedHTMLProps<
+  HTMLAttributes<HTMLDivElement>,
+  HTMLDivElement
+>;
+
+export interface FlexProps extends DivProps {
   className?: string;
   children: ReactNode;
   justify?: FlexJustify;
@@ -59,7 +65,8 @@ export const Flex: FC<FlexProps> = ({
   align = 'center',
   direction = 'row',
   gap,
-  max = false
+  max = false,
+  ...otherProps
 }: FlexProps) => {
   const classes = [
     className,
@@ -73,5 +80,9 @@ export const Flex: FC<FlexProps> = ({
     [cls.maxWidth]: max
   };
 
-  return <div className={classNames(cls.Flex, mods, classes)}>{children}</div>;
+  return (
+    <div className={classNames(cls.Flex, mods, classes)} {...otherProps}>
+      {children}
+    </div>
+  );
 };
