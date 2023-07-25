@@ -45,7 +45,7 @@ export const CurrencySelect: FC<CurrencySelectProps> = memo(
         label={t('Укажите валюту') ?? ''}
         onChange={onChangeHandler}
         disabled={readonly}
-        direction="top"
+        direction="top right"
       />
     );
   }

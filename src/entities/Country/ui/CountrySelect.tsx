@@ -46,6 +46,7 @@ export const CountrySelect: FC<CountrySelectProps> = memo(
         value={value}
         defaultValue={t('Укажите страну') ?? ''}
         label={t('Укажите страну') ?? ''}
+        direction="top right"
       />
     );
   }

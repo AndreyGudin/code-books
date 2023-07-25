@@ -3,10 +3,8 @@
   width: fit-content;
 }
 
-.trigger {
-}
 .options {
-  width: 100%;
+  width: fit-content;
   background: var(--listbox-bg);
   position: absolute;
   z-index: 10000;
@@ -35,6 +33,19 @@
   opacity: 0.6;
 }
 
-.optionsTop {
+.optionsBottomLeft {
+  top: 100%;
+  right: 0;
+}
+.optionsBottomRight {
+  top: 100%;
+  left: 0;
+}
+.optionsTopLeft {
+  right: 0;
+  bottom: 100%;
+}
+.optionsTopRight {
+  left: 0;
   bottom: 100%;
 }

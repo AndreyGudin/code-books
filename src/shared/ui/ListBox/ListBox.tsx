@@ -1,18 +1,17 @@
-import { Fragment, ReactNode } from 'react';
+import { Fragment, type ReactNode } from 'react';
 import { Listbox as HListbox } from '@headlessui/react';
 
 import cls from './ListBox.module.scss';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { Button } from 'shared/ui/Button/Button';
-import { HStack } from 'shared/ui/Stack';
+import { Button } from '../Button/Button';
+import { HStack } from '../Stack';
+import type { DropdownDirection } from 'shared/types/ui';
 
 export interface ListboxItem {
   value: string;
   content: ReactNode;
   disabled?: boolean;
 }
-
-type DropdownDirection = 'top' | 'bottom';
 
 interface ListboxProps {
   items?: ListboxItem[];
@@ -26,8 +25,10 @@ interface ListboxProps {
 }
 
 const mapDirectionClass: Record<DropdownDirection, string> = {
-  bottom: cls.optionsBottom,
-  top: cls.optionsTop
+  'bottom left': cls.optionsBottomLeft,
+  'bottom right': cls.optionsBottomRight,
+  'top left': cls.optionsTopLeft,
+  'top right': cls.optionsTopRight
 };
 
 export function Listbox({
@@ -36,18 +37,18 @@ export function Listbox({
   value,
   defaultValue = '',
   disabled = false,
-  direction = 'bottom',
+  direction = 'bottom right',
   label = '',
   onChange
-}: ListboxProps) {
+}: ListboxProps): JSX.Element {
   const optionsClasses = [mapDirectionClass[direction]];
 
   return (
-    <HStack gap="4">
-      {label && <span>{label}</span>}
+    <HStack className={className} gap="4">
+      {label.length > 0 && <span>{label}</span>}
       <HListbox
         as="div"
-        className={classNames(cls.ListBox, {}, [className])}
+        className={classNames(cls.ListBox, {}, [])}
         value={value}
         onChange={onChange}
         disabled={disabled}

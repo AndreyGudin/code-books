@@ -3,7 +3,14 @@ import { Listbox } from './ListBox';
 const meta = {
   title: 'shared/Listbox',
   component: Listbox,
-  argTypes: {}
+  argTypes: {},
+  decorators: [
+    (Story) => (
+      <div style={{ padding: 200 }}>
+        <Story />
+      </div>
+    )
+  ]
 } satisfies Meta<typeof Listbox>;
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -25,20 +32,50 @@ const items = [
 
 export const Normal: Story = {
   args: {
-    items
+    label: 'Listbox',
+    items,
+    value: '123'
   }
 };
 
-export const WithDirectionTop: Story = {
+export const WithDirectionTopRight: Story = {
   args: {
+    label: 'Listbox',
     items,
-    direction: 'top'
+    direction: 'top right',
+    value: '123'
+  }
+};
+export const WithDirectionTopLeft: Story = {
+  args: {
+    label: 'Listbox',
+    items,
+    direction: 'top left',
+    value: '123'
+  }
+};
+export const WithDirectionBottomLeft: Story = {
+  args: {
+    label: 'Listbox',
+    items,
+    direction: 'bottom left',
+    value: '123'
+  }
+};
+export const WithDirectionBottomRight: Story = {
+  args: {
+    label: 'Listbox',
+    items,
+    direction: 'bottom right',
+    value: '123'
   }
 };
 
 export const Disabled: Story = {
   args: {
+    label: 'Listbox',
     items,
-    disabled: true
+    disabled: true,
+    value: '123'
   }
 };
