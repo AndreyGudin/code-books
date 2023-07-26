@@ -5,10 +5,10 @@ import { StoreProvider } from 'app/providers/StoreProvider';
 import type { StateSchema } from 'app/providers/StoreProvider';
 import 'app/styles/index.scss';
 import { loginReducer } from 'features/AuthByUsername/model/slice/loginSlice';
-import { profileReducer } from 'entities/Profile';
 import { articleDetailsReducer } from 'entities/Article';
 import { addCommentFormReducer } from 'features/addCommentForm/model/slice/addCommentFormSlice';
 import { articleDetailsPageReducer } from 'pages/ArticleDetailsPage/model/slice';
+import { profileReducer } from 'features/EditableProfileCard';
 
 const defaultAsyncReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
   loginForm: loginReducer,

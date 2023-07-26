@@ -601,6 +601,12 @@
       "userId": "1",
       "text": "коммент",
       "id": "XbMvX0D"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "тут",
+      "id": "o_QPQyz"
     }
   ],
   "users": [
@@ -622,10 +628,10 @@
   "profile": [
     {
       "id": "1",
-      "first": "jghwer",
+      "first": "andrei",
       "lastname": "asfewr",
       "age": 465,
-      "currency": "EUR",
+      "currency": "USD",
       "country": "Belarus",
       "city": "Moscow",
       "username": "admin213",

@@ -7,7 +7,7 @@ import type {
 } from '@reduxjs/toolkit';
 import type { AxiosInstance } from 'axios';
 
-import type { ProfileSchema } from 'entities/Profile';
+import type { ProfileSchema } from 'features/EditableProfileCard';
 import type { UserSchema } from 'entities/User';
 import type { LoginSchema } from 'features/AuthByUsername';
 import type { ArticleDetailsSchema } from 'entities/Article';
@@ -15,10 +15,12 @@ import type { ArticleDetailsPageSchema } from 'pages/ArticleDetailsPage';
 import type { AddCommentFormSchema } from 'features/addCommentForm';
 import type { ArticlesPageSchema } from 'pages/ArticlePage';
 import type { ScrollSaveSchema } from 'features/ScrollSave';
+import type { rtkApi } from 'shared/api/rtkApi';
 
 export interface StateSchema {
   user: UserSchema;
   scrollPosition: ScrollSaveSchema;
+  [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
 
   // Асинхронные редюсеры
   loginForm?: LoginSchema;

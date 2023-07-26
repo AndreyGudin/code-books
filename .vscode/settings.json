@@ -7,7 +7,7 @@
   "i18n-ally.sourceLanguage": "ru",
   "folderTemplates.structures": [
     {
-      "name": "My Custom Template",
+      "name": "Ui folder",
       "omitParentDirectory": false,
       "structure": [
         {
@@ -25,6 +25,82 @@
         {
           "fileName": "<FTName>.test.ts",
           "template": "Test file"
+        }
+      ]
+    },
+    {
+      "name": "Slice folder",
+      "omitParentDirectory": false,
+      "structure": [
+        {
+          "fileName": "ui/<FTName>.tsx",
+          "template": "Typescript Functional Component"
+        },
+        {
+          "fileName": "ui/<FTName>.module.scss",
+          "template": "Module scss"
+        },
+        {
+          "fileName": "ui/<FTName>.stories.tsx",
+          "template": "Stories"
+        },
+        {
+          "fileName": "ui/<FTName>.test.ts",
+          "template": "Test file"
+        },
+        {
+          "fileName": "model/slice/<FTName | camelcase>Slice.ts",
+          "template": "Slice"
+        },
+        {
+          "fileName": "model/types/<FTName>Schema.ts",
+          "template": "Schema"
+        },
+        {
+          "fileName": "model/selectors",
+          "template": "EmptyDirectory"
+        },
+        {
+          "fileName": "index.ts",
+          "template": "Index"
+        }
+      ]
+    },
+    {
+      "name": "Slice folder with folder for component",
+      "omitParentDirectory": false,
+      "structure": [
+        {
+          "fileName": "ui/<FTName>/<FTName>.tsx",
+          "template": "Typescript Functional Component"
+        },
+        {
+          "fileName": "ui/<FTName>/<FTName>.module.scss",
+          "template": "Module scss"
+        },
+        {
+          "fileName": "ui/<FTName>/<FTName>.stories.tsx",
+          "template": "Stories"
+        },
+        {
+          "fileName": "ui/<FTName>/<FTName>.test.ts",
+          "template": "Test file"
+        },
+        {
+          "fileName": "model/slice/<FTName | camelcase>Slice.ts",
+          "template": "Slice"
+        },
+        {
+          "fileName": "model/types/<FTName>Schema.ts",
+          "template": "Schema"
+        },
+        {
+          "fileName": "model/selectors",
+          "template": "EmptyDirectory"
+        },
+        {
+          "fileName": "index.ts",
+          "template": "Index"
         }
       ]
     }
@@ -67,6 +143,37 @@
       "export default meta;",
       "type Story = StoryObj<typeof meta>;",
       "export const Normal: Story = {};"
+    ],
+    "Slice": [
+      "import { createSlice } from '@reduxjs/toolkit';",
+      "import type { PayloadAction } from '@reduxjs/toolkit';",
+      "import type { <FTName>Schema } from '../types/<FTName>Schema';",
+
+      "const initialState: <FTName>Schema = {",
+      "  text:'',",
+      "};",
+
+      "const <FTName | camelcase> = createSlice({",
+      "  name: '<FTName | camelcase>',",
+      "  initialState,",
+      "  reducers: {},",
+      "  //extraReducers: (builder) => {",
+      "    //builder",
+      "      //.addCase(.pending, (state) => {",
+      "      //})",
+      "      //.addCase(.fulfilled, (state, action) => {",
+      " //})",
+      " //.addCase(.rejected, (state, action) => {",
+      "  //});",
+      "  //}",
+      "});",
+      "export const { actions: <FTName | camelcase>Actions } = <FTName | camelcase>;",
+      "export const { reducer: <FTName | camelcase>Reducer } = <FTName | camelcase>;"
+    ],
+    "Schema": ["export interface <FTName>Schema{}"],
+    "Index": [
+      "export { <FTName | camelcase>Actions, <FTName | camelcase>Reducer } from './model/slice/<FTName | camelcase>Slice';",
+      "export type { <FTName>Schema } from './model/types/<FTName>Schema';"
     ]
   }
 }

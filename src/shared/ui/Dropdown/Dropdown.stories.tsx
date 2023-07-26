@@ -10,6 +10,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 export const Normal: Story = {
   args: {
+    // eslint-disable-next-line i18next/no-literal-string
     trigger: <Button>Press me</Button>,
     items: [
       { content: '1' },

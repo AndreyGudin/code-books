@@ -56,7 +56,9 @@ export const ArticleList: FC<ArticleListProps> = memo(
 
     return (
       <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
-        {articles.length > 0 ? articles.map(renderArticle) : null}
+        {articles !== undefined && articles.length > 0
+          ? articles.map(renderArticle)
+          : null}
         {isLoading ? skeleton : null}
       </div>
     );
