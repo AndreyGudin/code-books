@@ -133,6 +133,7 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = memo(
                   key={err}
                   theme={TextTheme.ERROR}
                   text={validateErrorTranslates[err]}
+                  data-testid="EditableProfileCard.Error"
                 />
               ))
             : null}

@@ -20,7 +20,9 @@ export const ArticleRecommendationsList: FC<ArticleRecommendationsListProps> =
       isError
     } = useArticleRecommendationsList(3);
 
-    if (isError) return <Text theme={TextTheme.ERROR} text={'Error'} />;
+    if (isError || articles === undefined)
+      return <Text theme={TextTheme.ERROR} text={'Error'} />;
+
     return (
       <VStack gap={'8'} className={classNames('', {}, [className])}>
         <Text size={TextSize.L} className={''} title={t('Рекомендуем')} />
