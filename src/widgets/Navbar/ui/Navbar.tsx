@@ -7,7 +7,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { LoginModal } from 'features/AuthByUsername';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { getAuthUserData, userActions } from 'entities/User';
+import {
+  getAuthUserData,
+  isUserAdmin,
+  isUserManager,
+  userActions
+} from 'entities/User';
 
 import cls from './Navbar.module.scss';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
@@ -27,6 +32,8 @@ export const Navbar: FC = memo(({ className = '' }: NavbarProps) => {
   const dispatch = useDispatch();
   const authData = useSelector(getAuthUserData);
   const timeRef = useRef<ReturnType<typeof setTimeout>>();
+  const isAdmin = useSelector(isUserAdmin);
+  const isManager = useSelector(isUserManager);
 
   const onToggleModal = useCallback(() => {
     setAuthModal((prev) => !prev);
@@ -52,6 +59,8 @@ export const Navbar: FC = memo(({ className = '' }: NavbarProps) => {
     };
   }, []);
 
+  const isAdminPanelAvailable = isAdmin || isManager;
+
   if (authData !== undefined) {
     return (
       <header className={classNames(cls.Navbar, {}, [className])}>
@@ -70,6 +79,14 @@ export const Navbar: FC = memo(({ className = '' }: NavbarProps) => {
         <Dropdown
           className={cls.dropdown}
           items={[
+            ...(isAdminPanelAvailable
+              ? [
+                  {
+                    content: t('Админка'),
+                    href: RoutePath.admin_panel
+                  }
+                ]
+              : []),
             {
               content: t('Профиль'),
               href: RoutePath.profile + authData.id

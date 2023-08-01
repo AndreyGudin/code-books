@@ -19,7 +19,7 @@ export const AppRouter: FC = memo(() => {
         path={route.path}
         element={
           route.authOnly !== undefined && route.authOnly ? (
-            <RequireAuth>{element}</RequireAuth>
+            <RequireAuth roles={route.roles}>{element}</RequireAuth>
           ) : (
             element
           )

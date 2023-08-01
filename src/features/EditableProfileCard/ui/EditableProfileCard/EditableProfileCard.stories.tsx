@@ -7,4 +7,8 @@ const meta = {
 } satisfies Meta<typeof EditableProfileCard>;
 export default meta;
 type Story = StoryObj<typeof meta>;
-export const Normal: Story = {};
+export const Normal: Story = {
+  args: {
+    id: '1'
+  }
+};
