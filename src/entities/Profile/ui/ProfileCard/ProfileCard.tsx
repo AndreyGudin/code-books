@@ -98,6 +98,7 @@ export const ProfileCard: FC<ProfileCardProps> = ({
         className={cls.input}
         onChange={onChangeFirstName}
         readonly={readonly}
+        data-testid={'ProfileCard.firstName'}
       />
       <Input
         value={data?.lastname ?? ''}
@@ -105,6 +106,7 @@ export const ProfileCard: FC<ProfileCardProps> = ({
         className={cls.input}
         onChange={onChangeLastName}
         readonly={readonly}
+        data-testid={'ProfileCard.lastName'}
       />
 
       <Input
