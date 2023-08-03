@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { memo, useCallback } from 'react';
+import { Suspense, memo, useCallback } from 'react';
 import type { FC } from 'react';
 
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -44,7 +44,9 @@ export const ArticleDetailsComments: FC<ArticleDetailsCommentsProps> = memo(
     return (
       <VStack gap="16" className={classNames('', {}, [className])}>
         <Text size={TextSize.L} className={''} title={t('Комментарии')} />
-        <AddCommentForm onSendComment={onSendComment} />
+        <Suspense fallback="Идет загрузка">
+          <AddCommentForm onSendComment={onSendComment} />
+        </Suspense>
         <CommentList isLoading={isLoading} comments={comments} />
       </VStack>
     );
