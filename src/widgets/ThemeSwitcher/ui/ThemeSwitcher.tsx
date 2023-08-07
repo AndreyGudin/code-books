@@ -3,7 +3,8 @@ import type { FC } from 'react';
 
 import { Theme, useTheme } from 'app/providers/ThemeProviders';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { Button, ButtonTheme } from 'shared/ui/Button/Button';
+import { Button } from 'shared/ui/Button/Button';
+import { ButtonTheme } from 'shared/ui/Button/const';
 
 import cls from './ThemeSwitcher.module.scss';
 import ThemeIcon from 'shared/assets/icons/theme-icon.svg';

@@ -4,7 +4,8 @@ import { Suspense, memo, useCallback } from 'react';
 import type { FC } from 'react';
 
 import { classNames } from 'shared/lib/classNames/classNames';
-import { Text, TextSize } from 'shared/ui/Text/Text';
+import { Text } from 'shared/ui/Text/Text';
+import { TextSize } from 'shared/ui/Text/const';
 import { AddCommentForm } from 'features/addCommentForm';
 import { CommentList } from 'entities/Comment';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch';

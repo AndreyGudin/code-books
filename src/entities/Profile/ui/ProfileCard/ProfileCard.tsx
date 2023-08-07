@@ -3,7 +3,8 @@ import type { FC } from 'react';
 
 import { classNames } from 'shared/lib/classNames/classNames';
 import type { Mods } from 'shared/lib/classNames/classNames';
-import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
+import { Text } from 'shared/ui/Text/Text';
+import { TextAlign, TextTheme } from 'shared/ui/Text/const';
 import { Input } from 'shared/ui/Input/Input';
 import type { Profile } from '../../model/types/profile';
 import { Loader } from 'shared/ui/Loader/Loader';

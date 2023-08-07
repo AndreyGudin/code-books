@@ -4,7 +4,7 @@ export {
   ArticleView,
   ArticleSortField,
   ArticleType
-} from './model/types/article';
+} from './model/consts/const';
 
 export {
   articleDetailsActions,

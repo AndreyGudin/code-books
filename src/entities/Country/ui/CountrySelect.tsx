@@ -2,8 +2,6 @@ import { useTranslation } from 'react-i18next';
 import { memo, useCallback } from 'react';
 import type { FC } from 'react';
 
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Select } from 'shared/ui/Select/Select';
 import { Country } from '../model/types/country';
 import { Listbox } from 'shared/ui/ListBox/ListBox';
 

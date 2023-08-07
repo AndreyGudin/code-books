@@ -3,7 +3,8 @@ import { memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import type { FC } from 'react';
 
-import { Button, ButtonTheme } from 'shared/ui/Button/Button';
+import { Button } from 'shared/ui/Button/Button';
+import { ButtonTheme } from 'shared/ui/Button/const';
 import { Input } from 'shared/ui/Input/Input';
 import { classNames } from 'shared/lib/classNames/classNames';
 
@@ -11,7 +12,8 @@ import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import { getLoginState } from '../../model/selectors/getLoginState/getLoginState';
 import { loginByUserName } from '../../model/services/loginByUserName/loginByUserName';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch';
-import { Text, TextTheme } from 'shared/ui/Text/Text';
+import { Text } from 'shared/ui/Text/Text';
+import { TextTheme } from 'shared/ui/Text/const';
 import { DynamicModuleLoader } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import type { ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 

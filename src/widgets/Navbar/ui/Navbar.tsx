@@ -4,7 +4,8 @@ import type { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Button, ButtonTheme } from 'shared/ui/Button/Button';
+import { Button } from 'shared/ui/Button/Button';
+import { ButtonTheme } from 'shared/ui/Button/const';
 import { LoginModal } from 'features/AuthByUsername';
 import { classNames } from 'shared/lib/classNames/classNames';
 import {
@@ -15,8 +16,10 @@ import {
 } from 'entities/User';
 
 import cls from './Navbar.module.scss';
-import { Text, TextTheme } from 'shared/ui/Text/Text';
-import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
+import { Text } from 'shared/ui/Text/Text';
+import { TextTheme } from 'shared/ui/Text/const';
+import { AppLink } from 'shared/ui/AppLink/AppLink';
+import { AppLinkTheme } from 'shared/ui/AppLink/const';
 import { RoutePath } from 'shared/config/routerConfig/routerConfig';
 import { Dropdown } from 'shared/ui/Dropdown/Dropdown';
 import { Avatar } from 'shared/ui/Avatar/Avatar';

@@ -4,24 +4,7 @@ import type { FC } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import type { Mods } from 'shared/lib/classNames/classNames';
 import cls from './Text.module.scss';
-
-export enum TextTheme {
-  PRIMARY = 'primary',
-  INVERTED = 'inverted',
-  ERROR = 'error'
-}
-
-export enum TextAlign {
-  RIGHT = 'right',
-  LEFT = 'left',
-  CENTER = 'center'
-}
-
-export enum TextSize {
-  S = 'size_s',
-  M = 'size_m',
-  L = 'size_l'
-}
+import { TextTheme, TextAlign, TextSize } from './const';
 
 interface TextProps {
   className?: string;

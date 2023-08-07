@@ -3,7 +3,6 @@ import { memo, useCallback } from 'react';
 import type { FC } from 'react';
 
 import { classNames } from 'shared/lib/classNames/classNames';
-import { Select } from 'shared/ui/Select/Select';
 import { Currency } from '../model/types/currency';
 import { Listbox } from 'shared/ui/ListBox/ListBox';
 
