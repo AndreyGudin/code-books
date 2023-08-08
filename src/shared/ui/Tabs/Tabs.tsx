@@ -3,7 +3,8 @@ import type { FC, ReactNode } from 'react';
 
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './Tabs.module.scss';
-import { Card, CardTheme } from '../Card/Card';
+import { Card } from '../Card/Card';
+import { CardTheme } from '../Card/const';
 
 export interface TabItem {
   value: string;

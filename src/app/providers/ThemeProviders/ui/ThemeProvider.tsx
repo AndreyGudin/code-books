@@ -1,10 +1,7 @@
 import { useMemo, useState } from 'react';
 import type { FC, ReactNode } from 'react';
-import {
-  LOCAL_STORAGE_THEME_KEY,
-  Theme,
-  ThemeContext
-} from '../lib/ThemeContext';
+import { LOCAL_STORAGE_THEME_KEY, ThemeContext } from '../lib/ThemeContext';
+import { Theme } from '../consts/const';
 
 const defaultTheme =
   localStorage.getItem(LOCAL_STORAGE_THEME_KEY) === null

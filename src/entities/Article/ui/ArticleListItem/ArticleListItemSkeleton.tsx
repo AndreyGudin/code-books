@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import type { FC } from 'react';
 
-import { ArticleView } from '../../model/types/article';
+import { ArticleView } from '../../model/consts/const';
 import { Card } from 'shared/ui/Card/Card';
 
 import { classNames } from 'shared/lib/classNames/classNames';

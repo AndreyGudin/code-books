@@ -15,7 +15,8 @@ import {
 import { useSelector } from 'react-redux';
 import { useInitialEffect } from 'shared/hooks/useInitialEffect';
 import { useThrottle } from 'shared/hooks/useThrottle';
-import { Button, ButtonTheme } from 'shared/ui/Button/Button';
+import { Button } from 'shared/ui/Button/Button';
+import { ButtonTheme } from 'shared/ui/Button/const';
 import { useTranslation } from 'react-i18next';
 
 interface PageProps {

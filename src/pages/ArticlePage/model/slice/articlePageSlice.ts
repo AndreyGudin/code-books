@@ -9,7 +9,7 @@ import { ARTICLES_VIEW_LOCALSTORAGE_KEY } from 'shared/const/localStorage';
 import {
   ArticleSortField,
   ArticleType
-} from 'entities/Article/model/types/article';
+} from 'entities/Article/model/consts/const';
 import type { SortOrder } from 'shared/types/types';
 
 const articlesAdapter = createEntityAdapter<Article>({

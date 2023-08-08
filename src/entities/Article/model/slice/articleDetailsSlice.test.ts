@@ -1,6 +1,6 @@
 import { articleDetailsReducer } from './articleDetailsSlice';
 import type { ArticleDetailsSchema } from '../types/articleDetailsSchema';
-import { ArticleBlockType, ArticleType } from '../types/article';
+import { ArticleBlockType, ArticleType } from '../consts/const';
 import type { Article } from '../types/article';
 import { fetchArticleById } from '../services/fetchArticleById/fetchArticleById';
 

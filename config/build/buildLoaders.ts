@@ -2,8 +2,9 @@ import type webpack from 'webpack';
 
 import { buildCssLoader } from './loaders/buildCssLoader';
 import type { BuildOptions } from './types/config';
+import { buildBabelLoader } from './loaders/buildBabelLoader';
 
-export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
+export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
   const pngLoader = {
     test: /\.(png|jpe?g|gif|woff2|woff)$/i,
     type: 'asset/resource'
@@ -12,11 +13,9 @@ export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
     test: /\.svg$/,
     use: ['@svgr/webpack']
   };
-  const cssLoader = buildCssLoader(isDev);
-  const typescriptLoader = {
-    test: /\.tsx?$/,
-    use: 'ts-loader',
-    exclude: /node_modules/
-  };
-  return [typescriptLoader, cssLoader, svgLoader, pngLoader];
+  const cssLoader = buildCssLoader(options.isDev);
+  const codeBabelLoader = buildBabelLoader({ ...options, isTsx: false });
+  const tsxCodeBabelLoader = buildBabelLoader({ ...options, isTsx: true });
+
+  return [codeBabelLoader, tsxCodeBabelLoader, cssLoader, svgLoader, pngLoader];
 }

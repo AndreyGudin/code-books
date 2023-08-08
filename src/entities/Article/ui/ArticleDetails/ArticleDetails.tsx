@@ -13,10 +13,11 @@ import {
   getArticleDetailsError,
   getArticleDetailsIsLoading
 } from '../../model/selectors/articleDetails';
-import { Text, TextAlign, TextSize } from 'shared/ui/Text/Text';
+import { Text } from 'shared/ui/Text/Text';
+import { TextAlign, TextSize } from 'shared/ui/Text/const';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
-import { ArticleBlockType } from '../../model/types/article';
+import { ArticleBlockType } from '../../model/consts/const';
 import type { ArticleBlock } from '../../model/types/article';
 
 import { classNames } from 'shared/lib/classNames/classNames';

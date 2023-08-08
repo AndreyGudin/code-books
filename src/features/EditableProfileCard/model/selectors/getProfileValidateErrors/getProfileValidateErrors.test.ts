@@ -1,6 +1,6 @@
 import type { StateSchema } from 'app/providers/StoreProvider';
 import { getProfileValidateErrors } from './getProfileValidateErrors';
-import { ValidateProfileError } from '../../types/EditableProfileSchema';
+import { ValidateProfileError } from '../../consts/const';
 
 describe('getProfileValidateErrors.test', () => {
   test('should return array with errors', () => {
