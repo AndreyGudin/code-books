@@ -3,7 +3,7 @@ import { memo, useCallback } from 'react';
 import type { FC } from 'react';
 
 import { Country } from '../model/types/country';
-import { Listbox } from 'shared/ui/ListBox/ListBox';
+import { ListBox } from 'shared/ui/Popups/ui/ListBox/ListBox';
 
 interface CountrySelectProps {
   className?: string;
@@ -37,7 +37,7 @@ export const CountrySelect: FC<CountrySelectProps> = memo(
     );
 
     return (
-      <Listbox
+      <ListBox
         items={options}
         disabled={readonly}
         onChange={onChangeHandler}

@@ -1,11 +1,13 @@
 import { Fragment, type ReactNode } from 'react';
 import { Listbox as HListbox } from '@headlessui/react';
 
+import popupCls from '../../styles/popup.module.scss';
 import cls from './ListBox.module.scss';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { Button } from '../Button/Button';
-import { HStack } from '../Stack';
+import { Button } from '../../../Button/Button';
+import { HStack } from '../../../Stack';
 import type { DropdownDirection } from 'shared/types/ui';
+import { mapDirectionClass } from '../../styles/const';
 
 export interface ListboxItem {
   value: string;
@@ -24,14 +26,7 @@ interface ListboxProps {
   label?: string;
 }
 
-const mapDirectionClass: Record<DropdownDirection, string> = {
-  'bottom left': cls.optionsBottomLeft,
-  'bottom right': cls.optionsBottomRight,
-  'top left': cls.optionsTopLeft,
-  'top right': cls.optionsTopRight
-};
-
-export function Listbox({
+export function ListBox({
   className = '',
   items = [],
   value,
@@ -48,12 +43,12 @@ export function Listbox({
       {label.length > 0 && <span>{label}</span>}
       <HListbox
         as="div"
-        className={classNames(cls.ListBox, {}, [])}
+        className={classNames(cls.ListBox, {}, [popupCls.popup])}
         value={value}
         onChange={onChange}
         disabled={disabled}
       >
-        <HListbox.Button className={cls.trigger}>
+        <HListbox.Button className={popupCls.trigger}>
           <Button disabled={disabled}>{value ?? defaultValue}</Button>
         </HListbox.Button>
         <HListbox.Options
@@ -69,8 +64,8 @@ export function Listbox({
               {({ active, selected }) => (
                 <li
                   className={classNames(cls.item, {
-                    [cls.active]: active,
-                    [cls.disabled]: item.disabled ?? false
+                    [popupCls.active]: active,
+                    [popupCls.disabled]: item.disabled ?? false
                   })}
                 >
                   {selected && '*'}

@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Listbox } from './ListBox';
+import { ListBox } from './ListBox';
 const meta = {
   title: 'shared/Listbox',
-  component: Listbox,
+  component: ListBox,
   argTypes: {},
   decorators: [
     (Story) => (
@@ -11,7 +11,7 @@ const meta = {
       </div>
     )
   ]
-} satisfies Meta<typeof Listbox>;
+} satisfies Meta<typeof ListBox>;
 export default meta;
 type Story = StoryObj<typeof meta>;
 
