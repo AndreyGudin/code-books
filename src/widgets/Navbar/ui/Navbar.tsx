@@ -1,5 +1,5 @@
 /* eslint-disable i18next/no-literal-string */
-import { useCallback, useEffect, useRef, useState, memo } from 'react';
+import { memo } from 'react';
 import type { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
@@ -18,6 +18,7 @@ import { RoutePath } from 'shared/config/routerConfig/routerConfig';
 import { HStack } from 'shared/ui/Stack';
 import { NotificationButton } from 'features/NotificationButton';
 import { AvatarDropdown } from 'features/AvatarDropdown';
+import { useAnimate } from 'shared/hooks/useAnimate';
 
 interface NavbarProps {
   className?: string;
@@ -25,30 +26,8 @@ interface NavbarProps {
 
 export const Navbar: FC = memo(({ className = '' }: NavbarProps) => {
   const { t } = useTranslation();
-  const [isAuthModal, setAuthModal] = useState(false);
-  const [animate, setAnimate] = useState(false);
+  const { animate, close, isAuthModal, toggle } = useAnimate();
   const authData = useSelector(getAuthUserData);
-  const timeRef = useRef<ReturnType<typeof setTimeout>>();
-
-  const onToggleModal = useCallback(() => {
-    setAuthModal((prev) => !prev);
-    timeRef.current = setTimeout(() => {
-      setAnimate((prev) => !prev);
-    }, 0);
-  }, []);
-
-  const onCloseModal = useCallback(() => {
-    setAnimate((prev) => !prev);
-    timeRef.current = setTimeout(() => {
-      setAuthModal((prev) => !prev);
-    }, 300);
-  }, []);
-
-  useEffect(() => {
-    return () => {
-      clearTimeout(timeRef.current);
-    };
-  }, []);
 
   if (authData !== undefined) {
     return (
@@ -79,17 +58,13 @@ export const Navbar: FC = memo(({ className = '' }: NavbarProps) => {
         <Button
           theme={ButtonTheme.CLEAR_INVERTED}
           className={cls.links}
-          onClick={onToggleModal}
+          onClick={toggle}
         >
           {t('Войти')}
         </Button>
       </div>
 
-      <LoginModal
-        animate={animate}
-        isOpen={isAuthModal}
-        onClose={onCloseModal}
-      />
+      <LoginModal animate={animate} isOpen={isAuthModal} onClose={close} />
     </header>
   );
 });

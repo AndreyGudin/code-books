@@ -37,9 +37,10 @@ export function Dropdown({
     >
       <Menu.Button className={popupCls.trigger}>{trigger}</Menu.Button>
       <Menu.Items className={classNames(cls.menu, {}, menuClasses)}>
-        {items.map((item) => {
+        {items.map((item, i) => {
           const content = ({ active }: { active: boolean }): JSX.Element => (
             <button
+              key={i}
               disabled={item.disabled}
               onClick={item.onClick}
               className={classNames(
@@ -66,7 +67,7 @@ export function Dropdown({
           }
 
           return (
-            <Menu.Item as={Fragment} key={item.href} disabled={item.disabled}>
+            <Menu.Item as={Fragment} key={i} disabled={item.disabled}>
               {content}
             </Menu.Item>
           );
