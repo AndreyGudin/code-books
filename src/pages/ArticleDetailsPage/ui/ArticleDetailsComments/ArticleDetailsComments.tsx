@@ -3,18 +3,18 @@ import { useSelector } from 'react-redux';
 import { Suspense, memo, useCallback } from 'react';
 import type { FC } from 'react';
 
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Text } from 'shared/ui/Text/Text';
-import { TextSize } from 'shared/ui/Text/const';
-import { AddCommentForm } from 'features/addCommentForm';
-import { CommentList } from 'entities/Comment';
-import { useAppDispatch } from 'shared/hooks/useAppDispatch';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Text } from '@/shared/ui/Text/Text';
+import { TextSize } from '@/shared/ui/Text/const';
+import { AddCommentForm } from '@/features/addCommentForm';
+import { CommentList } from '@/entities/Comment';
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { getArticleComments } from '../../model/slice/articleDetailsCommentsSlice';
 import { getArticleDetailsCommentsIsLoading } from '../../model/selectors/comments';
 import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
-import { useInitialEffect } from 'shared/hooks/useInitialEffect';
+import { useInitialEffect } from '@/shared/hooks/useInitialEffect';
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
-import { VStack } from 'shared/ui/Stack';
+import { VStack } from '@/shared/ui/Stack';
 
 interface ArticleDetailsCommentsProps {
   className?: string;

@@ -1,7 +1,7 @@
-import type { StateSchema } from 'app/providers/StoreProvider';
-import { ArticleView, ArticleSortField, ArticleType } from 'entities/Article';
+import type { StateSchema } from '@/app/providers/StoreProvider';
+import { ArticleView, ArticleSortField, ArticleType } from '@/entities/Article';
 
-import type { SortOrder } from 'shared/types/types';
+import type { SortOrder } from '@/shared/types/types';
 
 export const getArticlesIsLoading = (state: StateSchema): boolean =>
   state.articlesPage?.isLoading ?? false;

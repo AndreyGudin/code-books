@@ -1,17 +1,17 @@
 import { memo, useCallback, useState } from 'react';
 import type { FC } from 'react';
 
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './NotificationButton.module.scss';
-import { NotificationList } from 'entities/Notification';
-import { Button } from 'shared/ui/Button/Button';
-import { ButtonTheme } from 'shared/ui/Button/const';
-import { Icon } from 'shared/ui/Icon/Icon';
-import NotificationsIcon from 'shared/assets/icons/notifications.svg';
-import { Popover } from 'shared/ui/Popups';
-import { Drawer } from 'shared/ui/Drawer/Drawer';
-import { useDevice } from 'shared/hooks/useDevice';
-import { AnimationProvider } from 'shared/lib/components/AnimateProvider';
+import { NotificationList } from '@/entities/Notification';
+import { Button } from '@/shared/ui/Button/Button';
+import { ButtonTheme } from '@/shared/ui/Button/const';
+import { Icon } from '@/shared/ui/Icon/Icon';
+import NotificationsIcon from '@/shared/assets/icons/notifications.svg';
+import { Popover } from '@/shared/ui/Popups';
+import { Drawer } from '@/shared/ui/Drawer/Drawer';
+import { useDevice } from '@/shared/hooks/useDevice';
+import { AnimationProvider } from '@/shared/lib/components/AnimateProvider';
 
 interface NotificationButtonProps {
   className?: string;

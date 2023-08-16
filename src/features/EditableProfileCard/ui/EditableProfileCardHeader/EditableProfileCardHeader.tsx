@@ -3,17 +3,17 @@ import { useSelector } from 'react-redux';
 import { memo, useCallback } from 'react';
 import type { FC } from 'react';
 
-import { classNames } from 'shared/lib/classNames/classNames';
-import { getAuthUserData } from 'entities/User';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { getAuthUserData } from '@/entities/User';
 import { getProfileData } from '../../model/selectors/getProfileData/getProfileData';
 import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
 import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData';
 import { profileActions } from '../../model/slice/profileSlice';
-import { useAppDispatch } from 'shared/hooks/useAppDispatch';
-import { Button } from 'shared/ui/Button/Button';
-import { ButtonTheme } from 'shared/ui/Button/const';
-import { HStack } from 'shared/ui/Stack';
-import { Text } from 'shared/ui/Text/Text';
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
+import { Button } from '@/shared/ui/Button/Button';
+import { ButtonTheme } from '@/shared/ui/Button/const';
+import { HStack } from '@/shared/ui/Stack';
+import { Text } from '@/shared/ui/Text/Text';
 
 interface EditableProfileCardHeaderProps {
   className?: string;

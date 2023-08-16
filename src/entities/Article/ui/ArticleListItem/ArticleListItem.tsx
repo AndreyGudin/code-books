@@ -5,19 +5,19 @@ import type { FC, HTMLAttributeAnchorTarget } from 'react';
 
 import { ArticleBlockType, ArticleView } from '../../model/consts/const';
 import type { ArticleTextBlock, Article } from '../../model/types/article';
-import { Text } from 'shared/ui/Text/Text';
-import { Icon } from 'shared/ui/Icon/Icon';
-import { Card } from 'shared/ui/Card/Card';
-import { Avatar } from 'shared/ui/Avatar/Avatar';
-import { Button } from 'shared/ui/Button/Button';
-import { ButtonTheme } from 'shared/ui/Button/const';
+import { Text } from '@/shared/ui/Text/Text';
+import { Icon } from '@/shared/ui/Icon/Icon';
+import { Card } from '@/shared/ui/Card/Card';
+import { Avatar } from '@/shared/ui/Avatar/Avatar';
+import { Button } from '@/shared/ui/Button/Button';
+import { ButtonTheme } from '@/shared/ui/Button/const';
 import { ArticleTextBlockComponents } from '../ArticleTextBlockComponents/ArticleTextBlockComponents';
 
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ArticleListItem.module.scss';
-import EyeIcon from 'shared/assets/icons/eye.svg';
-import { RoutePath } from 'shared/config/routerConfig/routerConfig';
-import { AppLink } from 'shared/ui/AppLink/AppLink';
+import EyeIcon from '@/shared/assets/icons/eye.svg';
+import { RoutePath } from '@/shared/config/routerConfig/routerConfig';
+import { AppLink } from '@/shared/ui/AppLink/AppLink';
 
 interface ArticleListItemProps {
   className?: string;

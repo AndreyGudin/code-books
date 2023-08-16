@@ -3,9 +3,9 @@ import type { FC } from 'react';
 
 import type { ArticleTextBlock } from '../../model/types/article';
 
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ArticleTextBlockComponents.module.scss';
-import { Text } from 'shared/ui/Text/Text';
+import { Text } from '@/shared/ui/Text/Text';
 
 interface ArticleTextBlockComponentsProps {
   className?: string;

@@ -2,7 +2,7 @@ import { memo } from 'react';
 import { useSelector } from 'react-redux';
 import type { FC } from 'react';
 
-import { ArticleList } from 'entities/Article';
+import { ArticleList } from '@/entities/Article';
 import {
   getArticlesError,
   getArticlesIsLoading,
@@ -11,10 +11,10 @@ import {
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
 import { getArticles } from '../../model/slice/articlePageSlice';
 import { useSearchParams } from 'react-router-dom';
-import { useAppDispatch } from 'shared/hooks/useAppDispatch';
-import { useInitialEffect } from 'shared/hooks/useInitialEffect';
-import { Text } from 'shared/ui/Text/Text';
-import { TextTheme } from 'shared/ui/Text/const';
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
+import { useInitialEffect } from '@/shared/hooks/useInitialEffect';
+import { Text } from '@/shared/ui/Text/Text';
+import { TextTheme } from '@/shared/ui/Text/const';
 
 interface ArticleInfiniteListProps {
   className?: string;

@@ -2,21 +2,21 @@ import { memo, useCallback, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import type { FC, MutableRefObject, ReactNode, UIEvent } from 'react';
 
-import { classNames } from 'shared/lib/classNames/classNames';
-import { useInfiniteScroll } from 'shared/hooks/useInfiniteScroll';
-import { useAppDispatch } from 'shared/hooks/useAppDispatch';
-import type { StateSchema } from 'app/providers/StoreProvider';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { useInfiniteScroll } from '@/shared/hooks/useInfiniteScroll';
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
+import type { StateSchema } from '@/app/providers/StoreProvider';
 
 import cls from './Page.module.scss';
 import {
   getSaveScrollPositionByPath,
   scrollSaveActions
-} from 'features/ScrollSave';
+} from '@/features/ScrollSave';
 import { useSelector } from 'react-redux';
-import { useInitialEffect } from 'shared/hooks/useInitialEffect';
-import { useThrottle } from 'shared/hooks/useThrottle';
-import { Button } from 'shared/ui/Button/Button';
-import { ButtonTheme } from 'shared/ui/Button/const';
+import { useInitialEffect } from '@/shared/hooks/useInitialEffect';
+import { useThrottle } from '@/shared/hooks/useThrottle';
+import { Button } from '@/shared/ui/Button/Button';
+import { ButtonTheme } from '@/shared/ui/Button/const';
 import { useTranslation } from 'react-i18next';
 
 interface PageProps {

@@ -3,10 +3,10 @@ import type { FC } from 'react';
 
 import type { ArticleImageBlock } from '../../model/types/article';
 
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ArticleImageBlockComponents.module.scss';
-import { Text } from 'shared/ui/Text/Text';
-import { TextAlign } from 'shared/ui/Text/const';
+import { Text } from '@/shared/ui/Text/Text';
+import { TextAlign } from '@/shared/ui/Text/const';
 
 interface ArticleImageBlockComponentsProps {
   className?: string;

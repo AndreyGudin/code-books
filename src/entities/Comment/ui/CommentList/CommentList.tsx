@@ -3,11 +3,11 @@ import { useTranslation } from 'react-i18next';
 import type { FC } from 'react';
 
 import type { Comment } from '../../model/types/comment';
-import { Text } from 'shared/ui/Text/Text';
+import { Text } from '@/shared/ui/Text/Text';
 import { CommentCard } from '../CommentCard/CommentCard';
 
-import { classNames } from 'shared/lib/classNames/classNames';
-import { VStack } from 'shared/ui/Stack';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { VStack } from '@/shared/ui/Stack';
 
 interface CommentListProps {
   className?: string;

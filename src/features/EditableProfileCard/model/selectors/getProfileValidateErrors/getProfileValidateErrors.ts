@@ -1,4 +1,4 @@
-import type { StateSchema } from 'app/providers/StoreProvider';
+import type { StateSchema } from '@/app/providers/StoreProvider';
 import type { ValidateProfileError } from '../../consts/const';
 
 export const getProfileValidateErrors = (

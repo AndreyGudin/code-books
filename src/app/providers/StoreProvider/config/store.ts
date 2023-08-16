@@ -7,10 +7,10 @@ import type {
 
 import type { StateSchema } from './StateSchema';
 import { createReducerManager } from './reducerManager';
-import { userReducer } from 'entities/User';
-import { $api } from 'shared/api/api';
-import { scrollSaveReducer } from 'features/ScrollSave';
-import { rtkApi } from 'shared/api/rtkApi';
+import { userReducer } from '@/entities/User';
+import { $api } from '@/shared/api/api';
+import { scrollSaveReducer } from '@/features/ScrollSave';
+import { rtkApi } from '@/shared/api/rtkApi';
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export function createReduxStore(

@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import type { ButtonHTMLAttributes, FC } from 'react';
 
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Button.module.scss';
 import { type ButtonTheme, ButtonSize } from './const';
 

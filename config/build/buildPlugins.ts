@@ -32,7 +32,7 @@ export function buildPlugins({
       analyzerMode: analyze ? 'server' : 'disabled'
     }),
     new CopyPlugin({
-      patterns: [{ from: paths.locales, to: paths.buildLocales }]
+      patterns: [{ from: paths.locales ?? '/asdsad', to: paths.buildLocales }]
     }),
     new ForkTsCheckerWebpackPlugin({
       typescript: {
