@@ -33,6 +33,8 @@ module.exports = {
     '@typescript-eslint/no-misused-promises': 0,
     '@typescript-eslint/consistent-type-assertions': 0,
     '@typescript-eslint/restrict-plus-operands': 0,
+    '@typescript-eslint/consistent-type-imports': 0,
+    '@typescript-eslint/return-await': 0,
     'n/no-callback-literal': 0,
     '@typescript-eslint/array-type': 0,
     'andrey-gudin-forprod/check-paths': 'error',
