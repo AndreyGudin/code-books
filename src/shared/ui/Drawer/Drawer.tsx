@@ -5,7 +5,10 @@ import { type Mods, classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Drawer.module.scss';
 import { Portal } from '../Portal/Portal';
 import { Overlay } from '../Overlay/Overlay';
-import { useAnimationLibs } from '@/shared/lib/components/AnimateProvider';
+import {
+  AnimationProvider,
+  useAnimationLibs
+} from '@/shared/lib/components/AnimateProvider';
 
 interface DrawerProps {
   className?: string;
@@ -99,7 +102,7 @@ export const DrawerContent: FC<DrawerProps> = memo(
   }
 );
 
-export const Drawer = memo((props: DrawerProps) => {
+export const DrawerAsync = (props: DrawerProps): JSX.Element | null => {
   const { isLoaded } = useAnimationLibs();
 
   if (!isLoaded) {
@@ -107,4 +110,12 @@ export const Drawer = memo((props: DrawerProps) => {
   }
 
   return <DrawerContent {...props} />;
-});
+};
+
+export const Drawer = (props: DrawerProps): JSX.Element => {
+  return (
+    <AnimationProvider>
+      <DrawerAsync {...props} />
+    </AnimationProvider>
+  );
+};
