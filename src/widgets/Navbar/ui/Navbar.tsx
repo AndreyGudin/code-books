@@ -1,5 +1,5 @@
 /* eslint-disable i18next/no-literal-string */
-import { memo } from 'react';
+import { memo, useCallback, useState } from 'react';
 import type { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
@@ -18,7 +18,6 @@ import { RoutePath } from '@/shared/config/routerConfig/routerConfig';
 import { HStack } from '@/shared/ui/Stack';
 import { NotificationButton } from '@/features/NotificationButton';
 import { AvatarDropdown } from '@/features/AvatarDropdown';
-import { useAnimate } from '@/shared/hooks/useAnimate';
 
 interface NavbarProps {
   className?: string;
@@ -26,8 +25,16 @@ interface NavbarProps {
 
 export const Navbar: FC = memo(({ className = '' }: NavbarProps) => {
   const { t } = useTranslation();
-  const { animate, close, isAuthModal, toggle } = useAnimate();
+  const [openModal, setOpenModal] = useState(false);
   const authData = useSelector(getAuthUserData);
+
+  const openModalHandler = useCallback(() => {
+    setOpenModal(true);
+  }, []);
+
+  const closeHandler = useCallback(() => {
+    setOpenModal(false);
+  }, []);
 
   if (authData !== undefined) {
     return (
@@ -58,13 +65,13 @@ export const Navbar: FC = memo(({ className = '' }: NavbarProps) => {
         <Button
           theme={ButtonTheme.CLEAR_INVERTED}
           className={cls.links}
-          onClick={toggle}
+          onClick={openModalHandler}
         >
           {t('Войти')}
         </Button>
       </div>
 
-      <LoginModal animate={animate} isOpen={isAuthModal} onClose={close} />
+      <LoginModal isOpen={openModal} onClose={closeHandler} />
     </header>
   );
 });

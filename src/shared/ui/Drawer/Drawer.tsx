@@ -9,6 +9,7 @@ import {
   AnimationProvider,
   useAnimationLibs
 } from '@/shared/lib/components/AnimateProvider';
+import { useModal } from '@/shared/hooks/useModal';
 
 interface DrawerProps {
   className?: string;
@@ -27,6 +28,7 @@ export const DrawerContent: FC<DrawerProps> = memo(
     isOpen = false
   }: DrawerProps) => {
     const { Gesture, Spring } = useAnimationLibs();
+    const { close, animate } = useModal({ isOpen, onClose });
     const [{ y }, api] = Spring.useSpring(() => ({ y: height }));
 
     const openDrawer = useCallback(() => {
@@ -34,15 +36,15 @@ export const DrawerContent: FC<DrawerProps> = memo(
     }, [api]);
 
     useEffect(() => {
-      if (isOpen) openDrawer();
-    }, [isOpen, openDrawer]);
+      if (animate) openDrawer();
+    }, [animate, openDrawer]);
 
-    const close = (velocity = 0): void => {
+    const closeDrawer = (velocity = 0): void => {
       api.start({
         y: height,
         immediate: false,
         config: { ...Spring.config.stiff, velocity },
-        onResolve: onClose
+        onResolve: close
       });
     };
 
@@ -58,7 +60,7 @@ export const DrawerContent: FC<DrawerProps> = memo(
 
         if (last) {
           if (my > height * 0.5 || (vy > 0.5 && dy > 0)) {
-            close();
+            closeDrawer();
           } else {
             openDrawer();
           }
@@ -77,7 +79,7 @@ export const DrawerContent: FC<DrawerProps> = memo(
     if (!isOpen) return null;
 
     const mods: Mods = {
-      [cls.opened]: isOpen
+      [cls.opened]: animate
     };
 
     const display = y.to((py) => (py < height ? 'block' : 'none'));
@@ -87,7 +89,7 @@ export const DrawerContent: FC<DrawerProps> = memo(
         <div
           className={classNames(cls.Drawer, mods, [className, 'app_drawer'])}
         >
-          <Overlay onClick={close}>
+          <Overlay onClick={closeDrawer}>
             <Spring.a.div
               className={cls.sheet}
               style={{ display, bottom: `calc(-100vh + ${height - 100}px)`, y }}

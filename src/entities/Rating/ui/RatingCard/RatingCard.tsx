@@ -93,7 +93,7 @@ export const RatingCard: FC<RatingCardProps> = memo(
           <Text title={title} />
           <StarRating size={40} onSelect={onSelectStars} />
         </VStack>
-        <Modal isOpen={isModalOpen} animate={isModalOpen}>
+        <Modal isOpen={isModalOpen}>
           <VStack gap="32" max>
             {modalContent}
             <HStack max gap="16" justify="end">

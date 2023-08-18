@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 interface useModalProps {
   onClose?: () => void;
@@ -7,12 +7,33 @@ interface useModalProps {
 
 interface UseModal {
   close: () => void;
+  animate: boolean;
 }
 
 export const useModal = ({ isOpen, onClose }: useModalProps): UseModal => {
+  const [animate, setAnimate] = useState(false);
+  const timeRef = useRef<ReturnType<typeof setTimeout>>();
+
+  useEffect(() => {
+    if (isOpen) {
+      timeRef.current = setTimeout(() => {
+        setAnimate(true);
+      }, 0);
+    }
+  }, [isOpen]);
+
   const close = useCallback(() => {
-    if (onClose !== null) onClose?.();
+    setAnimate(false);
+    timeRef.current = setTimeout(() => {
+      onClose?.();
+    }, 300);
   }, [onClose]);
+
+  useEffect(() => {
+    return () => {
+      clearTimeout(timeRef.current);
+    };
+  }, []);
 
   const onKeyDown = useCallback(
     (e: KeyboardEvent) => {
@@ -31,6 +52,7 @@ export const useModal = ({ isOpen, onClose }: useModalProps): UseModal => {
   }, [isOpen, onKeyDown]);
 
   return {
-    close
+    close,
+    animate
   };
 };

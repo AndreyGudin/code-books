@@ -8,19 +8,17 @@ import { useModal } from '@/shared/hooks/useModal';
 interface ModalProps {
   className?: string;
   children?: ReactNode;
-  animate?: boolean;
   isOpen?: boolean;
   onClose?: () => void;
 }
 
 export const Modal: FC<ModalProps> = ({
   className = '',
-  animate = false,
   isOpen = false,
   onClose,
   children
 }: ModalProps) => {
-  const { close } = useModal({ isOpen, onClose });
+  const { close, animate } = useModal({ isOpen, onClose });
   const mods: Record<string, boolean> = {
     [cls.opened]: animate
   };
