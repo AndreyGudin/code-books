@@ -44,7 +44,7 @@ export const Text: FC<TextProps> = memo(
     };
 
     return (
-      <div className={classNames(cls.Text, mods, [className])}>
+      <div className={classNames('', mods, [className])}>
         {title !== '' ? (
           <HeaderTag data-testid={`${dataTestId}.Header`} className={cls.title}>
             {title}

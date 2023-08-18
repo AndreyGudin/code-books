@@ -110,7 +110,7 @@
       "import { useTranslation } from 'react-i18next';",
       "import { memo } from 'react';",
       "import type { FC } from 'react';",
-      "import { classNames } from 'shared/lib/classNames/classNames';",
+      "import { classNames } from '@/shared/lib/classNames/classNames';",
       "import cls from './<FTName>.module.scss';",
       "",
       "interface <FTName>Props {",
@@ -173,7 +173,8 @@
     "Schema": ["export interface <FTName>Schema{}"],
     "Index": [
       "export { <FTName | camelcase>Actions, <FTName | camelcase>Reducer } from './model/slice/<FTName | camelcase>Slice';",
-      "export type { <FTName>Schema } from './model/types/<FTName>Schema';"
+      "export type { <FTName>Schema } from './model/types/<FTName>Schema';",
+      "export { <FTName> } from './ui/<FTName>/<FTName>';"
     ]
   }
 }
