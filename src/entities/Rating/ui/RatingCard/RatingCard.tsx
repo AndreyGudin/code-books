@@ -13,6 +13,7 @@ import { Button } from '@/shared/ui/Button/Button';
 import { ButtonTheme } from '@/shared/ui/Button/const';
 import { useDevice } from '@/shared/hooks/useDevice';
 import { Drawer } from '@/shared/ui/Drawer/Drawer';
+import { useDelay } from '@/shared/hooks/useDelay';
 
 interface RatingCardProps {
   className?: string;
@@ -60,6 +61,8 @@ export const RatingCard: FC<RatingCardProps> = memo(
       onCancel?.(starsCount);
     }, [onCancel, starsCount]);
 
+    const { delayedHandler } = useDelay({ handler: cancelHandler });
+
     const modalContent = (
       <>
         <Text title={feedbackTitle} />
@@ -78,7 +81,7 @@ export const RatingCard: FC<RatingCardProps> = memo(
             <Text title={title} />
             <StarRating size={40} onSelect={onSelectStars} />
           </VStack>
-          <Drawer isOpen={isModalOpen} onClose={cancelHandler}>
+          <Drawer isOpen={isModalOpen} onClose={delayedHandler}>
             <VStack max gap="16">
               {modalContent}
               <Button onClick={acceptHandler}>{t('Отправить')}</Button>
@@ -97,7 +100,7 @@ export const RatingCard: FC<RatingCardProps> = memo(
           <VStack gap="32" max>
             {modalContent}
             <HStack max gap="16" justify="end">
-              <Button onClick={cancelHandler} theme={ButtonTheme.OUTLINE_RED}>
+              <Button onClick={delayedHandler} theme={ButtonTheme.OUTLINE_RED}>
                 {t('Закрыть')}
               </Button>
               <Button onClick={acceptHandler}>{t('Отправить')}</Button>
