@@ -1,8 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { memo, useCallback, useState } from 'react';
 import type { FC } from 'react';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import cls from './RatingCard.module.scss';
 import { Card } from '@/shared/ui/Card/Card';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { Text } from '@/shared/ui/Text/Text';
@@ -22,6 +20,7 @@ interface RatingCardProps {
   hasFeedback?: boolean;
   onCancel?: (starsCount: number) => void;
   onAccept?: (starsCount: number, feedback?: string) => void;
+  rate?: number;
 }
 
 export const RatingCard: FC<RatingCardProps> = memo(
@@ -31,11 +30,12 @@ export const RatingCard: FC<RatingCardProps> = memo(
     hasFeedback,
     onAccept,
     onCancel,
-    title
+    title,
+    rate = 0
   }: RatingCardProps) => {
     const { t } = useTranslation();
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [starsCount, setStarsCount] = useState(0);
+    const [starsCount, setStarsCount] = useState(rate);
     const [feedback, setFeedback] = useState('');
     const isMobile = useDevice();
 
@@ -76,10 +76,14 @@ export const RatingCard: FC<RatingCardProps> = memo(
 
     if (isMobile)
       return (
-        <Card className={classNames(cls.RatingCard, {}, [className])}>
-          <VStack align="center" gap="8">
+        <Card className={className} fullWidth>
+          <VStack align="center" gap="8" max>
             <Text title={title} />
-            <StarRating size={40} onSelect={onSelectStars} />
+            <StarRating
+              selectedStars={rate}
+              size={40}
+              onSelect={onSelectStars}
+            />
           </VStack>
           <Drawer isOpen={isModalOpen} onClose={delayedHandler}>
             <VStack max gap="16">
@@ -91,10 +95,10 @@ export const RatingCard: FC<RatingCardProps> = memo(
       );
 
     return (
-      <Card className={classNames(cls.RatingCard, {}, [className])}>
-        <VStack align="center" gap="8">
-          <Text title={title} />
-          <StarRating size={40} onSelect={onSelectStars} />
+      <Card className={className} fullWidth>
+        <VStack align="center" gap="8" max>
+          <Text title={title !== undefined ? t('Спасибо за оценку') : title} />
+          <StarRating selectedStars={rate} size={40} onSelect={onSelectStars} />
         </VStack>
         <Modal isOpen={isModalOpen}>
           <VStack gap="32" max>
