@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { AvatarDropdown } from './AvatarDropdown';
 const meta = {
-  title: 'pages/AvatarDropdown',
+  title: 'features/AvatarDropdown',
   component: AvatarDropdown,
   argTypes: {}
 } satisfies Meta<typeof AvatarDropdown>;

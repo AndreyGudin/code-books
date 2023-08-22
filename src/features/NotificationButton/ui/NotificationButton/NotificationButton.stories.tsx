@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { NotificationButton } from './NotificationButton';
 const meta = {
-  title: 'pages/NotificationButton',
+  title: 'features/NotificationButton',
   component: NotificationButton,
   argTypes: {}
 } satisfies Meta<typeof NotificationButton>;
