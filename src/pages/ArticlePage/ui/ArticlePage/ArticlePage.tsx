@@ -7,7 +7,7 @@ import type { ReducersList } from '@/shared/lib/components/DynamicModuleLoader/D
 import { articlesPageReducer } from '../../model/slice/articlePageSlice';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { getArticlesHasMore } from '../../model/selectors/articlesPageSelectors';
-import { Page } from '@/widgets/Page/Page';
+import { Page } from '@/widgets/Page';
 import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 import { ArticlePageFilters } from '../ArticlePageFilters/ArticlePageFilters';
 import { ArticleInfiniteList } from '../ArticleInfiniteList/ArticleInfiniteList';

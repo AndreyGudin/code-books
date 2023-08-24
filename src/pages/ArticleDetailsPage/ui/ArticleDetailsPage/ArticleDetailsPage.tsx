@@ -7,7 +7,7 @@ import { ArticleDetails } from '@/entities/Article';
 import { DynamicModuleLoader } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import type { ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 
-import { Page } from '@/widgets/Page/Page';
+import { Page } from '@/widgets/Page';
 import { articleDetailsPageReducer } from '../../model/slice';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ArticleDetailsPage.module.scss';

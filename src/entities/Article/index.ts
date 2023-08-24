@@ -3,7 +3,8 @@ export type { Article } from './model/types/article';
 export {
   ArticleView,
   ArticleSortField,
-  ArticleType
+  ArticleType,
+  ArticleBlockType
 } from './model/consts/const';
 
 export {

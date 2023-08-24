@@ -6,10 +6,7 @@ import { ArticleView, type Article } from '@/entities/Article';
 import type { StateSchema } from '@/app/providers/StoreProvider';
 import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
 import { ARTICLES_VIEW_LOCALSTORAGE_KEY } from '@/shared/const/localStorage';
-import {
-  ArticleSortField,
-  ArticleType
-} from '@/entities/Article/model/consts/const';
+import { ArticleSortField, ArticleType } from '@/entities/Article';
 import type { SortOrder } from '@/shared/types/types';
 
 const articlesAdapter = createEntityAdapter<Article>({

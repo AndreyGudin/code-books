@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import type { FC } from 'react';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { LangSwitcher } from '@/widgets/LangSwitcher/LangSwitcher';
+import { LangSwitcher } from '@/widgets/LangSwitcher';
 import { ThemeSwitcher } from '@/widgets/ThemeSwitcher';
 import { Button } from '@/shared/ui/Button/Button';
 import { ButtonSize, ButtonTheme } from '@/shared/ui/Button/const';
