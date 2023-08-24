@@ -5,10 +5,7 @@ import type { FC } from 'react';
 import { Input } from '@/shared/ui/Input/Input';
 import { Button } from '@/shared/ui/Button/Button';
 import { useSelector } from 'react-redux';
-import {
-  getAddCommentFormError,
-  getAddCommentFormText
-} from '../../model/selectors/addCommentFormSelectors';
+
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -20,6 +17,10 @@ import {
 import { DynamicModuleLoader } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import type { ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { HStack } from '@/shared/ui/Stack';
+import {
+  getAddCommentFormError,
+  getAddCommentFormText
+} from '../../model/selectors/addCommentFormSelectors';
 
 export interface addCommentFormProps {
   className?: string;

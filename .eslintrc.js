@@ -38,7 +38,7 @@ module.exports = {
     '@typescript-eslint/strict-boolean-expressions': 0,
     'n/no-callback-literal': 0,
     '@typescript-eslint/array-type': 0,
-    'andrey-gudin-forprod/check-paths': 'error',
+    'andrey-gudin-forprod/check-paths': ['error', { alias: '@' }],
     'i18next/no-literal-string': [
       'error',
       {
