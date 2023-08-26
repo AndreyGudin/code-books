@@ -59,7 +59,7 @@
     "eslint": "^8.37.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-config-standard-with-typescript": "^34.0.1",
-    "eslint-plugin-andrey-gudin-forprod": "^0.0.6",
+    "eslint-plugin-andrey-gudin-forprod": "^0.0.7",
     "eslint-plugin-i18next": "^6.0.0-2",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-n": "^15.7.0",

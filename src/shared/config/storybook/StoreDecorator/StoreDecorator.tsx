@@ -4,11 +4,11 @@ import type { Decorator } from '@storybook/react';
 import { StoreProvider } from '@/app/providers/StoreProvider';
 import type { StateSchema } from '@/app/providers/StoreProvider';
 import '@/app/styles/index.scss';
-import { loginReducer } from '@/features/AuthByUsername/model/slice/loginSlice';
+import { loginReducer } from '@/features/AuthByUsername/testing';
 import { articleDetailsReducer } from '@/entities/Article';
-import { addCommentFormReducer } from '@/features/addCommentForm/model/slice/addCommentFormSlice';
-import { articleDetailsPageReducer } from '@/pages/ArticleDetailsPage/model/slice';
-import { profileReducer } from '@/features/EditableProfileCard';
+import { addCommentFormReducer } from '@/features/addCommentForm/testing';
+import { articleDetailsPageReducer } from '@/pages/ArticleDetailsPage/testing';
+import { profileReducer } from '@/features/EditableProfileCard/testing';
 
 const defaultAsyncReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
   loginForm: loginReducer,

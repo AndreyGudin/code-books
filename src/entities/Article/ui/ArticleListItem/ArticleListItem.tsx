@@ -16,8 +16,8 @@ import { ArticleTextBlockComponents } from '../ArticleTextBlockComponents/Articl
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ArticleListItem.module.scss';
 import EyeIcon from '@/shared/assets/icons/eye.svg';
-import { RoutePath } from '@/shared/config/routerConfig/routerConfig';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
+import { RoutePath } from '@/shared/const/router';
 
 interface ArticleListItemProps {
   className?: string;

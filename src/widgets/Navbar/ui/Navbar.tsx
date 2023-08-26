@@ -14,10 +14,10 @@ import { Text } from '@/shared/ui/Text/Text';
 import { TextTheme } from '@/shared/ui/Text/const';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { AppLinkTheme } from '@/shared/ui/AppLink/const';
-import { RoutePath } from '@/shared/config/routerConfig/routerConfig';
 import { HStack } from '@/shared/ui/Stack';
 import { NotificationButton } from '@/features/NotificationButton';
 import { AvatarDropdown } from '@/features/AvatarDropdown';
+import { RoutePath } from '@/shared/const/router';
 
 interface NavbarProps {
   className?: string;

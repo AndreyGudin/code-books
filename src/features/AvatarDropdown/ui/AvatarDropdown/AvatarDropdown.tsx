@@ -4,7 +4,6 @@ import { memo, useCallback } from 'react';
 import type { FC } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './AvatarDropdown.module.scss';
-import { RoutePath } from '@/shared/config/routerConfig/routerConfig';
 import { Avatar } from '@/shared/ui/Avatar/Avatar';
 import { Dropdown } from '@/shared/ui/Popups';
 import {
@@ -13,6 +12,7 @@ import {
   isUserManager,
   userActions
 } from '@/entities/User';
+import { RoutePath } from '@/shared/const/router';
 
 interface AvatarDropdownProps {
   className?: string;
