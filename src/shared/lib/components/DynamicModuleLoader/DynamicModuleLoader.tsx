@@ -3,8 +3,10 @@ import { useEffect } from 'react';
 import type { FC, ReactNode } from 'react';
 import type { Reducer } from '@reduxjs/toolkit';
 
-import type { ReduxStoreWithManager } from '@/app/providers/StoreProvider';
-import type { StateSchemaKey } from '@/app/providers/StoreProvider/config/StateSchema';
+import type {
+  ReduxStoreWithManager,
+  StateSchemaKey
+} from '@/app/providers/StoreProvider';
 
 export type ReducersList = {
   [name in StateSchemaKey]?: Reducer;

@@ -7,10 +7,7 @@ export {
   ArticleBlockType
 } from './model/consts/const';
 
-export {
-  articleDetailsActions,
-  articleDetailsReducer
-} from './model/slice/articleDetailsSlice';
+export { articleDetailsActions } from './model/slice/articleDetailsSlice';
 export type { ArticleDetailsSchema } from './model/types/articleDetailsSchema';
 export { ArticleList } from './ui/ArticleList/ArticleList';
 export { ArticleViewSelector } from './ui/ArticleViewSelector/ArticleViewSelector';

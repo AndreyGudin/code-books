@@ -39,6 +39,13 @@ module.exports = {
     'n/no-callback-literal': 0,
     '@typescript-eslint/array-type': 0,
     'andrey-gudin-forprod/check-paths': ['error', { alias: '@' }],
+    'andrey-gudin-forprod/layer-imports': [
+      'error',
+      {
+        alias: '@',
+        ignoreImportPatterns: ['**/StoreProvider', '**/testing']
+      }
+    ],
     'andrey-gudin-forprod/public-api-imports': [
       'error',
       {

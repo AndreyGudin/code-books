@@ -1,4 +1,2 @@
 export { ThemeProvider } from './ui/ThemeProvider';
-export { useTheme } from './lib/useTheme';
-export type { ThemeContextProps } from './lib/ThemeContext';
-export { Theme } from './consts/const';
+export type { ThemeContextProps } from '../../../shared/lib/context/ThemeContext';

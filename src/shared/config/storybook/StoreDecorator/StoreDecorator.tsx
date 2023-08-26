@@ -3,9 +3,10 @@ import type { Decorator } from '@storybook/react';
 
 import { StoreProvider } from '@/app/providers/StoreProvider';
 import type { StateSchema } from '@/app/providers/StoreProvider';
+// eslint-disable-next-line andrey-gudin-forprod/layer-imports
 import '@/app/styles/index.scss';
 import { loginReducer } from '@/features/AuthByUsername/testing';
-import { articleDetailsReducer } from '@/entities/Article';
+import { articleDetailsReducer } from '@/entities/Article/testing';
 import { addCommentFormReducer } from '@/features/addCommentForm/testing';
 import { articleDetailsPageReducer } from '@/pages/ArticleDetailsPage/testing';
 import { profileReducer } from '@/features/EditableProfileCard/testing';
