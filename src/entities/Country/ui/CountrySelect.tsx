@@ -3,7 +3,7 @@ import { memo, useCallback } from 'react';
 import type { FC } from 'react';
 
 import { Country } from '../model/types/country';
-import { ListBox } from '@/shared/ui/Popups/ui/ListBox/ListBox';
+import { ListBox } from '@/shared/ui/Popups';
 
 interface CountrySelectProps {
   className?: string;

@@ -2,11 +2,11 @@ import { memo } from 'react';
 import type { FC } from 'react';
 
 import { ArticleView } from '../../model/consts/const';
-import { Card } from '@/shared/ui/Card/Card';
+import { Card } from '@/shared/ui/Card';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ArticleListItem.module.scss';
-import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
+import { Skeleton } from '@/shared/ui/Skeleton';
 
 interface ArticleListItemSkeletonProps {
   className?: string;

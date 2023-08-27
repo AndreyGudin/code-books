@@ -13,7 +13,7 @@ import { getArticles } from '../../model/slice/articlePageSlice';
 import { useSearchParams } from 'react-router-dom';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { useInitialEffect } from '@/shared/hooks/useInitialEffect';
-import { Text } from '@/shared/ui/Text/Text';
+import { Text } from '@/shared/ui/Text';
 import { TextTheme } from '@/shared/ui/Text/const';
 
 interface ArticleInfiniteListProps {

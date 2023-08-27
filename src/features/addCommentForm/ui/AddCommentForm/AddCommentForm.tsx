@@ -2,8 +2,8 @@ import { useTranslation } from 'react-i18next';
 import { memo, useCallback } from 'react';
 import type { FC } from 'react';
 
-import { Input } from '@/shared/ui/Input/Input';
-import { Button } from '@/shared/ui/Button/Button';
+import { Input } from '@/shared/ui/Input';
+import { Button } from '@/shared/ui/Button';
 import { useSelector } from 'react-redux';
 
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';

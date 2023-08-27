@@ -4,7 +4,7 @@ import type { FC } from 'react';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Currency } from '../model/types/currency';
-import { ListBox } from '@/shared/ui/Popups/ui/ListBox/ListBox';
+import { ListBox } from '@/shared/ui/Popups';
 
 interface CurrencySelectProps {
   className?: string;

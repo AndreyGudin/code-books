@@ -2,9 +2,9 @@ import { memo } from 'react';
 import type { FC } from 'react';
 
 import { ArticleView } from '../../model/consts/const';
-import { Button } from '@/shared/ui/Button/Button';
+import { Button } from '@/shared/ui/Button';
 import { ButtonTheme } from '@/shared/ui/Button/const';
-import { Icon } from '@/shared/ui/Icon/Icon';
+import { Icon } from '@/shared/ui/Icon';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ArticleViewSelector.module.scss';
