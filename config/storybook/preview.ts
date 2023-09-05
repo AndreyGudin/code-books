@@ -14,13 +14,16 @@ const preview: Preview = {
         color: /(background|color)$/i,
         date: /Date$/
       }
+    },
+    themes: {
+      default: 'light',
+      list: [
+        { name: 'light', class: ['app', Theme.LIGHT], color: '#fff' },
+        { name: 'dark', class: ['app', Theme.DARK], color: '#000000' },
+        { name: 'green', class: ['app', Theme.GREEN], color: '#3b5998' }
+      ]
     }
   },
-  decorators: [
-    StyleDecorator,
-    ThemeDecorator(Theme.LIGHT),
-    withRouter,
-    SuspenseDecorator
-  ]
+  decorators: [StyleDecorator, withRouter, SuspenseDecorator]
 };
 export default preview;
