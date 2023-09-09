@@ -17,7 +17,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ArticleListItem.module.scss';
 import EyeIcon from '@/shared/assets/icons/eye.svg';
 import { AppLink } from '@/shared/ui/AppLink';
-import { RoutePath } from '@/shared/const/router';
+import { getRouteArticleDetails } from '@/shared/const/router';
 
 interface ArticleListItemProps {
   className?: string;
@@ -37,7 +37,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo(
     const navigate = useNavigate();
 
     const onOpenArticle = useCallback(() => {
-      navigate(RoutePath.articles_details + article.id);
+      navigate(getRouteArticleDetails(article.id));
     }, [article.id, navigate]);
 
     const types = (
@@ -81,10 +81,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo(
               />
             ) : null}
             <div className={cls.footer}>
-              <AppLink
-                to={RoutePath.articles_details + article.id}
-                target={target}
-              >
+              <AppLink to={getRouteArticleDetails(article.id)} target={target}>
                 <Button theme={ButtonTheme.OUTLINE}>{t('Читать далее')}</Button>
               </AppLink>
               {views}
@@ -97,7 +94,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo(
     return (
       <AppLink
         target={target}
-        to={RoutePath.articles_details + article.id}
+        to={getRouteArticleDetails(article.id)}
         className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}
       >
         <Card className={cls.card} onClick={onOpenArticle}>
