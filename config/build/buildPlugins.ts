@@ -13,15 +13,13 @@ export function buildPlugins({
   apiUrl,
   project
 }: BuildOptions): webpack.WebpackPluginInstance[] {
-  return [
+  const isProd = !isDev;
+  const plugins = [
     new HtmlWebpackPlugin({
       template: paths.html
     }),
     new webpack.ProgressPlugin(),
-    new MiniCssExtractPlugin({
-      filename: 'css/[name].[contenthash:8].css',
-      chunkFilename: 'css/[name].[contenthash:8].css'
-    }),
+
     new webpack.DefinePlugin({
       __IS_DEV__: JSON.stringify(isDev),
       __API__: JSON.stringify(apiUrl),
@@ -31,9 +29,7 @@ export function buildPlugins({
     new BundleAnalyzerPlugin({
       analyzerMode: analyze ? 'server' : 'disabled'
     }),
-    new CopyPlugin({
-      patterns: [{ from: paths.locales ?? '/asdsad', to: paths.buildLocales }]
-    }),
+
     new ForkTsCheckerWebpackPlugin({
       typescript: {
         diagnosticOptions: {
@@ -44,4 +40,20 @@ export function buildPlugins({
       }
     })
   ];
+
+  if (isProd) {
+    plugins.push(
+      new MiniCssExtractPlugin({
+        filename: 'css/[name].[contenthash:8].css',
+        chunkFilename: 'css/[name].[contenthash:8].css'
+      })
+    );
+    plugins.push(
+      new CopyPlugin({
+        patterns: [{ from: paths.locales ?? '/asdsad', to: paths.buildLocales }]
+      })
+    );
+  }
+
+  return plugins;
 }

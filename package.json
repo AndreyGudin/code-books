@@ -20,7 +20,8 @@
     "analyze:dev": "npm run build:dev --env analyze=true",
     "analyze:prod": "npm run build:prod --env analyze=true",
     "storybook": "storybook dev -p 6006 -c ./config/storybook",
-    "storybook:build": "storybook build -c ./config/storybook"
+    "storybook:build": "storybook build -c ./config/storybook",
+    "postinstall": "node ./scripts/clearCache.js"
   },
   "keywords": [],
   "author": "",
