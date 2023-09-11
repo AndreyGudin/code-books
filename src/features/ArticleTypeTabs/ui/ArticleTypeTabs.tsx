@@ -5,7 +5,7 @@ import type { FC } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Tabs } from '@/shared/ui/Tabs';
 import type { TabItem } from '@/shared/ui/Tabs';
-import { ArticleType } from '../../model/consts/const';
+import { ArticleType } from '@/entities/Article';
 
 interface ArticleTypeTabsProps {
   className?: string;
