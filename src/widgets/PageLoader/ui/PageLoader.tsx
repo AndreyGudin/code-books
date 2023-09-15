@@ -12,7 +12,10 @@ export const PageLoader: FC<PageLoaderProps> = ({
   className = ''
 }: PageLoaderProps) => {
   return (
-    <div className={classNames(cls.PageLoader, {}, [className])}>
+    <div
+      data-testid={'PageLoader'}
+      className={classNames(cls.PageLoader, {}, [className])}
+    >
       <Loader />
     </div>
   );
