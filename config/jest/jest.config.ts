@@ -37,6 +37,9 @@ export default {
     '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
     '^@/(.*)$': '<rootDir>src/$1'
   },
+  testEnvironment: 'jsdom',
+  coverageProvider: 'v8'
+
   // Indicates whether the coverage information should be collected while executing the test
   // collectCoverage: false,
 
@@ -49,7 +52,6 @@ export default {
   // An array of regexp pattern strings used to skip coverage collection
 
   // Indicates which provider should be used to instrument code for coverage
-  coverageProvider: 'v8',
 
   // A list of reporter names that Jest uses when writing coverage reports
   // coverageReporters: [
@@ -143,7 +145,6 @@ export default {
   // snapshotSerializers: [],
 
   // The test environment that will be used for testing
-  testEnvironment: 'jsdom'
 
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},

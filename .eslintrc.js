@@ -12,12 +12,11 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'prettier'
   ],
-  overrides: [],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
-    project: './tsconfig.json'
+    project: 'tsconfig.json'
   },
   plugins: ['react', 'react-hooks', 'i18next', 'andrey-gudin-forprod'],
   rules: {
