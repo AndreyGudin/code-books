@@ -67,6 +67,7 @@ export const RatingCard: FC<RatingCardProps> = memo(
       <>
         <Text title={feedbackTitle} />
         <Input
+          data-testid="RatingCard.Input"
           value={feedback}
           onChange={setFeedback}
           placeholder={t('Ваш отзыв') ?? ''}
@@ -76,7 +77,7 @@ export const RatingCard: FC<RatingCardProps> = memo(
 
     if (isMobile)
       return (
-        <Card className={className} fullWidth>
+        <Card data-testid={'RatingCard'} className={className} fullWidth>
           <VStack align="center" gap="8" max>
             <Text title={title} />
             <StarRating
@@ -88,14 +89,16 @@ export const RatingCard: FC<RatingCardProps> = memo(
           <Drawer isOpen={isModalOpen} onClose={delayedHandler}>
             <VStack max gap="16">
               {modalContent}
-              <Button onClick={acceptHandler}>{t('Отправить')}</Button>
+              <Button data-testid="RatingCard.Send" onClick={acceptHandler}>
+                {t('Отправить')}
+              </Button>
             </VStack>
           </Drawer>
         </Card>
       );
 
     return (
-      <Card className={className} fullWidth>
+      <Card data-testid={'RatingCard'} className={className} fullWidth>
         <VStack align="center" gap="8" max>
           <Text title={title !== undefined ? t('Спасибо за оценку') : title} />
           <StarRating selectedStars={rate} size={40} onSelect={onSelectStars} />
@@ -104,10 +107,16 @@ export const RatingCard: FC<RatingCardProps> = memo(
           <VStack gap="32" max>
             {modalContent}
             <HStack max gap="16" justify="end">
-              <Button onClick={delayedHandler} theme={ButtonTheme.OUTLINE_RED}>
+              <Button
+                data-testid="RatingCard.Close"
+                onClick={delayedHandler}
+                theme={ButtonTheme.OUTLINE_RED}
+              >
                 {t('Закрыть')}
               </Button>
-              <Button onClick={acceptHandler}>{t('Отправить')}</Button>
+              <Button data-testid="RatingCard.Send" onClick={acceptHandler}>
+                {t('Отправить')}
+              </Button>
             </HStack>
           </VStack>
         </Modal>

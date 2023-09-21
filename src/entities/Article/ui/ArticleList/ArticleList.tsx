@@ -56,7 +56,10 @@ export const ArticleList: FC<ArticleListProps> = memo(
     }
 
     return (
-      <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
+      <div
+        data-testid="ArticleList"
+        className={classNames(cls.ArticleList, {}, [className, cls[view]])}
+      >
         {articles !== undefined && articles.length > 0
           ? articles.map(renderArticle)
           : null}

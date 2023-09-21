@@ -1,18 +1,15 @@
-/* eslint-disable @typescript-eslint/method-signature-style */
-/* eslint-disable @typescript-eslint/no-namespace */
-/* eslint-disable @typescript-eslint/triple-slash-reference */
 /// <reference types="cypress" />
 
-import { login } from 'cypress/support/commands/login';
+import * as commonCommands from 'cypress/support/commands/common';
+import * as profileCommands from 'cypress/support/commands/profile';
+import * as articleCommands from 'cypress/support/commands/article';
+import * as commentsCommands from 'cypress/support/commands/comments';
+import * as ratingCommands from 'cypress/support/commands/rating';
 
-Cypress.Commands.add('login', login);
+Cypress.Commands.addAll(commonCommands);
+Cypress.Commands.addAll(profileCommands);
+Cypress.Commands.addAll(articleCommands);
+Cypress.Commands.addAll(commentsCommands);
+Cypress.Commands.addAll(ratingCommands);
+
 //
-declare global {
-  namespace Cypress {
-    interface Chainable {
-      login(email?: string, password?: string): Chainable<void>;
-    }
-  }
-}
-
-export {};
