@@ -18,7 +18,7 @@ module.exports = {
     sourceType: 'module',
     project: 'tsconfig.json'
   },
-  ignorePatterns: ['cypress/**/*.ts'],
+  ignorePatterns: ['cypress/**/*.ts', 'cypress/**/*.tsx', 'webpack.config.ts'],
   plugins: ['react', 'react-hooks', 'i18next', 'andrey-gudin-forprod'],
   rules: {
     'react-hooks/rules-of-hooks': 'error',

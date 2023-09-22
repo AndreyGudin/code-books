@@ -1,5 +1,4 @@
 /// <reference types="cypress" />
-
 import * as commonCommands from 'cypress/support/commands/common';
 import * as profileCommands from 'cypress/support/commands/profile';
 import * as articleCommands from 'cypress/support/commands/article';
@@ -11,5 +10,4 @@ Cypress.Commands.addAll(profileCommands);
 Cypress.Commands.addAll(articleCommands);
 Cypress.Commands.addAll(commentsCommands);
 Cypress.Commands.addAll(ratingCommands);
-
 //
