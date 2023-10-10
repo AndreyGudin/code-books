@@ -13,7 +13,6 @@ import { getUserMounted, userActions } from '@/entities/User';
 const App: FC = () => {
   const dispatch = useDispatch();
   const mounted = useSelector(getUserMounted);
-
   useEffect(() => {
     dispatch(userActions.initAuthData());
   }, [dispatch]);
