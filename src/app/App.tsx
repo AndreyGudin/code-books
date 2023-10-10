@@ -1,5 +1,5 @@
 import { Suspense, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import type { FC } from 'react';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -8,14 +8,20 @@ import { Navbar } from '@/widgets/Navbar';
 import { Sidebar } from '@/widgets/Sidebar';
 
 import './styles/index.scss';
-import { getUserMounted, userActions } from '@/entities/User';
+import { getUserMounted, initAuthData } from '@/entities/User';
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
+import { PageLoader } from '@/widgets/PageLoader';
 
 const App: FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const mounted = useSelector(getUserMounted);
   useEffect(() => {
-    dispatch(userActions.initAuthData());
+    dispatch(initAuthData()).catch((e) => {
+      console.log(e);
+    });
   }, [dispatch]);
+
+  if (!mounted) return <PageLoader />;
 
   return (
     <div className={classNames('app', {}, [])}>
