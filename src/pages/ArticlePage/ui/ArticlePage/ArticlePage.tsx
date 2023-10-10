@@ -14,6 +14,7 @@ import { ArticleInfiniteList } from '../ArticleInfiniteList/ArticleInfiniteList'
 
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ArticlePage.module.scss';
+import { ArticlePageGreeting } from '@/features/ArticlePageGreeting';
 
 interface ArticlePageProps {
   className?: string;
@@ -46,6 +47,7 @@ const ArticlePage: FC<ArticlePageProps> = ({
       >
         <ArticlePageFilters />
         <ArticleInfiniteList className={cls.list} />
+        <ArticlePageGreeting />
       </Page>
     </DynamicModuleLoader>
   );
