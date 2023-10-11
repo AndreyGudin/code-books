@@ -19,6 +19,7 @@ import { Button } from '@/shared/ui/Button';
 import { ButtonTheme } from '@/shared/ui/Button/const';
 import { useTranslation } from 'react-i18next';
 import { TestProps } from '@/shared/types/tests';
+import { toggleFeatures } from '@/shared/lib/features';
 
 interface PageProps extends TestProps {
   className?: string;
@@ -74,11 +75,17 @@ export const Page: FC<PageProps> = memo((props: PageProps) => {
     );
   }, 500);
 
+  const currentClassName = toggleFeatures({
+    name: 'isAppRedesigned',
+    on: () => cls.PageRedesigned,
+    off: () => cls.Page
+  });
+
   return (
     <main
       data-testid={props['data-testid'] ?? 'Page'}
       ref={wrapperRef}
-      className={classNames(cls.Page, {}, [className])}
+      className={classNames(currentClassName, {}, [className])}
       onScroll={(e) => onScroll(e)}
     >
       {children}

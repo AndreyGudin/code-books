@@ -11,6 +11,8 @@ import './styles/index.scss';
 import { getUserMounted, initAuthData } from '@/entities/User';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { PageLoader } from '@/widgets/PageLoader';
+import { ToggleFeatures } from '@/shared/lib/features';
+import { MainLayout } from '@/shared/layouts/MainLayout';
 
 const App: FC = () => {
   const dispatch = useAppDispatch();
@@ -24,16 +26,33 @@ const App: FC = () => {
   if (!mounted) return <PageLoader />;
 
   return (
-    <div className={classNames('app', {}, [])}>
-      <Suspense fallback="">
-        <Navbar />
-
-        <div className="content-page">
-          <Sidebar />
-          {mounted !== undefined && mounted ? <AppRouter /> : null}
+    <ToggleFeatures
+      feature="isAppRedesigned"
+      on={
+        <div className={classNames('app_redesigned', {}, [])}>
+          <Suspense fallback="">
+            <MainLayout
+              content={<AppRouter />}
+              header={<Navbar />}
+              sidebar={<Sidebar />}
+              toolbar={<div>Toolbar</div>}
+            />
+          </Suspense>
         </div>
-      </Suspense>
-    </div>
+      }
+      off={
+        <div className={classNames('app', {}, [])}>
+          <Suspense fallback="">
+            <Navbar />
+
+            <div className="content-page">
+              <Sidebar />
+              {mounted !== undefined && mounted ? <AppRouter /> : null}
+            </div>
+          </Suspense>
+        </div>
+      }
+    />
   );
 };
 
