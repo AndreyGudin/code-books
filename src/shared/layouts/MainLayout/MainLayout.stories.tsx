@@ -7,4 +7,10 @@ const meta = {
 } satisfies Meta<typeof MainLayout>;
 export default meta;
 type Story = StoryObj<typeof meta>;
-export const Normal: Story = {};
+export const Normal: Story = {
+  args: {
+    content: <div>Content</div>,
+    header: <div>header</div>,
+    sidebar: <div>Sidebar</div>
+  }
+};

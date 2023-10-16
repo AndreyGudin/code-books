@@ -11,6 +11,7 @@ import { Theme } from '@/shared/const/theme';
 import { useTheme } from '@/shared/hooks/useTheme';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { saveJsonSettings } from '@/entities/User';
+import { Icon } from '@/shared/ui/Icon';
 
 interface ThemeSwitcherProps {
   className?: string;
@@ -34,7 +35,7 @@ export const ThemeSwitcher: FC = memo(
         className={classNames(cls.ThemeSwitcher, {}, [className, theme])}
         onClick={onToggleHandler}
       >
-        <ThemeIcon className={cls.icon} />
+        <Icon Svg={ThemeIcon} width={40} height={40} inverted />
       </Button>
     );
   }
