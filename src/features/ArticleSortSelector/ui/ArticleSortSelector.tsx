@@ -4,8 +4,8 @@ import type { FC } from 'react';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ArticleSortSelector.module.scss';
-import { Select } from '@/shared/ui/Select';
-import type { SelectOption } from '@/shared/ui/Select';
+import { Select } from '@/shared/ui/deprecated/Select';
+import type { SelectOption } from '@/shared/ui/deprecated/Select';
 import type { SortOrder } from '@/shared/types/types';
 import { ArticleSortField } from '@/entities/Article';
 

@@ -3,8 +3,8 @@ import { memo, useCallback, useMemo } from 'react';
 import type { FC } from 'react';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Tabs } from '@/shared/ui/Tabs';
-import type { TabItem } from '@/shared/ui/Tabs';
+import { Tabs } from '@/shared/ui/deprecated/Tabs';
+import type { TabItem } from '@/shared/ui/deprecated/Tabs';
 import { ArticleType } from '@/entities/Article';
 
 interface ArticleTypeTabsProps {

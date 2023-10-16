@@ -4,12 +4,12 @@ import type { FC } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './NotificationButton.module.scss';
 import { NotificationList } from '@/entities/Notification';
-import { Button } from '@/shared/ui/Button';
-import { ButtonTheme } from '@/shared/ui/Button/const';
-import { Icon } from '@/shared/ui/Icon';
+import { Button } from '@/shared/ui/deprecated/Button';
+import { ButtonTheme } from '@/shared/ui/deprecated/Button/const';
+import { Icon } from '@/shared/ui/deprecated/Icon';
 import NotificationsIcon from '@/shared/assets/icons/notifications.svg';
-import { Popover } from '@/shared/ui/Popups';
-import { Drawer } from '@/shared/ui/Drawer';
+import { Popover } from '@/shared/ui/deprecated/Popups';
+import { Drawer } from '@/shared/ui/deprecated/Drawer';
 import { useDevice } from '@/shared/hooks/useDevice';
 
 interface NotificationButtonProps {

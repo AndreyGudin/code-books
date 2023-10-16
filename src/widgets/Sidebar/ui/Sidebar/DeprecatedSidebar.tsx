@@ -3,12 +3,12 @@ import { useSelector } from 'react-redux';
 import type { FC } from 'react';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Button } from '@/shared/ui/Button';
-import { ButtonSize, ButtonTheme } from '@/shared/ui/Button/const';
+import { Button } from '@/shared/ui/deprecated/Button';
+import { ButtonSize, ButtonTheme } from '@/shared/ui/deprecated/Button/const';
 import cls from './Sidebar.module.scss';
 import { SidebarItem } from './SidebarItem/SidebarItem';
 import { getSidebarItems } from '../../model/selectors/getSidebarItems';
-import { VStack } from '@/shared/ui/Stack';
+import { VStack } from '@/shared/ui/deprecated/Stack';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 import { LangSwitcher } from '@/features/LangSwitcher';
 

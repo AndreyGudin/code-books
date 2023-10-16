@@ -2,10 +2,10 @@ import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
 import type { FC } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Text } from '@/shared/ui/Text';
-import { TextSize, TextTheme } from '@/shared/ui/Text/const';
+import { Text } from '@/shared/ui/deprecated/Text';
+import { TextSize, TextTheme } from '@/shared/ui/deprecated/Text/const';
 import { ArticleList } from '@/entities/Article';
-import { VStack } from '@/shared/ui/Stack';
+import { VStack } from '@/shared/ui/deprecated/Stack';
 import { useArticleRecommendationsList } from '../../api/articleRecommendationsApi';
 
 interface ArticleRecommendationsListProps {

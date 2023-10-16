@@ -9,8 +9,8 @@ import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ArticleList.module.scss';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
-import { Text } from '@/shared/ui/Text';
-import { TextSize } from '@/shared/ui/Text/const';
+import { Text } from '@/shared/ui/deprecated/Text';
+import { TextSize } from '@/shared/ui/deprecated/Text/const';
 
 interface ArticleListProps {
   className?: string;

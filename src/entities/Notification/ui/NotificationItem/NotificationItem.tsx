@@ -4,9 +4,9 @@ import type { FC } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './NotificationItem.module.scss';
 import type { Notification } from '../../model/types/notification';
-import { Card } from '@/shared/ui/Card';
-import { CardTheme } from '@/shared/ui/Card/const';
-import { Text } from '@/shared/ui/Text';
+import { Card } from '@/shared/ui/deprecated/Card';
+import { CardTheme } from '@/shared/ui/deprecated/Card/const';
+import { Text } from '@/shared/ui/deprecated/Text';
 
 interface NotificationItemProps {
   className?: string;

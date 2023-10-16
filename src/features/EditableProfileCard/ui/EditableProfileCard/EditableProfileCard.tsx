@@ -9,8 +9,8 @@ import type { Country } from '@/entities/Country';
 import type { Currency } from '@/entities/Currency';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { useInitialEffect } from '@/shared/hooks/useInitialEffect';
-import { Text } from '@/shared/ui/Text';
-import { TextTheme } from '@/shared/ui/Text/const';
+import { Text } from '@/shared/ui/deprecated/Text';
+import { TextTheme } from '@/shared/ui/deprecated/Text/const';
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
 import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileForm';
 import { getProfileIsLoading } from '../../model/selectors/getProfileIsLoading/getProfileIsLoading';
@@ -25,7 +25,7 @@ import {
   type ReducersList
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { EditableProfileCardHeader } from '../EditableProfileCardHeader/EditableProfileCardHeader';
-import { VStack } from '@/shared/ui/Stack';
+import { VStack } from '@/shared/ui/deprecated/Stack';
 
 interface EditableProfileCardProps {
   className?: string;

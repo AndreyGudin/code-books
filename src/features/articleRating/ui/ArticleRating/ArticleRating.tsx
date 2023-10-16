@@ -9,7 +9,7 @@ import {
   useRateArticle
 } from '../../model/api/articleRatingApi';
 import { getAuthUserData } from '@/entities/User';
-import { Skeleton } from '@/shared/ui/Skeleton';
+import { Skeleton } from '@/shared/ui/deprecated/Skeleton';
 
 export interface ArticleRatingProps {
   className?: string;

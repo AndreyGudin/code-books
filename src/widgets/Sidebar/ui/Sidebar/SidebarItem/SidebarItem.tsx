@@ -4,8 +4,8 @@ import { useSelector } from 'react-redux';
 import type { FC } from 'react';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { AppLink } from '@/shared/ui/AppLink';
-import { AppLinkTheme } from '@/shared/ui/AppLink/const';
+import { AppLink } from '@/shared/ui/deprecated/AppLink';
+import { AppLinkTheme } from '@/shared/ui/deprecated/AppLink/const';
 
 import cls from './SidebarItem.module.scss';
 import { getAuthUserData } from '@/entities/User';
