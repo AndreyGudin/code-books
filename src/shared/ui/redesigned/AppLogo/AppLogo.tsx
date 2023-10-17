@@ -3,17 +3,15 @@ import type { FC } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './AppLogo.module.scss';
 import AppSvg from '@/shared/assets/icons/app-image.svg';
-import { HStack } from '../Stack';
+import { HStack } from '../../deprecated/Stack';
 
 interface AppLogoProps {
   className?: string;
+  size?: number;
 }
-/**
- * Устарел, используем новые компоненты из папки redesigned
- * @deprecated
- */
+
 export const AppLogo: FC<AppLogoProps> = memo(
-  ({ className = '' }: AppLogoProps) => {
+  ({ className = '', size = 50 }: AppLogoProps) => {
     return (
       <HStack
         max
@@ -22,7 +20,12 @@ export const AppLogo: FC<AppLogoProps> = memo(
       >
         <div className={cls.gradientBig} />
         <div className={cls.gradientSmall} />
-        <AppSvg className={cls.appLogo} />
+        <AppSvg
+          width={size}
+          height={size}
+          color="black"
+          className={cls.appLogo}
+        />
       </HStack>
     );
   }
