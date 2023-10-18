@@ -3,8 +3,8 @@ import type { FC, ReactNode } from 'react';
 
 import { type Mods, classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Drawer.module.scss';
-import { Portal } from '../Portal/Portal';
-import { Overlay } from '../Overlay/Overlay';
+import { Portal } from '../../redesigned/Portal/Portal';
+import { Overlay } from '../../redesigned/Overlay/Overlay';
 import {
   AnimationProvider,
   useAnimationLibs

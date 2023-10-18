@@ -12,7 +12,7 @@ import { profileActions } from '../../model/slice/profileSlice';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { Button } from '@/shared/ui/deprecated/Button';
 import { ButtonTheme } from '@/shared/ui/deprecated/Button/const';
-import { HStack } from '@/shared/ui/deprecated/Stack';
+import { HStack } from '@/shared/ui/redesigned/Stack';
 import { Text } from '@/shared/ui/deprecated/Text';
 
 interface EditableProfileCardHeaderProps {

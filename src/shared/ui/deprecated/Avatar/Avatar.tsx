@@ -4,7 +4,7 @@ import type { CSSProperties, FC } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Avatar.module.scss';
 import UserIcon from '../../../assets/icons/user-avatar.svg';
-import { AppImage } from '../AppImage';
+import { AppImage } from '../../redesigned/AppImage';
 import { Icon } from '../Icon';
 import { Skeleton } from '../Skeleton';
 

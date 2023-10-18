@@ -28,7 +28,7 @@ import { Icon } from '@/shared/ui/deprecated/Icon';
 import { ArticleCodeBlockComponents } from '../ArticleCodeBlockComponents/ArticleCodeBlockComponents';
 import { ArticleImageBlockComponents } from '../ArticleImageBlockComponents/ArticleImageBlockComponents';
 import { ArticleTextBlockComponents } from '../ArticleTextBlockComponents/ArticleTextBlockComponents';
-import { HStack, VStack } from '@/shared/ui/deprecated/Stack';
+import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
 
 interface ArticleDetailsProps {
   className?: string;

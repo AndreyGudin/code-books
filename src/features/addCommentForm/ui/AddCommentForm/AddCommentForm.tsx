@@ -16,7 +16,7 @@ import {
 } from '../../model/slice/addCommentFormSlice';
 import { DynamicModuleLoader } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import type { ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { HStack } from '@/shared/ui/deprecated/Stack';
+import { HStack } from '@/shared/ui/redesigned/Stack';
 import {
   getAddCommentFormError,
   getAddCommentFormText
