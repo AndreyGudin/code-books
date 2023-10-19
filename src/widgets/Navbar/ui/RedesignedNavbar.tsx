@@ -10,7 +10,7 @@ import { LoginModal } from '@/features/AuthByUsername';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { getAuthUserData } from '@/entities/User';
 import cls from './Navbar.module.scss';
-import { HStack } from '@/shared/ui/deprecated/Stack';
+import { HStack } from '@/shared/ui/redesigned/Stack';
 import { NotificationButton } from '@/features/NotificationButton';
 import { AvatarDropdown } from '@/features/AvatarDropdown';
 

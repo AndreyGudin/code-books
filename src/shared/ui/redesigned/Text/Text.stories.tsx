@@ -59,7 +59,7 @@ export const Error: Story = {
   args: {
     title: 'Title Lorem, ipsum.',
     text: 'Description Description Description',
-    theme: TextTheme.ERROR
+    variant: 'error'
   }
 };
 
@@ -67,7 +67,7 @@ export const SizeL: Story = {
   args: {
     title: 'Title Lorem, ipsum.',
     text: 'Description Description Description',
-    size: TextSize.L
+    size: 'l'
   }
 };
 
@@ -75,6 +75,6 @@ export const SizeM: Story = {
   args: {
     title: 'Title Lorem, ipsum.',
     text: 'Description Description Description',
-    size: TextSize.M
+    size: 'm'
   }
 };

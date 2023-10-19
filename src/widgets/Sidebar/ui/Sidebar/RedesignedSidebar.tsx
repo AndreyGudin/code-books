@@ -7,7 +7,7 @@ import cls from './Sidebar.module.new.scss';
 import { SidebarItem } from './SidebarItem/SidebarItem';
 import { getSidebarItems } from '../../model/selectors/getSidebarItems';
 import { AppLogo } from '@/shared/ui/redesigned/AppLogo';
-import { VStack } from '@/shared/ui/deprecated/Stack';
+import { VStack } from '@/shared/ui/redesigned/Stack';
 import { Icon } from '@/shared/ui/redesigned/Icon';
 import ArrowIcon from '@/shared/assets/icons/arrow-bottom.svg';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
