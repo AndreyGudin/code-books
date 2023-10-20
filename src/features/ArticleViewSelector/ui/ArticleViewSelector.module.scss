@@ -1,9 +1,11 @@
 .ArticleViewSelector {
-  display: flex;
-  gap: 4px;
-  align-items: center;
+  .notSelected {
+    color: var(--secondary-color);
+  }
 }
 
-.notSelected {
-  fill: var(--secondary-color);
+.ArticleViewSelectorRedesigned {
+  .notSelected {
+    color: var(--light-bg-redesigned);
+  }
 }

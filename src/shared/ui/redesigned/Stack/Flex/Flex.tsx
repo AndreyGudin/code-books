@@ -58,6 +58,30 @@ const gapClasses: Record<FlexGap, string> = {
   32: cls.gap32
 };
 
+export const getFlexClasses = ({
+  align = 'center',
+  direction = 'row',
+  gap,
+  justify = 'start',
+  max = false
+}: Pick<
+  FlexProps,
+  'justify' | 'align' | 'direction' | 'gap' | 'max'
+>): string => {
+  const classes = [
+    justifyClasses[justify],
+    alignClasses[align],
+    directionClasses[direction],
+    gap !== undefined ? gapClasses[gap] : ''
+  ];
+
+  const mods: Mods = {
+    [cls.maxWidth]: max
+  };
+
+  return classNames(cls.Flex, mods, classes);
+};
+
 export const Flex: FC<FlexProps> = ({
   children,
   className = '',
