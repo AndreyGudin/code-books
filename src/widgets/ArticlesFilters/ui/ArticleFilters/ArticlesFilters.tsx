@@ -43,6 +43,7 @@ export const ArticlesFilters: FC<ArticlesFiltersProps> = memo(
           className,
           getFlexClasses({ direction: 'column', gap: '32' })
         ])}
+        padding="24"
       >
         <Input
           onChange={onChangeSearch}

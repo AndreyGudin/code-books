@@ -1,4 +1,4 @@
-import { Fragment, type ReactNode } from 'react';
+import { Fragment, useMemo, type ReactNode } from 'react';
 import { Listbox as HListbox } from '@headlessui/react';
 
 import popupCls from '../../styles/popup.module.scss';
@@ -9,24 +9,24 @@ import { HStack } from '../../../Stack';
 import type { DropdownDirection } from '@/shared/types/ui';
 import { mapDirectionClass } from '../../styles/const';
 
-export interface ListboxItem {
-  value: string;
+export interface ListboxItem<T extends string> {
+  value: T;
   content: ReactNode;
   disabled?: boolean;
 }
 
-interface ListboxProps {
-  items?: ListboxItem[];
+interface ListboxProps<T extends string> {
+  items?: ListboxItem<T>[];
   className?: string;
-  value?: string;
+  value?: T;
   defaultValue?: string;
-  onChange: (value: string) => void;
+  onChange: (value: T) => void;
   disabled?: boolean;
   direction?: DropdownDirection;
   label?: string;
 }
 
-export function ListBox({
+export function ListBox<T extends string>({
   className = '',
   items = [],
   value,
@@ -35,8 +35,12 @@ export function ListBox({
   direction = 'bottom right',
   label = '',
   onChange
-}: ListboxProps): JSX.Element {
+}: ListboxProps<T>): JSX.Element {
   const optionsClasses = [mapDirectionClass[direction], popupCls.menu];
+
+  const selectedItem = useMemo(() => {
+    return items.find((item) => item.value === value);
+  }, [items, value]);
 
   return (
     <HStack className={className} gap="4">
@@ -49,7 +53,9 @@ export function ListBox({
         disabled={disabled}
       >
         <HListbox.Button className={popupCls.trigger}>
-          <Button disabled={disabled}>{value ?? defaultValue}</Button>
+          <Button variant="filled" disabled={disabled}>
+            {selectedItem?.content ?? defaultValue}
+          </Button>
         </HListbox.Button>
         <HListbox.Options
           className={classNames(cls.options, {}, optionsClasses)}
@@ -65,7 +71,8 @@ export function ListBox({
                 <li
                   className={classNames(cls.item, {
                     [popupCls.active]: active,
-                    [popupCls.disabled]: item.disabled ?? false
+                    [popupCls.disabled]: item.disabled ?? false,
+                    [popupCls.selected]: selected
                   })}
                 >
                   {selected && '*'}

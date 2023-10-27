@@ -27,6 +27,14 @@
   background: none;
 }
 
+.filled {
+  background: var(--light-bg-redesigned);
+  border: none;
+  outline: none;
+  padding: 8px 16px;
+  border-radius: 34px;
+}
+
 .outline_red {
   border: 1px solid var(--red-light);
   color: var(--red-light);

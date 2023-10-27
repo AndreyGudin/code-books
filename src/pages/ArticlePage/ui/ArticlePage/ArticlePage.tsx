@@ -11,13 +11,13 @@ import { Page } from '@/widgets/Page';
 import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 import { ArticlePageFilters } from '../ArticlePageFilters/ArticlePageFilters';
 import { ArticleInfiniteList } from '../ArticleInfiniteList/ArticleInfiniteList';
-
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ArticlePage.module.scss';
 import { ArticlePageGreeting } from '@/features/ArticlePageGreeting';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { StickyContentLayout } from '@/shared/layouts/StickyContentLayout';
 import { ViewSelectorContainer } from '../ViewSelectorContainer/ViewSelectorContainer';
+import { FiltersContainer } from '../FiltersContainer/FiltersContainers';
 
 interface ArticlePageProps {
   className?: string;
@@ -45,7 +45,7 @@ const ArticlePage: FC<ArticlePageProps> = ({
       on={
         <StickyContentLayout
           left={<ViewSelectorContainer />}
-          right={<div>sadasdas</div>}
+          right={<FiltersContainer />}
           content={
             <Page
               data-testid="ArticlesPage"

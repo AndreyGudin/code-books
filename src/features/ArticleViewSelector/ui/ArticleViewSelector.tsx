@@ -15,7 +15,7 @@ import { ArticleView } from '@/entities/Article';
 import { ToggleFeatures, toggleFeatures } from '@/shared/lib/features';
 import { Icon } from '@/shared/ui/redesigned/Icon';
 import { Card } from '@/shared/ui/redesigned/Card';
-import { HStack } from '@/shared/ui/redesigned/Stack';
+import { getFlexClasses } from '@/shared/ui/redesigned/Stack';
 
 interface ArticleViewSelectorProps {
   className?: string;
@@ -54,27 +54,30 @@ export const ArticleViewSelector: FC<ArticleViewSelectorProps> = memo(
         on={
           <Card
             className={classNames(cls.ArticleViewSelectorRedesigned, {}, [
-              className
+              className,
+              getFlexClasses({
+                direction: 'row',
+                gap: '16',
+                justify: 'center'
+              })
             ])}
             border="round"
           >
-            <HStack gap="8">
-              {viewTypes.map((type) => {
-                return (
-                  <Icon
-                    width={24}
-                    height={24}
-                    Svg={type.icon}
-                    className={classNames('', {
-                      [cls.notSelected]: type.view !== view
-                    })}
-                    onClick={onClick(type.view)}
-                    key={type.view}
-                    clickable
-                  />
-                );
-              })}
-            </HStack>
+            {viewTypes.map((type) => {
+              return (
+                <Icon
+                  width={24}
+                  height={24}
+                  Svg={type.icon}
+                  className={classNames('', {
+                    [cls.notSelected]: type.view !== view
+                  })}
+                  onClick={onClick(type.view)}
+                  key={type.view}
+                  clickable
+                />
+              );
+            })}
           </Card>
         }
         off={
