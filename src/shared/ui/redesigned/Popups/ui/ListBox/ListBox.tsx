@@ -75,7 +75,6 @@ export function ListBox<T extends string>({
                     [popupCls.selected]: selected
                   })}
                 >
-                  {selected && '*'}
                   {item.content}
                 </li>
               )}

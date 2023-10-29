@@ -40,14 +40,16 @@ export const Tabs: FC<TabsProps> = memo(
       <Flex
         direction={direction}
         gap="8"
+        align="start"
         className={classNames(cls.Tabs, {}, [className])}
       >
         {tabs.map((tab, i) => {
+          const isSelected = tab.value === value;
           return (
             <Card
               onClick={clickHandle(tab)}
-              variant={tab.value === value ? 'normal' : 'outlined'}
-              className={cls.tab}
+              variant={isSelected ? 'light' : 'normal'}
+              className={classNames(cls.tab, { [cls.selected]: isSelected })}
               key={tab.value}
               border="round"
             >
