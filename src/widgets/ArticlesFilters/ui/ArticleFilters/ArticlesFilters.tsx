@@ -10,6 +10,8 @@ import { ArticleTypeTabs } from '@/features/ArticleTypeTabs';
 import { Input } from '@/shared/ui/redesigned/Input';
 import { ArticleSortField, ArticleType } from '@/entities/Article';
 import { SortOrder } from '@/shared/types/types';
+import SearchIcon from '@/shared/assets/icons/search.svg';
+import { Icon } from '@/shared/ui/redesigned/Icon';
 
 interface ArticlesFiltersProps {
   className?: string;
@@ -41,7 +43,7 @@ export const ArticlesFilters: FC<ArticlesFiltersProps> = memo(
       <Card
         className={classNames(cls.ArticlesFilters, {}, [
           className,
-          getFlexClasses({ direction: 'column', gap: '32' })
+          getFlexClasses({ direction: 'column', gap: '32', align: 'start' })
         ])}
         padding="24"
       >
@@ -49,6 +51,7 @@ export const ArticlesFilters: FC<ArticlesFiltersProps> = memo(
           onChange={onChangeSearch}
           value={search}
           placeholder={t('Поиск') ?? ''}
+          addonLeft={<Icon Svg={SearchIcon} />}
         />
         <ArticleSortSelector
           order={order}
