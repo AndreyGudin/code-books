@@ -4,20 +4,25 @@ import type { FC, InputHTMLAttributes, ReactNode } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import type { Mods } from '@/shared/lib/classNames/classNames';
 import cls from './Input.module.scss';
+import { HStack } from '../Stack';
+import { Text } from '../Text';
 
 type HTMLInputProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,
   'value' | 'onChange' | 'readOnly'
 >;
+type InputSize = 's' | 'm' | 'l';
 
 interface InputProps extends HTMLInputProps {
   className?: string;
   value?: string;
+  label?: string;
   readonly?: boolean;
   onChange?: (value: string) => void;
   autofocus?: boolean;
   addonLeft?: ReactNode;
   addonRight?: ReactNode;
+  inputSize?: InputSize;
 }
 
 export const Input: FC<InputProps> = memo((props: InputProps) => {
@@ -29,6 +34,8 @@ export const Input: FC<InputProps> = memo((props: InputProps) => {
     placeholder,
     autofocus = false,
     readonly = false,
+    label = '',
+    inputSize = 'm',
     addonLeft,
     addonRight,
     ...otherProps
@@ -61,8 +68,13 @@ export const Input: FC<InputProps> = memo((props: InputProps) => {
     setIsFocused(true);
   };
 
-  return (
-    <div className={classNames(cls.InputWrapper, mods, [className])}>
+  const input = (
+    <div
+      className={classNames(cls.InputWrapper, mods, [
+        className,
+        cls[inputSize]
+      ])}
+    >
       {addonLeft && <div className={cls.addonLeft}>{addonLeft}</div>}
       <input
         ref={ref}
@@ -79,4 +91,14 @@ export const Input: FC<InputProps> = memo((props: InputProps) => {
       {addonRight && <div className={cls.addonRight}>{addonRight}</div>}
     </div>
   );
+
+  if (label)
+    return (
+      <HStack gap="8" max>
+        <Text text={label} />
+        {input}
+      </HStack>
+    );
+
+  return input;
 });

@@ -4,7 +4,9 @@ import type { FC } from 'react';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Currency } from '../model/types/currency';
-import { ListBox } from '@/shared/ui/deprecated/Popups';
+import { ListBox as ListBoxDepracated } from '@/shared/ui/deprecated/Popups';
+import { ToggleFeatures } from '@/shared/lib/features';
+import { ListBox } from '@/shared/ui/redesigned/Popups';
 
 interface CurrencySelectProps {
   className?: string;
@@ -36,15 +38,32 @@ export const CurrencySelect: FC<CurrencySelectProps> = memo(
     );
 
     return (
-      <ListBox
-        className={classNames('', {}, [className])}
-        value={value}
-        defaultValue={t('Укажите валюту') ?? ''}
-        items={options}
-        label={t('Укажите валюту') ?? ''}
-        onChange={onChangeHandler}
-        disabled={readonly}
-        direction="top right"
+      <ToggleFeatures
+        feature="isAppRedesigned"
+        on={
+          <ListBox
+            className={classNames('', {}, [className])}
+            value={value}
+            defaultValue={t('Укажите валюту') ?? ''}
+            items={options}
+            label={t('Укажите валюту') ?? ''}
+            onChange={onChangeHandler}
+            disabled={readonly}
+            direction="top right"
+          />
+        }
+        off={
+          <ListBoxDepracated
+            className={classNames('', {}, [className])}
+            value={value}
+            defaultValue={t('Укажите валюту') ?? ''}
+            items={options}
+            label={t('Укажите валюту') ?? ''}
+            onChange={onChangeHandler}
+            disabled={readonly}
+            direction="top right"
+          />
+        }
       />
     );
   }

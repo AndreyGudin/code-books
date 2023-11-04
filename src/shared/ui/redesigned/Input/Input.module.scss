@@ -21,6 +21,7 @@
 }
 
 .input {
+  width: 100%;
   margin-left: auto;
   border: none;
   outline: none;
@@ -43,4 +44,14 @@
   .addonRight svg {
     color: var(--accent-redesigned);
   }
+}
+
+.s {
+  height: 32px;
+}
+.m {
+  height: 38px;
+}
+.k {
+  height: 44px;
 }
