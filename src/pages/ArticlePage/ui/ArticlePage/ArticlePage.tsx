@@ -18,6 +18,9 @@ import { ToggleFeatures } from '@/shared/lib/features';
 import { StickyContentLayout } from '@/shared/layouts/StickyContentLayout';
 import { ViewSelectorContainer } from '../ViewSelectorContainer/ViewSelectorContainer';
 import { FiltersContainer } from '../FiltersContainer/FiltersContainers';
+import { useInitialEffect } from '@/shared/hooks/useInitialEffect';
+import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
+import { useSearchParams } from 'react-router-dom';
 
 interface ArticlePageProps {
   className?: string;
@@ -32,12 +35,19 @@ const ArticlePage: FC<ArticlePageProps> = ({
 }: ArticlePageProps) => {
   const hasMore = useSelector(getArticlesHasMore);
   const dispatch = useAppDispatch();
+  const [searchParams] = useSearchParams();
 
   const onLoadNextPart = useCallback(() => {
     dispatch(fetchNextArticlesPage()).catch((e) => {
       console.log(e);
     });
   }, [dispatch]);
+
+  useInitialEffect(() => {
+    dispatch(initArticlesPage(searchParams)).catch((e) => {
+      console.log(e);
+    });
+  });
 
   const content = (
     <ToggleFeatures
