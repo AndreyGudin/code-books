@@ -48,6 +48,13 @@ export const RedesignedArticleListItem: FC<RedesignedArticleListItemProps> =
         </>
       );
 
+      const userInfo = (
+        <>
+          <Avatar size={30} src={article.user.avatar} />
+          <Text bold text={article.user.username} />
+        </>
+      );
+
       const views = (
         <HStack gap="8">
           <Icon Svg={EyeIcon} />
@@ -72,8 +79,7 @@ export const RedesignedArticleListItem: FC<RedesignedArticleListItemProps> =
           >
             <VStack max gap="16">
               <HStack max gap="8">
-                <Avatar size={30} src={article.user.avatar} />
-                <Text bold text={article.user.username} />
+                {userInfo}
                 <Text text={article.createdAt} />
               </HStack>
               <Text bold title={article.title} />
@@ -115,21 +121,24 @@ export const RedesignedArticleListItem: FC<RedesignedArticleListItemProps> =
             cls[view]
           ])}
         >
-          <Card className={cls.card} onClick={onOpenArticle}>
-            <div className={cls.imageWrapper}>
-              <AppImage
-                fallback={<Skeleton width={200} height={200} />}
-                src={article.img}
-                className={cls.img}
-                alt=""
-              />
-              <Text text={article.createdAt} className={cls.date} />
-            </div>
-            <div className={cls.infoWrapper}>
-              {types}
-              {views}
-            </div>
-            <Text title={article.title} className={cls.title} />
+          <Card className={cls.card} border="round" onClick={onOpenArticle}>
+            <AppImage
+              fallback={<Skeleton width={200} height={200} />}
+              src={article.img}
+              className={cls.img}
+              alt=""
+            />
+            <VStack className={cls.info} gap="4">
+              <Text text={article.title} className={cls.title} />
+              <VStack gap="4" className={cls.footer}>
+                <HStack justify="between">
+                  <Text text={article.createdAt} className={cls.date} />
+                  {types}
+                  {views}
+                </HStack>
+                <HStack gap="4">{userInfo}</HStack>
+              </VStack>
+            </VStack>
           </Card>
         </AppLink>
       );

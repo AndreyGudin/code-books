@@ -16,6 +16,8 @@ export type FlexDirection = 'row' | 'column';
 
 export type FlexGap = '4' | '8' | '16' | '24' | '32';
 
+export type FlexWrap = 'nowrap' | 'wrap';
+
 type DivProps = DetailedHTMLProps<
   HTMLAttributes<HTMLDivElement>,
   HTMLDivElement
@@ -29,6 +31,7 @@ export interface FlexProps extends DivProps {
   direction?: FlexDirection;
   gap?: FlexGap;
   max?: boolean;
+  wrap?: FlexWrap;
 }
 
 const justifyClasses: Record<FlexJustify, string> = {
@@ -64,15 +67,17 @@ export const getFlexClasses = ({
   direction = 'row',
   gap,
   justify = 'start',
-  max = false
+  max = false,
+  wrap = 'nowrap'
 }: Pick<
   FlexProps,
-  'justify' | 'align' | 'direction' | 'gap' | 'max'
+  'justify' | 'align' | 'direction' | 'gap' | 'max' | 'wrap'
 >): string => {
   const classes = [
     justifyClasses[justify],
     alignClasses[align],
     directionClasses[direction],
+    cls[wrap],
     gap !== undefined ? gapClasses[gap] : ''
   ];
 
@@ -91,6 +96,7 @@ export const Flex: FC<FlexProps> = ({
   direction = 'row',
   gap,
   max = false,
+  wrap = 'nowrap',
   ...otherProps
 }: FlexProps) => {
   const classes = [
@@ -98,6 +104,7 @@ export const Flex: FC<FlexProps> = ({
     justifyClasses[justify],
     alignClasses[align],
     directionClasses[direction],
+    cls[wrap],
     gap !== undefined ? gapClasses[gap] : ''
   ];
 

@@ -11,6 +11,8 @@ import cls from './ArticleList.module.scss';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
 import { Text } from '@/shared/ui/deprecated/Text';
 import { TextSize } from '@/shared/ui/deprecated/Text/const';
+import { ToggleFeatures } from '@/shared/lib/features';
+import { HStack } from '@/shared/ui/redesigned/Stack';
 
 interface ArticleListProps {
   className?: string;
@@ -29,6 +31,7 @@ export const ArticleList: FC<ArticleListProps> = memo(
     view = ArticleView.GRID
   }: ArticleListProps) => {
     const { t } = useTranslation();
+
     const renderArticle = (article: Article): JSX.Element => {
       return (
         <ArticleListItem
@@ -56,15 +59,33 @@ export const ArticleList: FC<ArticleListProps> = memo(
     }
 
     return (
-      <div
-        data-testid="ArticleList"
-        className={classNames(cls.ArticleList, {}, [className, cls[view]])}
-      >
-        {articles !== undefined && articles.length > 0
-          ? articles.map(renderArticle)
-          : null}
-        {isLoading ? skeleton : null}
-      </div>
+      <ToggleFeatures
+        feature="isAppRedesigned"
+        on={
+          <HStack
+            wrap="wrap"
+            gap="16"
+            data-testid="ArticleList"
+            className={classNames(cls.ArticleListRedesigned, {}, [className])}
+          >
+            {articles !== undefined && articles.length > 0
+              ? articles.map(renderArticle)
+              : null}
+            {isLoading ? skeleton : null}
+          </HStack>
+        }
+        off={
+          <div
+            data-testid="ArticleList"
+            className={classNames(cls.ArticleList, {}, [className, cls[view]])}
+          >
+            {articles !== undefined && articles.length > 0
+              ? articles.map(renderArticle)
+              : null}
+            {isLoading ? skeleton : null}
+          </div>
+        }
+      />
     );
   }
 );
