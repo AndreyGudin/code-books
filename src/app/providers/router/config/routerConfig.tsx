@@ -20,8 +20,10 @@ import {
   getRouteArticles,
   getRouteForbidden,
   getRouteMain,
-  getRouteProfile
+  getRouteProfile,
+  getRouteSettings
 } from '@/shared/const/router';
+import { SettingsPage } from '@/pages/SettingsPage';
 
 export type AppRoutesProps = RouteProps & {
   authOnly?: boolean;
@@ -32,6 +34,10 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
   [AppRoutes.MAIN]: {
     path: getRouteMain(),
     element: <MainPage />
+  },
+  [AppRoutes.SETTINGS]: {
+    path: getRouteSettings(),
+    element: <SettingsPage />
   },
   [AppRoutes.ABOUT]: {
     path: getRouteAbout(),

@@ -13,7 +13,11 @@ import {
   isUserManager,
   userActions
 } from '@/entities/User';
-import { getRouteAdmin, getRouteProfile } from '@/shared/const/router';
+import {
+  getRouteAdmin,
+  getRouteProfile,
+  getRouteSettings
+} from '@/shared/const/router';
 
 interface RedesignedAvatarDropdownProps {
   className?: string;
@@ -48,6 +52,10 @@ export const RedesignedAvatarDropdown: FC<RedesignedAvatarDropdownProps> = memo(
                   }
                 ]
               : []),
+            {
+              content: t('Настройки'),
+              href: getRouteSettings()
+            },
             {
               content: t('Профиль'),
               href: getRouteProfile(authData.id)
