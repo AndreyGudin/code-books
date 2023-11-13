@@ -11,7 +11,6 @@
 
   transition: all 0.3s ease-out;
   transition-property: opacity, z-index;
-  color: var(--primary-color);
   display: flex;
   align-items: center;
 }
@@ -23,7 +22,6 @@
   height: calc(100vh + 100px);
   width: 96vw;
   border-radius: 12px 12px 0;
-  background: var(--bg-color);
   touch-action: none;
   padding: 15px;
 }
@@ -34,5 +32,16 @@
 
   .content {
     transform: translateY(0%);
+  }
+}
+
+.drawerNew {
+  .sheet {
+    background: var(--light-bg-redesigned);
+  }
+}
+.drawerOld {
+  .sheet {
+    background: var(--bg-color);
   }
 }

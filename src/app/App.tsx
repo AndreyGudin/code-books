@@ -29,7 +29,7 @@ const App: FC = () => {
     <ToggleFeatures
       feature="isAppRedesigned"
       on={
-        <div className={classNames('app_redesigned', {}, [])}>
+        <div id="app" className={classNames('app_redesigned', {}, [])}>
           <Suspense fallback="">
             <MainLayout
               content={<AppRouter />}
@@ -41,7 +41,7 @@ const App: FC = () => {
         </div>
       }
       off={
-        <div className={classNames('app', {}, [])}>
+        <div id="app" className={classNames('app', {}, [])}>
           <Suspense fallback="">
             <Navbar />
 

@@ -10,7 +10,7 @@ import { Icon as DeprecatedIcon } from '@/shared/ui/deprecated/Icon';
 import DeprecatedNotificationsIcon from '@/shared/assets/icons/notifications.svg';
 import NotificationsIcon from '@/shared/assets/icons/notifications_new.svg';
 import { Popover as DeprecatedPopover } from '@/shared/ui/deprecated/Popups';
-import { Drawer } from '@/shared/ui/deprecated/Drawer';
+import { Drawer } from '@/shared/ui/redesigned/Drawer';
 import { useDevice } from '@/shared/hooks/useDevice';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { Icon } from '@/shared/ui/redesigned/Icon';

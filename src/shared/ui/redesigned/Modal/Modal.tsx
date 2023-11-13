@@ -1,9 +1,10 @@
 import type { FC, ReactNode } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Modal.module.scss';
-import { Portal } from '../../redesigned/Portal/Portal';
-import { Overlay } from '../../redesigned/Overlay/Overlay';
+import { Portal } from '../Portal/Portal';
+import { Overlay } from '../Overlay/Overlay';
 import { useModal } from '@/shared/hooks/useModal';
+import { toggleFeatures } from '@/shared/lib/features';
 
 interface ModalProps {
   className?: string;
@@ -11,10 +12,7 @@ interface ModalProps {
   isOpen?: boolean;
   onClose?: () => void;
 }
-/**
- * Устарел, используем новые компоненты из папки redesigned
- * @deprecated
- */
+
 export const Modal: FC<ModalProps> = ({
   className = '',
   isOpen = false,
@@ -33,8 +31,17 @@ export const Modal: FC<ModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <Portal>
-      <div className={classNames(cls.Modal, mods, [className])}>
+    <Portal element={document.getElementById('app') ?? document.body}>
+      <div
+        className={classNames(cls.Modal, mods, [
+          className,
+          toggleFeatures({
+            name: 'isAppRedesigned',
+            on: () => cls.modalNew,
+            off: () => cls.modalOld
+          })
+        ])}
+      >
         <Overlay onClick={close}>
           <div className={cls.content} onClick={onContentClick}>
             {children}
