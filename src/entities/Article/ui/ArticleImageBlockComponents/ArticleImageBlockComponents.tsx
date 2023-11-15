@@ -5,8 +5,10 @@ import type { ArticleImageBlock } from '../../model/types/article';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ArticleImageBlockComponents.module.scss';
-import { Text } from '@/shared/ui/deprecated/Text';
+import { Text as DeprecatedText } from '@/shared/ui/deprecated/Text';
+import { Text as RedesignedText } from '@/shared/ui/redesigned/Text';
 import { TextAlign } from '@/shared/ui/deprecated/Text/const';
+import { ToggleFeatures } from '@/shared/lib/features';
 
 interface ArticleImageBlockComponentsProps {
   className?: string;
@@ -21,7 +23,11 @@ export const ArticleImageBlockComponents: FC<ArticleImageBlockComponentsProps> =
       >
         <img src={block.src} alt={block.title} className={cls.img} />
         {block.title.length > 0 ? (
-          <Text text={block.title} align={TextAlign.CENTER} />
+          <ToggleFeatures
+            feature="isAppRedesigned"
+            on={<RedesignedText text={block.title} align={'center'} />}
+            off={<DeprecatedText text={block.title} align={TextAlign.CENTER} />}
+          />
         ) : null}
       </div>
     );

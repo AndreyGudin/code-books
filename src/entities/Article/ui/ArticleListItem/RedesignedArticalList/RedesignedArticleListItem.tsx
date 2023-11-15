@@ -50,7 +50,7 @@ export const RedesignedArticleListItem: FC<RedesignedArticleListItemProps> =
 
       const userInfo = (
         <>
-          <Avatar size={30} src={article.user.avatar} />
+          <Avatar size={30} src={article.user.avatar} className={cls.avatar} />
           <Text bold text={article.user.username} />
         </>
       );
@@ -121,17 +121,22 @@ export const RedesignedArticleListItem: FC<RedesignedArticleListItemProps> =
             cls[view]
           ])}
         >
-          <Card className={cls.card} border="round" onClick={onOpenArticle}>
+          <Card
+            className={cls.card}
+            border="round"
+            onClick={onOpenArticle}
+            padding="0"
+          >
             <AppImage
-              fallback={<Skeleton width={200} height={200} />}
+              fallback={<Skeleton width={'100%'} height={200} />}
               src={article.img}
               className={cls.img}
               alt=""
             />
-            <VStack className={cls.info} gap="4">
-              <Text text={article.title} className={cls.title} />
-              <VStack gap="4" className={cls.footer}>
-                <HStack justify="between">
+            <VStack className={cls.info} gap="4" max>
+              <Text title={article.title} className={cls.title} />
+              <VStack gap="4" className={cls.footer} max>
+                <HStack justify="between" max>
                   <Text text={article.createdAt} className={cls.date} />
                   {types}
                   {views}

@@ -1,11 +1,13 @@
 import { memo } from 'react';
 import type { FC } from 'react';
 
-import { Code } from '@/shared/ui/deprecated/Code';
+import { Code as DeprecatedCode } from '@/shared/ui/deprecated/Code';
+import { Code as RedesignedCode } from '@/shared/ui/redesigned/Code';
 import type { ArticleCodeBlock } from '../../model/types/article';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ArticleCodeBlockComponents.module.scss';
+import { ToggleFeatures } from '@/shared/lib/features';
 
 interface ArticleCodeBlockComponentsProps {
   className?: string;
@@ -18,7 +20,11 @@ export const ArticleCodeBlockComponents: FC<ArticleCodeBlockComponentsProps> =
       <div
         className={classNames(cls.ArticleCodeBlockComponents, {}, [className])}
       >
-        <Code text={block.code} />
+        <ToggleFeatures
+          feature="isAppRedesigned"
+          on={<RedesignedCode text={block.code} />}
+          off={<DeprecatedCode text={block.code} />}
+        />
       </div>
     );
   });

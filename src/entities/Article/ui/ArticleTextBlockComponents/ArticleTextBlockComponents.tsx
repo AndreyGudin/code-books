@@ -5,7 +5,9 @@ import type { ArticleTextBlock } from '../../model/types/article';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ArticleTextBlockComponents.module.scss';
-import { Text } from '@/shared/ui/redesigned/Text';
+import { Text as DeprecatedText } from '@/shared/ui/deprecated/Text';
+import { Text as RedesignedText } from '@/shared/ui/redesigned/Text';
+import { ToggleFeatures } from '@/shared/lib/features';
 
 interface ArticleTextBlockComponentsProps {
   className?: string;
@@ -19,10 +21,23 @@ export const ArticleTextBlockComponents: FC<ArticleTextBlockComponentsProps> =
         className={classNames(cls.ArticleTextBlockComponents, {}, [className])}
       >
         {block.title !== undefined ? (
-          <Text title={block.title} className={cls.title} />
+          <ToggleFeatures
+            feature="isAppRedesigned"
+            on={<RedesignedText title={block.title} className={cls.title} />}
+            off={<DeprecatedText title={block.title} className={cls.title} />}
+          />
         ) : null}
         {block.paragraphs.map((paragraph, i) => {
-          return <Text key={i} text={paragraph} className={cls.paragraph} />;
+          return (
+            <ToggleFeatures
+              key={i}
+              feature="isAppRedesigned"
+              on={<RedesignedText text={paragraph} className={cls.paragraph} />}
+              off={
+                <DeprecatedText text={paragraph} className={cls.paragraph} />
+              }
+            />
+          );
         })}
       </div>
     );
