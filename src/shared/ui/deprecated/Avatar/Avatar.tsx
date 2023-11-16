@@ -15,7 +15,10 @@ interface AvatarProps {
   alt?: string;
   fallbackInverted?: boolean;
 }
-
+/**
+ * Устарел, используем новые компоненты из папки redesigned
+ * @deprecated
+ */
 export const Avatar: FC<AvatarProps> = ({
   className = '',
   src = '',

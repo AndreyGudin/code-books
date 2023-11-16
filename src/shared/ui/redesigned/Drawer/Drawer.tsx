@@ -112,10 +112,7 @@ export const DrawerContent: FC<DrawerProps> = memo(
     );
   }
 );
-/**
- * Устарел, используем новые компоненты из папки redesigned
- * @deprecated
- */
+
 export const DrawerAsync = (props: DrawerProps): JSX.Element | null => {
   const { isLoaded } = useAnimationLibs();
 
@@ -125,10 +122,7 @@ export const DrawerAsync = (props: DrawerProps): JSX.Element | null => {
 
   return <DrawerContent {...props} />;
 };
-/**
- * Устарел, используем новые компоненты из папки redesigned
- * @deprecated
- */
+
 export const Drawer = (props: DrawerProps): JSX.Element => {
   return (
     <AnimationProvider>
