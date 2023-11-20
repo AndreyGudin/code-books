@@ -4,12 +4,11 @@ import type { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
-import { Button } from '@/shared/ui/deprecated/Button';
-import { ButtonTheme } from '@/shared/ui/deprecated/Button/const';
+import { Button } from '@/shared/ui/redesigned/Button';
 import { LoginModal } from '@/features/AuthByUsername';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { getAuthUserData } from '@/entities/User';
-import cls from './Navbar.module.scss';
+import cls from './Navbar.module.new.scss';
 import { HStack } from '@/shared/ui/redesigned/Stack';
 import { NotificationButton } from '@/features/NotificationButton';
 import { AvatarDropdown } from '@/features/AvatarDropdown';
@@ -34,7 +33,7 @@ export const RedesignedNavbar: FC = memo(
 
     if (authData !== undefined) {
       return (
-        <header className={classNames(cls.NavbarRedesigned, {}, [className])}>
+        <header className={classNames(cls.Navbar, {}, [className])}>
           <HStack gap="16" className={cls.actions}>
             <NotificationButton />
             <AvatarDropdown />
@@ -47,7 +46,7 @@ export const RedesignedNavbar: FC = memo(
       <header className={classNames(cls.Navbar, {}, [className])}>
         <div className={cls.links}>
           <Button
-            theme={ButtonTheme.CLEAR_INVERTED}
+            variant={'clear'}
             className={cls.links}
             onClick={openModalHandler}
           >

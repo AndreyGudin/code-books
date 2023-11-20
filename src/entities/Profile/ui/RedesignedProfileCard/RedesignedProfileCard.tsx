@@ -2,7 +2,6 @@ import { useTranslation } from 'react-i18next';
 import type { FC } from 'react';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
-import type { Mods } from '@/shared/lib/classNames/classNames';
 import type { Profile } from '../../model/types/profile';
 
 import cls from './ProfileCard.new.module.scss';
@@ -60,8 +59,9 @@ export const RedesignedProfileCard: FC<RedesignedProfileCardProps> = ({
 
   return (
     <Card
-      padding="24"
+      padding="16"
       fullWidth
+      border="partial"
       className={classNames(cls.ProfileCard, {}, [
         className,
         getFlexClasses({ direction: 'column', gap: '32' })
