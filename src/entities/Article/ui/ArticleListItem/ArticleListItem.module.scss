@@ -107,3 +107,15 @@
     overflow-y: hidden;
   }
 }
+.ArticleListItemRedesigned {
+  &.LIST {
+    width: 100%;
+  }
+
+  &.GRID {
+    .card {
+      height: 350px;
+      width: 230px;
+    }
+  }
+}

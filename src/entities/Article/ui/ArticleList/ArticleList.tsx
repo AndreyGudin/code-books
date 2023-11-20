@@ -45,11 +45,11 @@ export const ArticleList: FC<ArticleListProps> = memo(
     };
 
     const skeleton = (
-      <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
+      <>
         {new Array(view === ArticleView.GRID ? 9 : 3).fill(0).map((item, i) => {
           return <ArticleListItemSkeleton key={i} view={view} />;
         })}
-      </div>
+      </>
     );
 
     if (!isLoading && articles.length === 0) {
@@ -66,12 +66,14 @@ export const ArticleList: FC<ArticleListProps> = memo(
             wrap="wrap"
             gap="16"
             data-testid="ArticleList"
+            max
             className={classNames(cls.ArticleListRedesigned, {}, [className])}
           >
             {articles !== undefined && articles.length > 0
               ? articles.map(renderArticle)
               : null}
             {isLoading ? skeleton : null}
+            {/* {skeleton} */}
           </HStack>
         }
         off={
