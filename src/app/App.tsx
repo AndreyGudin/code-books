@@ -13,6 +13,7 @@ import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { PageLoader } from '@/widgets/PageLoader';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { MainLayout } from '@/shared/layouts/MainLayout';
+import { AppLoaderLayout } from '@/shared/layouts/AppLoaderLayout';
 
 const App: FC = () => {
   const dispatch = useAppDispatch();
@@ -23,7 +24,18 @@ const App: FC = () => {
     });
   }, [dispatch]);
 
-  if (!mounted) return <PageLoader />;
+  if (!mounted)
+    return (
+      <ToggleFeatures
+        feature="isAppRedesigned"
+        on={
+          <div id="app" className={classNames('app_redesigned', {}, [])}>
+            <AppLoaderLayout />
+          </div>
+        }
+        off={<PageLoader />}
+      />
+    );
 
   return (
     <ToggleFeatures
