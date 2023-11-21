@@ -14,10 +14,13 @@ import { PageLoader } from '@/widgets/PageLoader';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { MainLayout } from '@/shared/layouts/MainLayout';
 import { AppLoaderLayout } from '@/shared/layouts/AppLoaderLayout';
+import { useAppToolbar } from './lib/useAppToolbar';
 
 const App: FC = () => {
   const dispatch = useAppDispatch();
   const mounted = useSelector(getUserMounted);
+  const toolbar = useAppToolbar();
+
   useEffect(() => {
     dispatch(initAuthData()).catch((e) => {
       console.log(e);
@@ -47,6 +50,7 @@ const App: FC = () => {
               content={<AppRouter />}
               header={<Navbar />}
               sidebar={<Sidebar />}
+              toolbar={toolbar}
             />
           </Suspense>
         </div>

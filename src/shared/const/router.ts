@@ -37,3 +37,16 @@ export const RoutePath: Record<AppRoutes, string> = {
   [AppRoutes.FORBIDDEN]: getRouteForbidden(),
   [AppRoutes.NOT_FOUND]: '*'
 };
+
+export const AppRouteByPathPattern: Record<string, AppRoutes> = {
+  [getRouteMain()]: AppRoutes.MAIN,
+  [getRouteSettings()]: AppRoutes.SETTINGS,
+  [getRouteAbout()]: AppRoutes.ABOUT,
+  [getRouteProfile(':id')]: AppRoutes.PROFILE,
+  [getRouteArticles()]: AppRoutes.ARTICLES,
+  [getRouteArticleCreate()]: AppRoutes.ARTICLE_CREATE,
+  [getRouteArticleEdit(':id')]: AppRoutes.ARTICLE_EDIT,
+  [getRouteArticleDetails(':id')]: AppRoutes.ARTICLES_DETAILS,
+  [getRouteAdmin()]: AppRoutes.ADMIN_PANEL,
+  [getRouteForbidden()]: AppRoutes.FORBIDDEN
+};
