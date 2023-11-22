@@ -131,6 +131,17 @@
 
 .disabled {
   opacity: 0.5;
+  cursor: not-allowed;
+
+  &:hover {
+    cursor: not-allowed;
+    color: var(--text-redesigned);
+
+    .addonLeft svg,
+    .addonRight svg {
+      color: var(--hint-redesigned);
+    }
+  }
 }
 
 .addonLeft,

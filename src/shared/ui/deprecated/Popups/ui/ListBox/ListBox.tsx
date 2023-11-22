@@ -51,8 +51,8 @@ export function ListBox({
         onChange={onChange}
         disabled={disabled}
       >
-        <HListbox.Button className={popupCls.trigger}>
-          <Button disabled={disabled}>{value ?? defaultValue}</Button>
+        <HListbox.Button as={Button} className={popupCls.trigger}>
+          {value ?? defaultValue}
         </HListbox.Button>
         <HListbox.Options
           className={classNames(cls.options, {}, optionsClasses)}
