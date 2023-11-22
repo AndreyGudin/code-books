@@ -1,4 +1,4 @@
-import { Suspense, useEffect } from 'react';
+import { Suspense, memo, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import type { FC } from 'react';
 
@@ -15,8 +15,9 @@ import { ToggleFeatures } from '@/shared/lib/features';
 import { MainLayout } from '@/shared/layouts/MainLayout';
 import { AppLoaderLayout } from '@/shared/layouts/AppLoaderLayout';
 import { useAppToolbar } from './lib/useAppToolbar';
+import { withTheme } from './providers/ThemeProviders/ui/withTheme';
 
-const App: FC = () => {
+const App: FC = memo(() => {
   const dispatch = useAppDispatch();
   const mounted = useSelector(getUserMounted);
   const toolbar = useAppToolbar();
@@ -69,6 +70,6 @@ const App: FC = () => {
       }
     />
   );
-};
+});
 
-export default App;
+export default withTheme(App);

@@ -6,7 +6,7 @@ import { Loader } from './Loader';
 import { Theme } from '@/shared/const/theme';
 
 const meta = {
-  title: 'shared/Loader',
+  title: 'shared/deprecated/Loader',
   component: Loader,
   argTypes: {}
 } satisfies Meta<typeof Loader>;

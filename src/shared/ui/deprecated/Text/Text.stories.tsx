@@ -6,7 +6,7 @@ import { TextSize, TextTheme } from './const';
 import { Theme } from '@/shared/const/theme';
 
 const meta = {
-  title: 'shared/Text',
+  title: 'shared/deprecated/Text',
   component: Text,
   argTypes: {}
 } satisfies Meta<typeof Text>;

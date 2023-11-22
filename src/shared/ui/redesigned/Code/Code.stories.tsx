@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Code } from './Code';
 const meta = {
-  title: 'shared/Code',
+  title: 'shared/redesigned/Code',
   component: Code,
   argTypes: {}
 } satisfies Meta<typeof Code>;

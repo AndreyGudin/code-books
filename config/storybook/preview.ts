@@ -2,8 +2,8 @@ import type { Preview } from '@storybook/react';
 import { withRouter } from 'storybook-addon-react-router-v6';
 
 import { StyleDecorator } from '../../src/shared/config/storybook/StyleDecorator/StyleDecorator';
-import { ThemeDecorator } from '../../src/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { SuspenseDecorator } from '../../src/shared/config/storybook/SuspenseDecorator/SuspenseDecorator';
+import { FeatureDecorator } from '../../src/shared/config/storybook/FeatureDecorator/FeatureDecorator';
 import { Theme } from '../../src/shared/const/theme';
 
 const preview: Preview = {
@@ -24,6 +24,11 @@ const preview: Preview = {
       ]
     }
   },
-  decorators: [StyleDecorator, withRouter, SuspenseDecorator]
+  decorators: [
+    StyleDecorator,
+    withRouter,
+    SuspenseDecorator,
+    FeatureDecorator({ isAppRedesigned: false })
+  ]
 };
 export default preview;

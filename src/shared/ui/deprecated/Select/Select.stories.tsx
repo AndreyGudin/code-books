@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Select } from './Select';
 
 const meta = {
-  title: 'shared/Select',
+  title: 'shared/deprecated/Select',
   component: Select,
   argTypes: {}
 } satisfies Meta<typeof Select>;

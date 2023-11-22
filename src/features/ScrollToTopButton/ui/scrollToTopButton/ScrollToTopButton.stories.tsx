@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ScrollToTopButton } from './ScrollToTopButton';
+
 const meta = {
   title: 'pages/ScrollToTopButton',
   component: ScrollToTopButton,

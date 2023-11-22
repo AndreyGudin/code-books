@@ -6,7 +6,7 @@ import { ButtonSize, ButtonTheme } from './const';
 import { Theme } from '@/shared/const/theme';
 
 const meta = {
-  title: 'shared/Button',
+  title: 'shared/deprecated/Button',
   component: Button,
   argTypes: {}
 } satisfies Meta<typeof Button>;

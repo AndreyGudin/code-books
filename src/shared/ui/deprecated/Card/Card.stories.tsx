@@ -3,7 +3,7 @@ import { Card } from './Card';
 import { Text } from '../Text/Text';
 
 const meta = {
-  title: 'shared/Card',
+  title: 'shared/deprecated/Card',
   component: Card,
   argTypes: {}
 } satisfies Meta<typeof Card>;

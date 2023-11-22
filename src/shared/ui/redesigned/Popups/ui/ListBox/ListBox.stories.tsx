@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ListBox } from './ListBox';
 const meta = {
-  title: 'shared/Listbox',
+  title: 'shared/redesigned/Listbox',
   component: ListBox,
   argTypes: {},
   decorators: [

@@ -3,7 +3,7 @@ import { Skeleton } from './Skeleton';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from '@/shared/const/theme';
 const meta = {
-  title: 'shared/Skeleton',
+  title: 'shared/deprecated/Skeleton',
   component: Skeleton,
   argTypes: {}
 } satisfies Meta<typeof Skeleton>;

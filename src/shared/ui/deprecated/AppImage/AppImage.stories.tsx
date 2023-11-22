@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { AppImage } from './AppImage';
 const meta = {
-  title: 'pages/AppImage',
+  title: 'shared/deprecated/AppImage',
   component: AppImage,
   argTypes: {}
 } satisfies Meta<typeof AppImage>;
