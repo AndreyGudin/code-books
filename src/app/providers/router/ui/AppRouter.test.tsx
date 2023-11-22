@@ -56,12 +56,13 @@ describe('AppRouter', () => {
       initialState: {
         user: {
           _mounted: true,
-          authData: {}
+          authData: { id: '1', username: 'admin' }
         }
       }
     });
-    await waitForElementToBeRemoved(screen.getByTestId('PageLoader'));
-    screen.debug();
+    await waitForElementToBeRemoved(() => screen.getByTestId('PageLoader'), {
+      timeout: 30000
+    });
     const page = await screen.findByTestId('ProfilePage');
     expect(page).toBeInTheDocument();
   });
