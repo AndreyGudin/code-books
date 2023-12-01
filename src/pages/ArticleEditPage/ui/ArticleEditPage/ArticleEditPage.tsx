@@ -4,6 +4,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ArticleEditPage.module.scss';
 import { Page } from '@/widgets/Page';
 import { useParams } from 'react-router-dom';
+import { ArticleForm } from '@/features/ArticleForm';
 
 interface ArticleEditPageProps {
   className?: string;
@@ -15,9 +16,7 @@ const ArticleEditPage: FC<ArticleEditPageProps> = memo(
     const isEdit = Boolean(id);
     return (
       <Page className={classNames(cls.ArticleEditPage, {}, [className])}>
-        {isEdit
-          ? `Редактирование статьи с ID = ${id ?? ''}`
-          : 'Создание новой статьи'}
+        {isEdit ? `Редактирование статьи с ID = ${id ?? ''}` : <ArticleForm />}
       </Page>
     );
   }
