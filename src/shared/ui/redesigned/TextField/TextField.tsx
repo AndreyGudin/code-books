@@ -31,9 +31,8 @@ export const TextField: FC<TextFieldProps> = memo(
         rows={rows}
         className={classNames(cls.TextField, {}, [className, cls[border]])}
         {...otherProps}
-      >
-        {text}
-      </textarea>
+        defaultValue={text}
+      />
     );
   }
 );
