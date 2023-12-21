@@ -1,7 +1,7 @@
 import { Article } from '@/entities/Article';
 import { rtkApi } from '@/shared/api/rtkApi';
 
-type NewArticleArg = Omit<Article, 'id' | 'user'> & { userId: string };
+export type NewArticleArg = Omit<Article, 'id' | 'user'> & { userId: string };
 
 const articleFormApi = rtkApi.injectEndpoints({
   endpoints: (build) => ({

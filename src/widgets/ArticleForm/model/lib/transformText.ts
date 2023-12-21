@@ -26,21 +26,47 @@ export const mapSymbols = (text: string): ArticleBlock[] => {
   const mappedText: string[] = [];
 
   mappedSymbols.sort(sortText);
-
+  console.log('mappedSymbols', mappedSymbols);
   mappedSymbols.forEach((elem, i, array) => {
-    const beginText = Number(elem.split(' ')[2]);
+    const beginSymbolText = Number(elem.split(' ')[1]);
+    const endSymbolText = Number(elem.split(' ')[2]);
     const symbol = elem.split(' ')[0].length;
 
+    if (i === 0) {
+      if (array.length === 1) {
+        if (beginSymbolText === 0) {
+          console.log('1');
+          mappedText.push(
+            `text ${endSymbolText + symbol + 1} ${text.length - 1}`
+          );
+        }
+
+        if (beginSymbolText > 0) {
+          mappedText.push(`text 0 ${beginSymbolText - symbol}`);
+        }
+      } else {
+        const nextBeginSymbolText = Number(array[i + 1].split(' ')[1]);
+
+        if (beginSymbolText === 0) {
+          mappedText.push(
+            `text ${endSymbolText + symbol + 1} ${nextBeginSymbolText}`
+          );
+        }
+
+        if (beginSymbolText > 0) {
+          mappedText.push(`text 0 ${beginSymbolText - symbol}`);
+        }
+      }
+    }
+
     if (array[i + 1]) {
-      const endText = Number(array[i + 1].split(' ')[1]);
-      if (beginText !== endText - symbol - 1) {
-        mappedText.push(`text ${beginText + symbol + 1} ${endText}`);
-      }
+      const endNextText = Number(array[i + 1].split(' ')[1]);
+      const nextSymbol = array[i + 1].split(' ')[0].length;
+      mappedText.push(
+        `text ${endSymbolText + symbol + 1} ${endNextText - nextSymbol}`
+      );
     } else {
-      const beginText = Number(elem.split(' ')[2]);
-      if (beginText < text.length - 1) {
-        mappedText.push(`text ${beginText + symbol + 1} ${text.length - 1}`);
-      }
+      mappedText.push(`text ${endSymbolText + symbol + 1} ${text.length - 1}`);
     }
   });
 

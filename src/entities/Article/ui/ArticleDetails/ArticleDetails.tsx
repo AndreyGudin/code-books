@@ -14,10 +14,9 @@ import {
   getArticleDetailsIsLoading
 } from '../../model/selectors/articleDetails';
 import { Text as DeprecatedText } from '@/shared/ui/deprecated/Text';
-import { Text as RedesignedText, Text } from '@/shared/ui/redesigned/Text';
+import { Text as RedesignedText } from '@/shared/ui/redesigned/Text';
 
 import { TextAlign, TextSize } from '@/shared/ui/deprecated/Text/const';
-import { Skeleton as RedesignedSkeleton } from '@/shared/ui/redesigned/Skeleton';
 import { Avatar } from '@/shared/ui/deprecated/Avatar';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -25,12 +24,11 @@ import cls from './ArticleDetails.module.scss';
 import EyeIcon from '@/shared/assets/icons/eye.svg';
 import CalendarIcon from '@/shared/assets/icons/calendar.svg';
 import { Icon as DeprecatedIcon } from '@/shared/ui/deprecated/Icon';
-import { Icon as RedesignedIcon } from '@/shared/ui/redesigned/Icon';
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
 import { renderBlock } from './renderBlock';
 import { ToggleFeatures } from '@/shared/lib/features';
-import { AppImage } from '@/shared/ui/redesigned/AppImage';
 import { ArticleDetailsSkeleton } from './ArticleDetailsSkeleton';
+import { RedesignedArticleDetailsComponent } from './RedesignedArticleDetailsComponent';
 
 interface ArticleDetailsProps {
   className?: string;
@@ -70,33 +68,11 @@ const DeprecatedArticleDetails = (): JSX.Element => {
   );
 };
 
-const RedesignedArticleDetails = (): JSX.Element => {
+const RedesignedArticleDetails = (): JSX.Element | null => {
   const article = useSelector(getArticleDetailsData);
 
-  return (
-    <>
-      <RedesignedText className={cls.title} title={article?.title} size={'l'} />
-      <RedesignedText title={article?.subtitle} size={'l'} />
-      <AppImage
-        fallback={
-          <RedesignedSkeleton width={'100%'} height={420} border={'16px'} />
-        }
-        className={cls.img}
-        src={article?.img}
-      />
-      <VStack gap="4" max data-testid="ArticleDetails.Info">
-        <HStack gap="8" className={cls.articleInfo}>
-          <RedesignedIcon Svg={EyeIcon} className={cls.icon} />
-          <RedesignedText text={String(article?.views)} />
-        </HStack>
-        <HStack gap="8" className={cls.articleInfo}>
-          <RedesignedIcon Svg={CalendarIcon} className={cls.icon} />
-          <RedesignedText text={article?.createdAt} />
-        </HStack>
-      </VStack>
-      {article?.blocks.map(renderBlock)}
-    </>
-  );
+  if (article) return <RedesignedArticleDetailsComponent article={article} />;
+  return null;
 };
 
 export const ArticleDetails: FC<ArticleDetailsProps> = memo(
@@ -124,7 +100,7 @@ export const ArticleDetails: FC<ArticleDetailsProps> = memo(
         <ToggleFeatures
           feature="isAppRedesigned"
           on={
-            <Text
+            <RedesignedText
               align={'center'}
               title={t('Произошла ошибка при загрузке статьи')}
             />
