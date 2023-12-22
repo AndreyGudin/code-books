@@ -18,6 +18,8 @@ import {
 } from '@/entities/Article';
 import { Modal } from '@/shared/ui/redesigned/Modal';
 import { PasteTextToPositionButton } from '@/features/PasteTextToPositionButton';
+import { StickyContentLayout } from '@/shared/layouts/StickyContentLayout';
+import { Card } from '@/shared/ui/redesigned/Card';
 
 interface RedesignedArticleFormProps {
   className?: string;
@@ -174,11 +176,21 @@ export const RedesignedArticleForm: FC<RedesignedArticleFormProps> = memo(
         </HStack>
 
         <Modal
+          staticSize
           className="preview"
           isOpen={preView}
           onClose={onPreviewCloseHandler}
         >
-          <RedesignedArticleDetailsComponent article={article} />
+          <Card
+            fullWidth
+            className={classNames(cls.ArticleDetailsPreview, {}, [
+              getFlexClasses({ direction: 'column', gap: '16', align: 'start' })
+            ])}
+            padding="24"
+            border="round"
+          >
+            <RedesignedArticleDetailsComponent article={article} />
+          </Card>
         </Modal>
       </div>
     );

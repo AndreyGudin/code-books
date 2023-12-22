@@ -11,11 +11,13 @@ interface ModalProps {
   children?: ReactNode;
   isOpen?: boolean;
   onClose?: () => void;
+  staticSize?: boolean;
 }
 
 export const Modal: FC<ModalProps> = ({
   className = '',
   isOpen = false,
+  staticSize = false,
   onClose,
   children
 }: ModalProps) => {
@@ -43,7 +45,14 @@ export const Modal: FC<ModalProps> = ({
         ])}
       >
         <Overlay onClick={close}>
-          <div className={cls.content} onClick={onContentClick}>
+          <div
+            className={classNames(
+              cls.content,
+              { [cls.staticSize]: staticSize },
+              []
+            )}
+            onClick={onContentClick}
+          >
             {children}
           </div>
         </Overlay>

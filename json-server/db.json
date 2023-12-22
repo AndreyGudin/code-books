@@ -673,6 +673,69 @@
         "ALL"
       ],
       "id": "6OuRpIg"
+    },
+    {
+      "title": "Заголовк",
+      "subtitle": "Подзаголовок",
+      "img": "https://avatars.mds.yandex.net/i?id=0e78ddd76c1d5d10f7d6ea6afe98f3de67843c73-4698710-images-thumbs&n=13",
+      "userId": "1",
+      "views": 0,
+      "createdAt": "22.12.2023",
+      "blocks": [
+        {
+          "id": "0",
+          "type": "TEXT",
+          "paragraphs": [
+            "Eum deserunt suscipit nam vel culpa doloremque quos quibusdam explicabo voluptatem eos accusantium iure tempore impedit porro exercitationem necessitatibus aliquid labore, autem numquam dolorem fuga. Deleniti eaque assumenda sint velit.\nItaque delectus esse voluptas et deleniti at maxime. Dicta earum rem dignissimos culpa quisquam? Consectetur earum inventore ipsam odit eum totam minima a numquam soluta quidem modi cupiditate, dignissimos nisi.\nPerferendis consectetur aut corrupti laboriosam architecto exercitationem amet. Sint in ullam est alias cum consequatur laborum vero doloribus quaerat vitae, iusto numquam! Doloribus, corrupti perspiciatis voluptatum ab fuga voluptates! Officiis?\n"
+          ],
+          "title": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus ad dolorem sunt architecto ipsum, velit fugiat ratione facere nesciunt sapiente. Alias rem eaque ex natus omnis nisi nostrum, eligendi blanditiis!"
+        },
+        {
+          "id": "1",
+          "type": "CODE",
+          "code": "Nobis sapiente, veniam minus atque necessitatibus iste debitis omnis aliquid, quaerat corporis eum. Nam adipisci sapiente placeat odio corporis dignissimos et quasi quibusdam aperiam alias? Pariatur ratione porro possimus blanditiis.\nDignissimos ducimus consectetur in eum ea harum dolores ipsam molestiae est alias similique officia nobis voluptates, ratione omnis eos velit sapiente, sint iste quibusdam aperiam vel? Officiis vel reiciendis facere?"
+        },
+        {
+          "id": "2",
+          "type": "TEXT",
+          "paragraphs": [
+            "Beatae illum officia ab laboriosam officiis laudantium, dolorem cupiditate eligendi tenetur, obcaecati voluptatem quis blanditiis ratione enim voluptatum accusamus a, sunt amet. Dolor, inventore. Quos nam adipisci iusto exercitationem ullam.",
+            ""
+          ],
+          "title": ""
+        },
+        {
+          "id": "3",
+          "type": "IMAGE",
+          "src": "https://avatars.mds.yandex.net/i?id=2a0000018c6c39924e240f9e7d71ee46d2bf-1607718-fast-images&n=13",
+          "title": "Подпись картинки"
+        },
+        {
+          "id": "4",
+          "type": "TEXT",
+          "paragraphs": [
+            ""
+          ],
+          "title": ""
+        },
+        {
+          "id": "5",
+          "type": "CODE",
+          "code": "Provident alias animi similique dolores eum! Quae molestiae cupiditate blanditiis cum, earum quasi sapiente voluptatem sed esse necessitatibus quas, animi eum id dolor sit omnis placeat! Aut magni odio at!"
+        },
+        {
+          "id": "6",
+          "type": "TEXT",
+          "paragraphs": [
+            "Sit et, magnam quam repellat qui nulla quas quidem aliquid voluptates tempora reiciendis beatae, quos laborum, veritatis tenetur nam in facilis cupiditate. Inventore, ipsa? Debitis minus nihil reprehenderit eos quos"
+          ],
+          "title": ""
+        }
+      ],
+      "type": [
+        "ALL"
+      ],
+      "id": "2FGS1lN"
     }
   ],
   "comments": [
