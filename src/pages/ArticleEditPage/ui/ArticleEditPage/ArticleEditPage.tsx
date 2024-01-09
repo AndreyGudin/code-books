@@ -16,7 +16,7 @@ const ArticleEditPage: FC<ArticleEditPageProps> = memo(
     const isEdit = Boolean(id);
     return (
       <Page className={classNames(cls.ArticleEditPage, {}, [className])}>
-        {isEdit ? `Редактирование статьи с ID = ${id ?? ''}` : <ArticleForm />}
+        {isEdit ? <ArticleForm existingArticleId={id} /> : <ArticleForm />}
       </Page>
     );
   }

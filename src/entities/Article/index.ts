@@ -7,8 +7,16 @@ export {
   ArticleBlockType
 } from './model/consts/const';
 
-export { articleDetailsActions } from './model/slice/articleDetailsSlice';
+export {
+  articleDetailsActions,
+  articleDetailsReducer
+} from './model/slice/articleDetailsSlice';
 export type { ArticleDetailsSchema } from './model/types/articleDetailsSchema';
 export { ArticleList } from './ui/ArticleList/ArticleList';
-export { getArticleDetailsData } from './model/selectors/articleDetails';
+export {
+  getArticleDetailsData,
+  getArticleDetailsIsLoading
+} from './model/selectors/articleDetails';
 export { RedesignedArticleDetailsComponent } from './ui/ArticleDetails/RedesignedArticleDetailsComponent';
+export { fetchArticleById } from './model/services/fetchArticleById/fetchArticleById';
+export { useGetArticleOnMount } from './model/services/useGetArticleOnMount/useGetArticleOnMount';

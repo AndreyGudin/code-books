@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { memo, useRef, useState } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 import type { ChangeEvent, FC } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ArticleForm.new.module.scss';
@@ -8,40 +8,59 @@ import { TextField } from '@/shared/ui/redesigned/TextField';
 import { HStack, getFlexClasses } from '@/shared/ui/redesigned/Stack';
 import { Button } from '@/shared/ui/redesigned/Button';
 import { mapSymbols } from '../../../model/lib/transformText';
-import { useCreateArticleNewMutation } from '../../../model/api/articleFormApi';
+import {
+  useCreateArticleNewMutation,
+  useEditArticleMutation
+} from '../../../model/api/articleFormApi';
 import { useSelector } from 'react-redux';
 import { getAuthUserData } from '@/entities/User';
 import {
   Article,
   ArticleType,
-  RedesignedArticleDetailsComponent
+  RedesignedArticleDetailsComponent,
+  useGetArticleOnMount
 } from '@/entities/Article';
 import { Modal } from '@/shared/ui/redesigned/Modal';
 import { PasteTextToPositionButton } from '@/features/PasteTextToPositionButton';
-import { StickyContentLayout } from '@/shared/layouts/StickyContentLayout';
 import { Card } from '@/shared/ui/redesigned/Card';
+import { transformBlocksToText } from '../../../model/lib/transformBlocksToText';
 
 interface RedesignedArticleFormProps {
   className?: string;
+  existingArticleId?: string;
 }
 
 export const RedesignedArticleForm: FC<RedesignedArticleFormProps> = memo(
-  ({ className = '' }: RedesignedArticleFormProps) => {
+  ({ className = '', existingArticleId }: RedesignedArticleFormProps) => {
     const { t } = useTranslation();
+    const time = new Intl.DateTimeFormat('ru-Ru');
+
     const [title, setTitle] = useState<string>('');
     const [subtitle, setSubtitle] = useState<string>('');
     const [img, setImg] = useState<string>('');
     const [blog, setBlog] = useState<string>('');
+    const [createdAt, setCreatedAt] = useState<string>(time.format(new Date()));
     const [preView, setPreview] = useState<boolean>(false);
     const [article, setArticle] = useState<Article>({} as Article);
+    const existingArticle = useGetArticleOnMount(existingArticleId);
     const [textAreaCursor, setTextAreaCursor] = useState<number>(0);
     const textAreaRef = useRef<HTMLTextAreaElement>(null);
     const user = useSelector(getAuthUserData);
     const [createNewArticle] = useCreateArticleNewMutation();
-    const time = new Intl.DateTimeFormat('ru-Ru');
+    const [editArticle] = useEditArticleMutation();
 
     const pasteImage = `!!https://linkToImage\n\n${t('Подпись картинки')}!!`;
     const pasteCode = `\`\`\`${t('Какой-то код')}\`\`\``;
+
+    useEffect(() => {
+      if (existingArticle) {
+        setTitle(existingArticle.title);
+        setSubtitle(existingArticle.subtitle);
+        setImg(existingArticle.img);
+        setCreatedAt(existingArticle.createdAt);
+        setBlog(transformBlocksToText(existingArticle.blocks));
+      }
+    }, [existingArticle]);
 
     const changeTitleHandler = (value: string): void => {
       setTitle(value);
@@ -59,8 +78,24 @@ export const RedesignedArticleForm: FC<RedesignedArticleFormProps> = memo(
     const onPublishHandler = (): void => {
       console.log('text ', mapSymbols(blog));
       const blocks = mapSymbols(blog);
-      const createdAt = time.format(new Date());
-      if (user) {
+      if (existingArticle && user) {
+        const editedArticle = {
+          id: existingArticle.id,
+          title,
+          subtitle,
+          img,
+          userId: user?.id,
+          views: existingArticle.views,
+          createdAt,
+          blocks,
+          type: [ArticleType.ALL]
+        };
+        editArticle(editedArticle).catch((e) => {
+          console.log(e);
+        });
+        console.log('edited');
+      }
+      if (user && existingArticle === undefined) {
         const createdArticle = {
           title,
           subtitle,
@@ -71,6 +106,7 @@ export const RedesignedArticleForm: FC<RedesignedArticleFormProps> = memo(
           blocks,
           type: [ArticleType.ALL]
         };
+        console.log('created');
 
         createNewArticle(createdArticle).catch((e) => {
           console.log(e);
@@ -80,7 +116,6 @@ export const RedesignedArticleForm: FC<RedesignedArticleFormProps> = memo(
 
     const onPreviewHandler = (): void => {
       const blocks = mapSymbols(blog);
-      const createdAt = time.format(new Date());
       console.log('blocks', blocks);
       console.log('selectionStart', textAreaRef.current?.selectionStart);
       if (user) {
@@ -169,7 +204,9 @@ export const RedesignedArticleForm: FC<RedesignedArticleFormProps> = memo(
           text={blog}
         />
         <HStack gap="8">
-          <Button onClick={onPublishHandler}>{t('Опубликовать')}</Button>
+          <Button onClick={onPublishHandler}>
+            {existingArticleId ? t('Изменить') : t('Опубликовать')}
+          </Button>
           <Button variant="filled" onClick={onPreviewHandler}>
             {t('Предосмотр')}
           </Button>
