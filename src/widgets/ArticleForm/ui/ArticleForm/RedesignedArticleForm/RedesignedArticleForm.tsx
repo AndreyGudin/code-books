@@ -40,6 +40,7 @@ export const RedesignedArticleForm: FC<RedesignedArticleFormProps> = memo(
     const [img, setImg] = useState<string>('');
     const [blog, setBlog] = useState<string>('');
     const [createdAt, setCreatedAt] = useState<string>(time.format(new Date()));
+    const [isArticleAdded, setIsArticleAdded] = useState<boolean>(false);
     const [preView, setPreview] = useState<boolean>(false);
     const [article, setArticle] = useState<Article>({} as Article);
     const existingArticle = useGetArticleOnMount(existingArticleId);
@@ -93,6 +94,7 @@ export const RedesignedArticleForm: FC<RedesignedArticleFormProps> = memo(
         editArticle(editedArticle).catch((e) => {
           console.log(e);
         });
+        setIsArticleAdded(true);
         console.log('edited');
       }
       if (user && existingArticle === undefined) {
@@ -111,6 +113,7 @@ export const RedesignedArticleForm: FC<RedesignedArticleFormProps> = memo(
         createNewArticle(createdArticle).catch((e) => {
           console.log(e);
         });
+        setIsArticleAdded(true);
       }
     };
 
@@ -138,7 +141,9 @@ export const RedesignedArticleForm: FC<RedesignedArticleFormProps> = memo(
     const onPreviewCloseHandler = (): void => {
       setPreview(false);
     };
-
+    const onMessageCloseHandler = (): void => {
+      setIsArticleAdded(false);
+    };
     const onPasteTextHandler = (value: string): void => {
       setBlog(value);
     };
@@ -228,6 +233,14 @@ export const RedesignedArticleForm: FC<RedesignedArticleFormProps> = memo(
           >
             <RedesignedArticleDetailsComponent article={article} />
           </Card>
+        </Modal>
+        <Modal
+          staticSize
+          className="message"
+          isOpen={isArticleAdded}
+          onClose={onMessageCloseHandler}
+        >
+          {t('Статья успешно добавлена')}
         </Modal>
       </div>
     );

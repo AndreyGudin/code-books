@@ -42,6 +42,7 @@ export const DeprecatedArticleForm: FC<DeprecatedArticleFormProps> = memo(
     const [blog, setBlog] = useState<string>('');
     const [createdAt, setCreatedAt] = useState<string>(time.format(new Date()));
     const [preView, setPreview] = useState<boolean>(false);
+    const [isArticleAdded, setIsArticleAdded] = useState<boolean>(false);
     const [article, setArticle] = useState<Article>({} as Article);
     const existingArticle = useGetArticleOnMount(existingArticleId);
     const [textAreaCursor, setTextAreaCursor] = useState<number>(0);
@@ -94,6 +95,7 @@ export const DeprecatedArticleForm: FC<DeprecatedArticleFormProps> = memo(
         editArticle(editedArticle).catch((e) => {
           console.log(e);
         });
+        setIsArticleAdded(true);
         console.log('edited');
       }
       if (user && existingArticle === undefined) {
@@ -112,6 +114,7 @@ export const DeprecatedArticleForm: FC<DeprecatedArticleFormProps> = memo(
         createNewArticle(createdArticle).catch((e) => {
           console.log(e);
         });
+        setIsArticleAdded(true);
       }
     };
 
@@ -139,7 +142,9 @@ export const DeprecatedArticleForm: FC<DeprecatedArticleFormProps> = memo(
     const onPreviewCloseHandler = (): void => {
       setPreview(false);
     };
-
+    const onMessageCloseHandler = (): void => {
+      setIsArticleAdded(false);
+    };
     const onPasteTextHandler = (value: string): void => {
       setBlog(value);
     };
@@ -230,6 +235,14 @@ export const DeprecatedArticleForm: FC<DeprecatedArticleFormProps> = memo(
           >
             <DeprecatedArticleDetailsComponent article={article} />
           </Card>
+        </Modal>
+        <Modal
+          staticSize
+          className="message"
+          isOpen={isArticleAdded}
+          onClose={onMessageCloseHandler}
+        >
+          {t('Статья успешно добавлена')}
         </Modal>
       </div>
     );
