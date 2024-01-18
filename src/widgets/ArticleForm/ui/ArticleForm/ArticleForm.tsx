@@ -2,11 +2,14 @@ import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
 import type { FC } from 'react';
 import { RedesignedArticleForm } from './RedesignedArticleForm/RedesignedArticleForm';
+import { DeprecatedArticleForm } from './DeprecatedArticleForm/DeprecatedArticleForm';
+
 import {
   DynamicModuleLoader,
   ReducersList
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { articleDetailsReducer } from '@/entities/Article';
+import { ToggleFeatures } from '@/shared/lib/features';
 
 interface ArticleFormProps {
   existingArticleId?: string;
@@ -22,7 +25,11 @@ export const ArticleForm: FC<ArticleFormProps> = memo(
 
     return (
       <DynamicModuleLoader reducers={reducers}>
-        <RedesignedArticleForm existingArticleId={existingArticleId} />
+        <ToggleFeatures
+          feature="isAppRedesigned"
+          on={<RedesignedArticleForm existingArticleId={existingArticleId} />}
+          off={<DeprecatedArticleForm existingArticleId={existingArticleId} />}
+        />
       </DynamicModuleLoader>
     );
   }

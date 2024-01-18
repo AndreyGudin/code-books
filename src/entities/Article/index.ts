@@ -1,4 +1,7 @@
-export { ArticleDetails } from './ui/ArticleDetails/ArticleDetails';
+export {
+  ArticleDetails,
+  DeprecatedArticleDetails
+} from './ui/ArticleDetails/ArticleDetails';
 export type { Article, ArticleBlock } from './model/types/article';
 export {
   ArticleView,
@@ -18,5 +21,6 @@ export {
   getArticleDetailsIsLoading
 } from './model/selectors/articleDetails';
 export { RedesignedArticleDetailsComponent } from './ui/ArticleDetails/RedesignedArticleDetailsComponent';
+export { DeprecatedArticleDetailsComponent } from './ui/ArticleDetails/DeprecatedArticleDetailsComponent';
 export { fetchArticleById } from './model/services/fetchArticleById/fetchArticleById';
 export { useGetArticleOnMount } from './model/services/useGetArticleOnMount/useGetArticleOnMount';

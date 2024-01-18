@@ -16,6 +16,7 @@ interface InputProps extends HTMLInputProps {
   readonly?: boolean;
   onChange?: (value: string) => void;
   autofocus?: boolean;
+  fullWidth?: boolean;
 }
 /**
  * Устарел, используем новые компоненты из папки redesigned
@@ -30,6 +31,7 @@ export const Input: FC<InputProps> = memo((props: InputProps) => {
     placeholder,
     autofocus = false,
     readonly = false,
+    fullWidth = false,
     ...otherProps
   } = props;
   const ref = useRef<HTMLInputElement>(null);
@@ -38,7 +40,8 @@ export const Input: FC<InputProps> = memo((props: InputProps) => {
   };
 
   const mods: Mods = {
-    [cls.readonly]: readonly
+    [cls.readonly]: readonly,
+    [cls.fullWidth]: fullWidth
   };
 
   useEffect(() => {

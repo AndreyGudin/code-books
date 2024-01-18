@@ -16,19 +16,15 @@ import {
 import { Text as DeprecatedText } from '@/shared/ui/deprecated/Text';
 import { Text as RedesignedText } from '@/shared/ui/redesigned/Text';
 
-import { TextAlign, TextSize } from '@/shared/ui/deprecated/Text/const';
-import { Avatar } from '@/shared/ui/deprecated/Avatar';
+import { TextAlign } from '@/shared/ui/deprecated/Text/const';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ArticleDetails.module.scss';
-import EyeIcon from '@/shared/assets/icons/eye.svg';
-import CalendarIcon from '@/shared/assets/icons/calendar.svg';
-import { Icon as DeprecatedIcon } from '@/shared/ui/deprecated/Icon';
-import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
-import { renderBlock } from './renderBlock';
+import { VStack } from '@/shared/ui/redesigned/Stack';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { ArticleDetailsSkeleton } from './ArticleDetailsSkeleton';
 import { RedesignedArticleDetailsComponent } from './RedesignedArticleDetailsComponent';
+import { DeprecatedArticleDetailsComponent } from './DeprecatedArticleDetailsComponent';
 
 interface ArticleDetailsProps {
   className?: string;
@@ -39,33 +35,10 @@ const reducers: ReducersList = {
   articleDetails: articleDetailsReducer
 };
 
-const DeprecatedArticleDetails = (): JSX.Element => {
+export const DeprecatedArticleDetails = (): JSX.Element | null => {
   const article = useSelector(getArticleDetailsData);
-
-  return (
-    <>
-      <HStack justify="center" max className={cls.avatarWrapper}>
-        <Avatar size={200} src={article?.img} className={cls.avatar} />
-      </HStack>
-      <VStack gap="4" max data-testid="ArticleDetails.Info">
-        <DeprecatedText
-          className={cls.title}
-          title={article?.title}
-          text={article?.subtitle}
-          size={TextSize.L}
-        />
-        <HStack gap="8" className={cls.articleInfo}>
-          <DeprecatedIcon Svg={EyeIcon} className={cls.icon} />
-          <DeprecatedText text={String(article?.views)} />
-        </HStack>
-        <HStack gap="8" className={cls.articleInfo}>
-          <DeprecatedIcon Svg={CalendarIcon} className={cls.icon} />
-          <DeprecatedText text={article?.createdAt} />
-        </HStack>
-      </VStack>
-      {article?.blocks.map(renderBlock)}
-    </>
-  );
+  if (article) return <DeprecatedArticleDetailsComponent article={article} />;
+  return null;
 };
 
 const RedesignedArticleDetails = (): JSX.Element | null => {
