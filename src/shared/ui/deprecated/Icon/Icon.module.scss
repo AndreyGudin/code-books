@@ -1,8 +1,11 @@
 .Icon {
   fill: var(--primary-color);
   color: var(--primary-color);
+  width: 20px;
 }
 .inverted {
   fill: var(--inverted-primary-color);
   color: var(--inverted-primary-color);
+  place-content: center;
+  width: 20px;
 }

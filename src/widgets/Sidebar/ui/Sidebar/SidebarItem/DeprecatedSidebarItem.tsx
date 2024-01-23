@@ -26,7 +26,7 @@ export const DeprecatedSidebarItem: FC<DeprecatedSidebarItemProps> = memo(
     }
 
     return (
-      <div className={classNames(cls.SidebarItem, {}, [])}>
+      <>
         <AppLinkDeprecated
           className={classNames(cls.item, { [cls.collapsed]: collapsed })}
           theme={AppLinkTheme.SECONDARY}
@@ -35,7 +35,7 @@ export const DeprecatedSidebarItem: FC<DeprecatedSidebarItemProps> = memo(
           <item.Icon className={cls.icon} />
           <span className={cls.link}> {t(item.text)}</span>
         </AppLinkDeprecated>
-      </div>
+      </>
     );
   }
 );

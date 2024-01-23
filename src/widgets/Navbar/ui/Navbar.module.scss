@@ -17,7 +17,23 @@
   margin-right: 15px;
 }
 
+.createLink {
+  display: flex;
+  align-items: center;
+}
+
 .appName {
   width: var(--sidebar-width);
   margin-left: 15px;
+}
+
+@media (width < 425px) {
+  .Navbar {
+    gap: 24px;
+    padding: 8px;
+  }
+
+  .appName {
+    width: fit-content;
+  }
 }

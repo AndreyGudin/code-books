@@ -1,14 +1,13 @@
-.link {
-  margin-left: 10px;
-}
-
 .item {
   margin-top: 10px;
   display: flex;
   align-items: center;
+  gap: 10px;
 }
 .icon {
   fill: var(--inverted-primary-color);
+  width: 20px;
+  height: 20px;
 }
 
 .collapsed {

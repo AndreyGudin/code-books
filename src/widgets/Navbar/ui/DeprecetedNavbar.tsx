@@ -4,7 +4,7 @@ import type { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
-import { Button } from '@/shared/ui/deprecated/Button';
+import { Button as DeprecatedButton } from '@/shared/ui/deprecated/Button';
 import { ButtonTheme } from '@/shared/ui/deprecated/Button/const';
 import { LoginModal } from '@/features/AuthByUsername';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -18,6 +18,9 @@ import { HStack } from '@/shared/ui/redesigned/Stack';
 import { NotificationButton } from '@/features/NotificationButton';
 import { AvatarDropdown } from '@/features/AvatarDropdown';
 import { getRouteArticleCreate } from '@/shared/const/router';
+import { useDevice } from '@/shared/hooks/useDevice';
+import { Icon as DeprecatedIcon } from '@/shared/ui/deprecated/Icon';
+import AddArtileIcon from '@/shared/assets/icons/plus.svg';
 
 interface DeprecatedNavbarProps {
   className?: string;
@@ -28,6 +31,7 @@ export const DeprecatedNavbar: FC = memo(
     const { t } = useTranslation();
     const [openModal, setOpenModal] = useState(false);
     const authData = useSelector(getAuthUserData);
+    const isMobile = useDevice();
 
     const openModalHandler = useCallback(() => {
       setOpenModal(true);
@@ -45,13 +49,24 @@ export const DeprecatedNavbar: FC = memo(
             className={cls.appName}
             title={t('Название')}
           />
-          <AppLink
-            theme={AppLinkTheme.SECONDARY}
-            to={getRouteArticleCreate()}
-            className={cls.createLink}
-          >
-            {t('Создать статью')}
-          </AppLink>
+          {isMobile ? (
+            <AppLink
+              theme={AppLinkTheme.SECONDARY}
+              to={getRouteArticleCreate()}
+              className={cls.createLink}
+            >
+              <DeprecatedIcon inverted Svg={AddArtileIcon} />
+            </AppLink>
+          ) : (
+            <AppLink
+              theme={AppLinkTheme.SECONDARY}
+              to={getRouteArticleCreate()}
+              className={cls.createLink}
+            >
+              {t('Создать статью')}
+            </AppLink>
+          )}
+
           <HStack gap="16" className={cls.actions}>
             <NotificationButton />
             <AvatarDropdown />
@@ -63,13 +78,13 @@ export const DeprecatedNavbar: FC = memo(
     return (
       <header className={classNames(cls.Navbar, {}, [className])}>
         <div className={cls.links}>
-          <Button
+          <DeprecatedButton
             theme={ButtonTheme.CLEAR_INVERTED}
             className={cls.links}
             onClick={openModalHandler}
           >
             {t('Войти')}
-          </Button>
+          </DeprecatedButton>
         </div>
 
         <LoginModal isOpen={openModal} onClose={closeHandler} />
