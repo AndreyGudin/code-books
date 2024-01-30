@@ -1,4 +1,4 @@
-import { useState, memo, useMemo } from 'react';
+import { useState, memo, useMemo, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import type { FC } from 'react';
 
@@ -11,6 +11,7 @@ import { getSidebarItems } from '../../model/selectors/getSidebarItems';
 import { VStack } from '@/shared/ui/redesigned/Stack';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 import { LangSwitcher } from '@/features/LangSwitcher';
+import { useDevice } from '@/shared/hooks/useDevice';
 
 interface DeprecatedSidebarProps {
   className?: string;
@@ -20,6 +21,7 @@ export const DeprecatedSidebar: FC = memo(
   ({ className = '' }: DeprecatedSidebarProps) => {
     const [collapsed, setCollapsed] = useState(false);
     const sidebarItemList = useSelector(getSidebarItems);
+    const isMobile = useDevice();
 
     const onToggle = (): void => {
       setCollapsed((prev) => !prev);
@@ -34,6 +36,12 @@ export const DeprecatedSidebar: FC = memo(
         }),
       [collapsed, sidebarItemList]
     );
+
+    useEffect(() => {
+      if (isMobile) {
+        setCollapsed(true);
+      }
+    }, [isMobile]);
 
     return (
       <aside

@@ -1,25 +1,29 @@
-.SidebarRedesigned {
+.MobileSidebar {
   background: var(--light-bg-redesigned);
   width: 220px;
   height: 100%;
   border-radius: 32px;
-  position: relative;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: all ease-in-out 0.3s;
 }
-.appLogo {
+.mobileAppLogo {
   padding-top: 30px;
 }
-.items {
+.mobileItems {
   margin-top: 40px;
   opacity: 1;
 }
-.collapsedBtn {
+.mobileCollapsedBtn {
+  background: var(--light-bg-redesigned);
   position: absolute;
-  right: -0px;
+  right: -32px;
   top: 50%;
   transform: rotate(90deg);
 }
 
-.switchers {
+.mobileSwitchers {
   position: absolute;
   bottom: 20px;
   display: flex;
@@ -28,32 +32,15 @@
   gap: 16px;
 }
 
-.collapsedRedesigned {
-  width: 50px;
-
-  .switchers {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .items {
-    margin-top: 40px;
-    margin-left: 0;
-    display: flex;
-    align-items: center;
-  }
-
-  .lang {
-    margin-left: 0;
-  }
-
-  .collapsedBtn {
+.mobileCollapsed {
+  .mobileCollapsedBtn {
     transform: rotate(-90deg);
   }
 }
 
 @media (width < 426px) {
-  .collapsedRedesigned {
+  .mobileCollapsed {
+    width: 220px;
     left: -220px;
   }
 }

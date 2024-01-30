@@ -32,7 +32,7 @@ export const Icon: FC<IconProps> = memo<IconProps>((props: IconProps) => {
     ...otherProps
   } = props;
 
-  const icon = (
+  let icon = (
     <Svg
       className={classNames(cls.Icon, {}, [className])}
       width={width}
@@ -43,16 +43,22 @@ export const Icon: FC<IconProps> = memo<IconProps>((props: IconProps) => {
   );
 
   if (clickable) {
-    return (
+    icon = (
       <button
+        className={classNames(cls.Icon, {}, [className, cls.button])}
         style={{ height, width }}
         type="button"
-        className={cls.button}
         onClick={props.onClick}
       >
-        {icon}
+        <Svg
+          width={width}
+          height={height}
+          {...otherProps}
+          onClick={undefined}
+        />
       </button>
     );
+    return icon;
   }
 
   return icon;

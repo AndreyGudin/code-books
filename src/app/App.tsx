@@ -5,7 +5,7 @@ import type { FC } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppRouter } from './providers/router';
 import { Navbar } from '@/widgets/Navbar';
-import { Sidebar } from '@/widgets/Sidebar';
+import { MobileSidebar, Sidebar } from '@/widgets/Sidebar';
 
 import './styles/index.scss';
 import { getUserMounted, initAuthData } from '@/entities/User';
@@ -16,11 +16,37 @@ import { MainLayout } from '@/shared/layouts/MainLayout';
 import { AppLoaderLayout } from '@/shared/layouts/AppLoaderLayout';
 import { useAppToolbar } from './lib/useAppToolbar';
 import { withTheme } from './providers/ThemeProviders/ui/withTheme';
+import { useDevice } from '@/shared/hooks/useDevice';
 
 const App: FC = memo(() => {
   const dispatch = useAppDispatch();
   const mounted = useSelector(getUserMounted);
   const toolbar = useAppToolbar();
+  const isMobile = useDevice();
+
+  let content = (
+    <Suspense fallback="">
+      <MainLayout
+        content={<AppRouter />}
+        header={<Navbar />}
+        sidebar={<Sidebar />}
+        toolbar={toolbar}
+      />
+    </Suspense>
+  );
+
+  if (isMobile) {
+    content = (
+      <Suspense fallback="">
+        <MainLayout
+          content={<AppRouter />}
+          header={<Navbar />}
+          toolbar={toolbar}
+        />
+        <MobileSidebar />
+      </Suspense>
+    );
+  }
 
   useEffect(() => {
     dispatch(initAuthData()).catch((e) => {
@@ -46,14 +72,7 @@ const App: FC = memo(() => {
       feature="isAppRedesigned"
       on={
         <div id="app" className={classNames('app_redesigned', {}, [])}>
-          <Suspense fallback="">
-            <MainLayout
-              content={<AppRouter />}
-              header={<Navbar />}
-              sidebar={<Sidebar />}
-              toolbar={toolbar}
-            />
-          </Suspense>
+          {content}
         </div>
       }
       off={

@@ -43,3 +43,13 @@
   margin-left: 30px;
   opacity: 1;
 }
+
+@media (width < 426px) {
+  .Sidebar {
+    position: absolute;
+    z-index: 9999;
+  }
+  .collapsed {
+    left: -80px;
+  }
+}

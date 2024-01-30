@@ -20,7 +20,7 @@ import { AvatarDropdown } from '@/features/AvatarDropdown';
 import { getRouteArticleCreate } from '@/shared/const/router';
 import { useDevice } from '@/shared/hooks/useDevice';
 import { Icon as DeprecatedIcon } from '@/shared/ui/deprecated/Icon';
-import AddArtileIcon from '@/shared/assets/icons/plus.svg';
+import AddArticleIcon from '@/shared/assets/icons/plus.svg';
 
 interface DeprecatedNavbarProps {
   className?: string;
@@ -55,7 +55,7 @@ export const DeprecatedNavbar: FC = memo(
               to={getRouteArticleCreate()}
               className={cls.createLink}
             >
-              <DeprecatedIcon inverted Svg={AddArtileIcon} />
+              <DeprecatedIcon inverted Svg={AddArticleIcon} />
             </AppLink>
           ) : (
             <AppLink
