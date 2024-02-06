@@ -1,0 +1,58 @@
+.RetractablePanel {
+  background: var(--light-bg-redesigned);
+  width: 220px;
+  height: 100%;
+  border-radius: 32px;
+  position: absolute;
+
+  top: 0;
+  transition: all ease-in-out 0.3s;
+
+  &.left {
+    left: 0;
+  }
+  &.right {
+    right: 0;
+  }
+}
+.left {
+  .btnToRetract {
+    background: var(--light-bg-redesigned);
+    position: absolute;
+    right: -32px;
+    top: 50%;
+    transform: rotate(90deg);
+  }
+}
+
+.right {
+  .btnToRetract {
+    background: var(--light-bg-redesigned);
+    position: absolute;
+    left: -32px;
+    top: 50%;
+    transform: rotate(-90deg);
+  }
+}
+.right.retracted {
+  .btnToRetract {
+    transform: rotate(90deg);
+  }
+}
+
+.left.retracted {
+  .btnToRetract {
+    transform: rotate(-90deg);
+  }
+}
+
+@media (width < 426px) {
+  .right.retracted {
+    width: 220px;
+    right: -220px;
+  }
+  .left.retracted {
+    width: 220px;
+    left: -220px;
+  }
+}

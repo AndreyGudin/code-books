@@ -72,7 +72,7 @@ export const RedesignedProfileCard: FC<RedesignedProfileCardProps> = ({
           <Avatar size={120} src={data?.avatar} alt="" />
         </HStack>
       ) : null}
-      <HStack max gap="24">
+      <HStack max gap="24" wrap="wrap">
         <VStack max gap="16">
           <Input
             value={data?.first ?? ''}

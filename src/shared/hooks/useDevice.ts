@@ -5,16 +5,18 @@ export const useDevice = (): boolean => {
 
   useEffect(() => {
     const handleResize = (): void => {
-      setIsMobile(window.matchMedia('(pointer:coarse)').matches);
+      if (window.screen.width <= 425) {
+        setIsMobile(window.matchMedia('(pointer:coarse)').matches);
+      }
     };
-
+    console.log('mobile', isMobile);
     handleResize();
     window.addEventListener('resize', handleResize);
 
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [isMobile]);
 
   return isMobile;
 };

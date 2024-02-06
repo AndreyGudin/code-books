@@ -17,6 +17,7 @@ import { AppLoaderLayout } from '@/shared/layouts/AppLoaderLayout';
 import { useAppToolbar } from './lib/useAppToolbar';
 import { withTheme } from './providers/ThemeProviders/ui/withTheme';
 import { useDevice } from '@/shared/hooks/useDevice';
+import { RetractablePanel } from '@/features/RetractablePanel';
 
 const App: FC = memo(() => {
   const dispatch = useAppDispatch();
@@ -38,11 +39,11 @@ const App: FC = memo(() => {
   if (isMobile) {
     content = (
       <Suspense fallback="">
-        <MainLayout
-          content={<AppRouter />}
-          header={<Navbar />}
-          toolbar={toolbar}
-        />
+        <RetractablePanel>
+          <Navbar />
+          {toolbar}
+        </RetractablePanel>
+        <MainLayout content={<AppRouter />} />
         <MobileSidebar />
       </Suspense>
     );

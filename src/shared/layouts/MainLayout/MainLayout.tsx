@@ -5,7 +5,7 @@ import cls from './MainLayout.module.scss';
 
 interface MainLayoutProps {
   className?: string;
-  header: ReactElement;
+  header?: ReactElement;
   content: ReactElement;
   sidebar?: ReactElement;
   toolbar?: ReactElement;
@@ -21,25 +21,34 @@ export const MainLayout: FC<MainLayoutProps> = memo(
     toolbar,
     collapsedSidebar = false
   }: MainLayoutProps) => {
+    const sidebarContent = sidebar ? (
+      <div
+        className={classNames(
+          cls.sidebar,
+          { [cls.collapsedSidebar]: collapsedSidebar },
+          []
+        )}
+      >
+        {sidebar}
+      </div>
+    ) : null;
+    const toolbarContent = toolbar ? (
+      <div className={cls.toolbar}>{toolbar}</div>
+    ) : null;
+    const headerContent = header ? (
+      <div className={cls.header}>{header}</div>
+    ) : null;
     return (
       <div className={classNames(cls.MainLayout, {}, [className])}>
-        {sidebar ? (
-          <div
-            className={classNames(
-              cls.sidebar,
-              { [cls.collapsedSidebar]: collapsedSidebar },
-              []
-            )}
-          >
-            {sidebar}
-          </div>
-        ) : null}
+        {sidebarContent}
 
         <div className={cls.content}>{content}</div>
-        <div className={cls.rightbar}>
-          <div className={cls.header}>{header}</div>
-          <div className={cls.toolbar}>{toolbar}</div>
-        </div>
+        {headerContent ?? toolbarContent ? (
+          <div className={cls.rightbar}>
+            {headerContent}
+            {toolbarContent}
+          </div>
+        ) : null}
       </div>
     );
   }
