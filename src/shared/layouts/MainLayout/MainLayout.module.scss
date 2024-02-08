@@ -4,6 +4,11 @@
   grid-template-areas: 'sidebar content rightbar';
   grid-template-columns: min-content 1fr 100px;
 }
+
+.mobileMainLayout {
+  display: flex;
+}
+
 .sidebar {
   grid-area: sidebar;
   padding: 32px;

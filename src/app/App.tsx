@@ -39,7 +39,7 @@ const App: FC = memo(() => {
   if (isMobile) {
     content = (
       <Suspense fallback="">
-        <RetractablePanel>
+        <RetractablePanel fullHeight={false}>
           <Navbar />
           {toolbar}
         </RetractablePanel>

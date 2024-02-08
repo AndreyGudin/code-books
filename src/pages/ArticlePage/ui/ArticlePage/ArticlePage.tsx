@@ -21,6 +21,8 @@ import { FiltersContainer } from '../FiltersContainer/FiltersContainers';
 import { useInitialEffect } from '@/shared/hooks/useInitialEffect';
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
 import { useSearchParams } from 'react-router-dom';
+import { RetractablePanel } from '@/features/RetractablePanel';
+import { useDevice } from '@/shared/hooks/useDevice';
 
 interface ArticlePageProps {
   className?: string;
@@ -36,6 +38,7 @@ const ArticlePage: FC<ArticlePageProps> = ({
   const hasMore = useSelector(getArticlesHasMore);
   const dispatch = useAppDispatch();
   const [searchParams] = useSearchParams();
+  const isMobile = useDevice();
 
   const onLoadNextPart = useCallback(() => {
     dispatch(fetchNextArticlesPage()).catch((e) => {
@@ -49,27 +52,55 @@ const ArticlePage: FC<ArticlePageProps> = ({
     });
   });
 
-  const content = (
+  const mainContent = (
+    <StickyContentLayout
+      left={<ViewSelectorContainer />}
+      right={<FiltersContainer />}
+      content={
+        <Page
+          data-testid="ArticlesPage"
+          onScrollEnd={onLoadNextPart}
+          onLoadMore={onLoadNextPart}
+          className={classNames(cls.ArticlePageRedesigned, {}, [className])}
+          enableButton={hasMore}
+        >
+          <ArticleInfiniteList className={cls.list} />
+          <ArticlePageGreeting />
+        </Page>
+      }
+    />
+  );
+
+  const mobileContent = (
+    <>
+      <RetractablePanel>
+        <ViewSelectorContainer />
+        <FiltersContainer />
+      </RetractablePanel>
+
+      <StickyContentLayout
+        content={
+          <Page
+            data-testid="ArticlesPage"
+            onScrollEnd={onLoadNextPart}
+            onLoadMore={onLoadNextPart}
+            className={classNames(cls.ArticlePageRedesigned, {}, [className])}
+            enableButton={hasMore}
+          >
+            <ArticleInfiniteList className={cls.list} />
+            <ArticlePageGreeting />
+          </Page>
+        }
+      />
+    </>
+  );
+
+  const currentContent = isMobile ? mobileContent : mainContent;
+
+  const contentForFeature = (
     <ToggleFeatures
       feature="isAppRedesigned"
-      on={
-        <StickyContentLayout
-          left={<ViewSelectorContainer />}
-          right={<FiltersContainer />}
-          content={
-            <Page
-              data-testid="ArticlesPage"
-              onScrollEnd={onLoadNextPart}
-              onLoadMore={onLoadNextPart}
-              className={classNames(cls.ArticlePageRedesigned, {}, [className])}
-              enableButton={hasMore}
-            >
-              <ArticleInfiniteList className={cls.list} />
-              <ArticlePageGreeting />
-            </Page>
-          }
-        />
-      }
+      on={currentContent}
       off={
         <Page
           data-testid="ArticlesPage"
@@ -88,7 +119,7 @@ const ArticlePage: FC<ArticlePageProps> = ({
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
-      {content}
+      {contentForFeature}
     </DynamicModuleLoader>
   );
 };

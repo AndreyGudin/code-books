@@ -8,24 +8,34 @@ import ArrowIcon from '@/shared/assets/icons/arrow-bottom.svg';
 interface RetractablePanelProps {
   className?: string;
   position?: 'right' | 'left';
+  fullHeight?: boolean;
   children: ReactNode;
 }
 
 export const RetractablePanel: FC<RetractablePanelProps> = memo(
-  ({ className = '', position = 'right', children }: RetractablePanelProps) => {
-    const [collapsed, setCollapsed] = useState(false);
+  ({
+    className = '',
+    position = 'right',
+    fullHeight = true,
+    children
+  }: RetractablePanelProps) => {
+    const [collapsed, setCollapsed] = useState(true);
 
     const onToggle = (): void => {
       setCollapsed((prev) => !prev);
     };
 
+    const mods = {
+      [cls.retracted]: collapsed,
+      [cls.fullHeight]: fullHeight
+    };
+
     return (
       <aside
-        className={classNames(
-          cls.RetractablePanel,
-          { [cls.retracted]: collapsed },
-          [className, cls[position]]
-        )}
+        className={classNames(cls.RetractablePanel, mods, [
+          className,
+          cls[position]
+        ])}
       >
         {children}
         <Icon

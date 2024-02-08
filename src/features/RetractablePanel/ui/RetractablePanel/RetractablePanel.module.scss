@@ -1,10 +1,9 @@
 .RetractablePanel {
   background: var(--light-bg-redesigned);
   width: 220px;
-  height: 100%;
   border-radius: 32px;
-  position: absolute;
-
+  position: fixed;
+  padding: 4px;
   top: 0;
   transition: all ease-in-out 0.3s;
 
@@ -15,6 +14,11 @@
     right: 0;
   }
 }
+
+.fullHeight {
+  height: 100%;
+}
+
 .left {
   .btnToRetract {
     background: var(--light-bg-redesigned);
