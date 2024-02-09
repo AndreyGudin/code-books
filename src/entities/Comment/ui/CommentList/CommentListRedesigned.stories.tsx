@@ -1,9 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { CommentList } from './CommentList';
+import { NewDesignDecorator } from '@/shared/config/storybook/NewDesignDecorator/NewDesignDecorator';
 const meta = {
-  title: 'entities/Comment/CommentList',
+  title: 'entities/Comment/CommentList/redesigned',
   component: CommentList,
-  argTypes: {}
+  argTypes: {},
+  decorators: [NewDesignDecorator]
 } satisfies Meta<typeof CommentList>;
 export default meta;
 type Story = StoryObj<typeof meta>;

@@ -7,7 +7,7 @@ import avatar from '@/shared/assets/tests/storybook.jpg';
 import { NewDesignDecorator } from '@/shared/config/storybook/NewDesignDecorator/NewDesignDecorator';
 
 const meta = {
-  title: 'entities/ProfileCard',
+  title: 'entities/ProfileCard/deprecated',
   component: ProfileCard,
   argTypes: {}
 } satisfies Meta<typeof ProfileCard>;

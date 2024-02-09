@@ -1,14 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react';
-
-import { ArticleListItem } from './ArticleListItem';
+import { ArticleList } from './ArticleList';
 import { ArticleView } from '../../model/consts/const';
 import type { Article } from '../../model/types/article';
+import { NewDesignDecorator } from '@/shared/config/storybook/NewDesignDecorator/NewDesignDecorator';
 
 const meta = {
-  title: 'entities/Article/ArticleListItem',
-  component: ArticleListItem,
-  argTypes: {}
-} satisfies Meta<typeof ArticleListItem>;
+  title: 'entities/Article/ArticleList/redesigned',
+  component: ArticleList,
+  argTypes: {},
+  decorators: [NewDesignDecorator]
+} satisfies Meta<typeof ArticleList>;
 export default meta;
 type Story = StoryObj<typeof meta>;
 
@@ -90,14 +91,34 @@ const article: Article = {
 
 export const NormalGrid: Story = {
   args: {
-    article,
+    articles: new Array(16).fill(0).map((item, i) => {
+      return { ...article, id: String(i) };
+    }),
     view: ArticleView.GRID
   }
 };
 
 export const NormalList: Story = {
   args: {
-    article,
+    articles: new Array(16).fill(0).map((item, i) => {
+      return { ...article, id: String(i) };
+    }),
+    view: ArticleView.LIST
+  }
+};
+
+export const LoadingGrid: Story = {
+  args: {
+    articles: [],
+    isLoading: true,
+    view: ArticleView.GRID
+  }
+};
+
+export const LoadingList: Story = {
+  args: {
+    articles: [],
+    isLoading: true,
     view: ArticleView.LIST
   }
 };
