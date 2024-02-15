@@ -1,4 +1,3 @@
-import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
 import type { FC } from 'react';
 import { RedesignedArticleForm } from './RedesignedArticleForm/RedesignedArticleForm';
@@ -21,8 +20,6 @@ const reducers: ReducersList = {
 
 export const ArticleForm: FC<ArticleFormProps> = memo(
   ({ className = '', existingArticleId }: ArticleFormProps) => {
-    const { t } = useTranslation();
-
     return (
       <DynamicModuleLoader reducers={reducers}>
         <ToggleFeatures

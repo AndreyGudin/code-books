@@ -2,17 +2,15 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 
-import { NotFoundPage } from './NotFoundPage';
+import { ThemeSwitcher } from './ThemeSwitcher';
 import { Theme } from '@/shared/const/theme';
-import { NewDesignDecorator } from '@/shared/config/storybook/NewDesignDecorator/NewDesignDecorator';
 
 const meta = {
-  title: 'pages/NotFoundPage',
-  component: NotFoundPage,
+  title: 'features/ThemeSwitcher/deprecated',
+  component: ThemeSwitcher,
   argTypes: {}
-} satisfies Meta<typeof NotFoundPage>;
+} satisfies Meta<typeof ThemeSwitcher>;
 
-export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Light: Story = {
@@ -24,7 +22,9 @@ export const Dark: Story = {
   decorators: [ThemeDecorator(Theme.DARK)]
 };
 
-export const NormalRedesigned: Story = {
+export const Green: Story = {
   args: {},
-  decorators: [NewDesignDecorator]
+  decorators: [ThemeDecorator(Theme.GREEN)]
 };
+
+export default meta;

@@ -39,24 +39,17 @@
   }
 }
 .right.retracted {
+  width: 220px;
+  right: -220px;
   .btnToRetract {
     transform: rotate(90deg);
   }
 }
 
 .left.retracted {
+  width: 220px;
+  left: -220px;
   .btnToRetract {
     transform: rotate(-90deg);
-  }
-}
-
-@media (width < 426px) {
-  .right.retracted {
-    width: 220px;
-    right: -220px;
-  }
-  .left.retracted {
-    width: 220px;
-    left: -220px;
   }
 }

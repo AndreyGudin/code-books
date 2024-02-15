@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ScrollToolbar } from './ScrollToolbar';
+import { RatingCard } from './RatingCard';
 const meta = {
-  title: 'widgets/ScrollToolbar',
-  component: ScrollToolbar,
+  title: 'entities/Rating/RatingCard/deprecated',
+  component: RatingCard,
   argTypes: {}
-} satisfies Meta<typeof ScrollToolbar>;
+} satisfies Meta<typeof RatingCard>;
 export default meta;
 type Story = StoryObj<typeof meta>;
 export const Normal: Story = {};

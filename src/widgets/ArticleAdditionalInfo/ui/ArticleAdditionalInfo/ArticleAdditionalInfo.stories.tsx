@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ArticleAdditionalInfo } from './ArticleAdditionalInfo';
 const meta = {
-  title: 'pages/ArticleAdditionalInfo',
+  title: 'widgets/ArticleAdditionalInfo',
   component: ArticleAdditionalInfo,
   argTypes: {}
 } satisfies Meta<typeof ArticleAdditionalInfo>;

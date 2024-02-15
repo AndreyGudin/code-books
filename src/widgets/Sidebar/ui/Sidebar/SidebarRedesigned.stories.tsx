@@ -1,32 +1,38 @@
 import type { Meta, StoryObj } from '@storybook/react';
-
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 
-import MainPage from './MainPage';
+import { Sidebar } from './Sidebar';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { Theme } from '@/shared/const/theme';
 import { NewDesignDecorator } from '@/shared/config/storybook/NewDesignDecorator/NewDesignDecorator';
 
 const meta = {
-  title: 'pages/MainPage',
-  component: MainPage,
-  argTypes: {}
-} satisfies Meta<typeof MainPage>;
+  title: 'widgets/Sidebar/redesigned',
+  component: Sidebar,
+  argTypes: {},
+  decorators: [NewDesignDecorator]
+} satisfies Meta<typeof Sidebar>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Light: Story = {
+export const Normal: Story = {
   args: {},
-  decorators: [StoreDecorator({})]
+  decorators: [
+    StoreDecorator({
+      user: {
+        authData: {}
+      }
+    })
+  ]
 };
 
-export const Dark: Story = {
+export const NoAuth: Story = {
   args: {},
-  decorators: [ThemeDecorator(Theme.DARK), StoreDecorator({})]
-};
-
-export const NormalRedesigned: Story = {
-  args: {},
-  decorators: [StoreDecorator({}), NewDesignDecorator]
+  decorators: [
+    ThemeDecorator(Theme.DARK),
+    StoreDecorator({
+      user: {}
+    })
+  ]
 };
