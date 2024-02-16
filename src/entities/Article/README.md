@@ -7,19 +7,31 @@
 
 - Components
 
+`ArticleCodeBlockComponents` - Компонент для отображения кода в статье
+
 `ArticleDetails` - компонент с информацией о статье
+
+`ArticleImageBlockComponents` - Компонент для отображения картинки в статье
 
 `ArticleList` - Компонент со списком статей
 
-`ArticleViewSelector` - Компонент переключатель отображения списка статьей (плитка, список)
+`ArticleListItem` - Компонент списка статьи
 
-`ArticleSortSelector` - Компонент с выбором сортировки списка статьей
+`ArticleTextBlockComponents` - Компонент для отображения текста в статье
 
-`ArticleTypeTabs` - Компонент с выбором типа статьи
+- services
+  `fetchArticleById` - Сервис для получения статьи изи базы данных по уникальному ID
+
+  `useGetArticleOnMount` - Сервис для получения статьи изи базы данных по уникальному ID при монтировании компонента
 
 - types
 
 `Article` - Тип, описывающий статью
+`ArticleBlockBase` - Тип, описывающий базовый блок статьи
+`ArticleCodeBlock` - Тип, описывающий блок, содержащий код
+`ArticleImageBlock` - Тип, описывающий блок, содержащий картинку
+`ArticleTextBlock` - Тип, описывающий блок, содержащий текст
+`ArticleBlock` - Тип, объединяющий типы ArticleCodeBlock, ArticleImageBlock, ArticleTextBlock
 
 - selectors
 
