@@ -185,3 +185,28 @@ export const Primary: Story = {
 - [ScrollToTopButton](/src/features/ScrollToTopButton/README.md)
 - [ThemeSwitcher](/src/features/ThemeSwitcher/README.md)
 - [UIDesignSwitcher](/src/features/UIDesignSwitcher/README.md)
+
+## Страницы (pages)
+
+- [AboutPage](/src/pages/AboutPage/README.md)
+- [AdminPanelPage](/src/pages/AdminPanelPage/README.md)
+- [ArticleDetailsPage](/src/pages/ArticleDetailsPage/README.md)
+- [ArticleEditPage](/src/pages/ArticleEditPage/README.md)
+- [ArticlePage](/src/pages/ArticlePage/README.md)
+- [ForbiddenPage](/src/pages/ForbiddenPage/README.md)
+- [MainPage](/src/pages/MainPage/README.md)
+- [NotFoundPage](/src/pages/NotFoundPage/README.md)
+- [ProfilePage](/src/pages/ProfilePage/README.md)
+- [SettingsPage](/src/pages/SettingsPage/README.md)
+
+## Виджеты (widgets)
+
+- [ArticleAdditionalInfo](/src/widgets/ArticleAdditionalInfo/README.md)
+- [ArticleForm](/src/widgets/ArticleForm/README.md)
+- [ArticlesFilters](/src/widgets/ArticlesFilters/README.md)
+- [Navbar](/src/widgets/Navbar/README.md)
+- [Page](/src/widgets/Page/README.md)
+- [PageError](/src/widgets/PageError/README.md)
+- [PageLoader](/src/widgets/PageLoader/README.md)
+- [ScrollToolbar](/src/widgets/ScrollToolbar/README.md)
+- [Sidebar](/src/widgets/Sidebar/README.md)
