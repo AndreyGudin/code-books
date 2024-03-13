@@ -36,6 +36,7 @@ export const RedesignedArticleDetailsPageHeader: FC = memo(() => {
       deleteArticle(article?.id)
         .then(() => {
           navigate(getRouteArticles());
+          navigate(0);
         })
         .catch((e) => {
           console.log(e);
