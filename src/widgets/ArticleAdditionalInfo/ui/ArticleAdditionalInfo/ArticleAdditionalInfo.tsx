@@ -14,7 +14,9 @@ interface ArticleAdditionalInfoProps {
   author?: User;
   createdAt?: string;
   views?: number;
+  deleteButton?: boolean;
   onEdit?: () => void;
+  onDelete?: () => void;
 }
 
 export const ArticleAdditionalInfo: FC<ArticleAdditionalInfoProps> = memo(
@@ -23,7 +25,9 @@ export const ArticleAdditionalInfo: FC<ArticleAdditionalInfoProps> = memo(
     author,
     createdAt,
     views,
-    onEdit = () => {}
+    deleteButton = false,
+    onEdit = () => {},
+    onDelete = () => {}
   }: ArticleAdditionalInfoProps) => {
     const { t } = useTranslation();
 
@@ -38,6 +42,11 @@ export const ArticleAdditionalInfo: FC<ArticleAdditionalInfoProps> = memo(
           <Text text={createdAt} bold />
         </HStack>
         <Button onClick={onEdit}>{t('Редактировать')}</Button>
+        {deleteButton && (
+          <Button variant="filled" onClick={onDelete}>
+            {t('Удалить статью')}
+          </Button>
+        )}
         <Text text={t('{{count}} просмотров', { count: views })} />
       </VStack>
     );

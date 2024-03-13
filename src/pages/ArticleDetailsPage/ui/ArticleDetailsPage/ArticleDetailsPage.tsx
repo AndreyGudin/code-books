@@ -22,6 +22,7 @@ import { DetailsContainer } from '../DetailsContainer/DetailsContainer';
 import { AdditionalInfoContainer } from '../AdditionalInfoContainer/AdditionalInfoContainer';
 import { useDevice } from '@/shared/hooks/useDevice';
 import { RetractablePanel } from '@/features/RetractablePanel';
+import { RedesignedArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/RedesignedArticleDetailsPageHeader/RedesignedArticleDetailsPageHeader';
 
 interface ArticleDetailsPageProps {
   className?: string;
@@ -50,7 +51,7 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = ({
           </VStack>
         </Page>
       }
-      right={<AdditionalInfoContainer />}
+      right={<RedesignedArticleDetailsPageHeader />}
     />
   );
 
