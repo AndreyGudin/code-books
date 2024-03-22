@@ -210,3 +210,8 @@ export const Primary: Story = {
 - [PageLoader](/src/widgets/PageLoader/README.md)
 - [ScrollToolbar](/src/widgets/ScrollToolbar/README.md)
 - [Sidebar](/src/widgets/Sidebar/README.md)
+
+## Shared
+
+- [Hooks](/src/shared/hooks/README.md)
+- [Lib](/src/shared/lib/README.md)
